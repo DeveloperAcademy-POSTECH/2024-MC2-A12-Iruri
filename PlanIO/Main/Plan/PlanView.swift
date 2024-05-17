@@ -9,7 +9,29 @@ import SwiftUI
 
 struct PlanView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationSplitView {
+            VStack {
+                List {
+                    Text("first")
+                    Text("second")
+                    Text("third")
+                    Text("fourth")
+                }
+            }
+            .navigationTitle("Title")
+        } detail: {
+            VStack {
+                HStack {
+                    Text("hello")
+                    Spacer()
+                    Text("hello")
+                }
+                
+                Spacer()
+                Text("calendarView")
+                Spacer()
+            }
+        }
     }
 }
 
