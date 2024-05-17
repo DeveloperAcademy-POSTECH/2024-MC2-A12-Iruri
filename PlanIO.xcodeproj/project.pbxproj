@@ -11,6 +11,7 @@
 		4C6FC50A2BF34FEC0035FFC0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FC5092BF34FEC0035FFC0 /* ContentView.swift */; };
 		4C6FC50C2BF34FED0035FFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */; };
 		4C6FC50F2BF34FED0035FFC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50E2BF34FED0035FFC0 /* Preview Assets.xcassets */; };
+		4CC1E8022BF638AA00038958 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4CC1E8012BF638AA00038958 /* .swiftlint.yml */; };
 		510BE7302BF5AB8400524EA9 /* TextBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE72F2BF5AB8400524EA9 /* TextBook.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +21,7 @@
 		4C6FC5092BF34FEC0035FFC0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C6FC50E2BF34FED0035FFC0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4CC1E8012BF638AA00038958 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		510BE72F2BF5AB8400524EA9 /* TextBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBook.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,6 +39,7 @@
 		4C6FC4FB2BF34FEC0035FFC0 = {
 			isa = PBXGroup;
 			children = (
+				4CC1E8012BF638AA00038958 /* .swiftlint.yml */,
 				4C6FC5062BF34FEC0035FFC0 /* PlanIO */,
 				4C6FC5052BF34FEC0035FFC0 /* Products */,
 			);
@@ -93,6 +96,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C6FC5122BF34FED0035FFC0 /* Build configuration list for PBXNativeTarget "PlanIO" */;
 			buildPhases = (
+				4CC1E8002BF6382500038958 /* ShellScript */,
 				4C6FC5002BF34FEC0035FFC0 /* Sources */,
 				4C6FC5012BF34FEC0035FFC0 /* Frameworks */,
 				4C6FC5022BF34FEC0035FFC0 /* Resources */,
@@ -144,12 +148,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CC1E8022BF638AA00038958 /* .swiftlint.yml in Resources */,
 				4C6FC50F2BF34FED0035FFC0 /* Preview Assets.xcassets in Resources */,
 				4C6FC50C2BF34FED0035FFC0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4CC1E8002BF6382500038958 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4C6FC5002BF34FEC0035FFC0 /* Sources */ = {
@@ -202,7 +228,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -265,7 +291,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
