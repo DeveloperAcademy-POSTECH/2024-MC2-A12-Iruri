@@ -28,7 +28,7 @@ struct AchieveView: View {
                     .frame(width: 360)
                     .overlay {
                         Text("오늘의 할 일\n이오")
-                            .foregroundStyle(Color.white)
+                            .foregroundStyle(Color.planIOYellow)
                     }
                 
                 VStack(spacing: 24) {
