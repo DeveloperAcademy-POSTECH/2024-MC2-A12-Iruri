@@ -11,7 +11,7 @@ import SwiftUI
 struct PlanIOApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AchieveView()
         }
     }
 }
