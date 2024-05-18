@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PlanView: View {
+    @State private var date = Date()
+    
     var body: some View {
         NavigationSplitView {
             VStack {
@@ -27,9 +29,8 @@ struct PlanView: View {
                     Text("hello")
                 }
                 
-                Spacer()
-                Text("calendarView")
-                Spacer()
+                CalenderView(month: date)
+                    .padding(.horizontal, 20)
             }
         }
     }
