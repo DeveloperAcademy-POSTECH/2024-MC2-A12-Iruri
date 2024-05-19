@@ -30,9 +30,7 @@ struct TodayTaskView: View {
             
             ScrollView {
                 VStack {
-                    Text("haha")
-                    
-                    HStack { Spacer() }
+                    TodayTaskListView()
                 }
                 .padding(.vertical, 30)
                 .padding(.horizontal, 24)
