@@ -34,7 +34,7 @@ struct CalenderView: View {
                         .frame(maxWidth: .infinity)
                         .font(.caption2)
                         .bold()
-                        .foregroundStyle(.planIOGray)
+                        .foregroundStyle(.black)
                 }
             }
             .padding(.bottom, 5)
@@ -44,7 +44,7 @@ struct CalenderView: View {
     // MARK: - 날짜 그리드 뷰
     private var calendarGridView: some View {
         let daysInMonth: Int = numberOfDays(in: month)
-        let firstWeekday: Int = firstWeekdayOfMonth(in: month) - 1
+        let firstWeekday: Int = firstWeekdayOfMonth(in: month) - 2
         
         return VStack {
             ScrollView {
@@ -52,10 +52,9 @@ struct CalenderView: View {
                     ForEach(0 ..< daysInMonth + firstWeekday, id: \.self) { index in
                         if index < firstWeekday {
                             Rectangle()
-                                .frame(height: 150)
-                                .border(Color.black, width: 0.5)
+                                .frame(maxHeight: 150)
+                                .border(.gray, width: 0.5)
                                 .foregroundColor(.white)
-                                .opacity(0.1)
                         } else {
                             let date = getDate(for: index - firstWeekday)
                             let day = index - firstWeekday + 1
@@ -71,25 +70,22 @@ struct CalenderView: View {
                                         }
                                     }
                             }
-                            .frame(maxWidth: .infinity, minHeight: 150, alignment: .center)
-                            .border(Color.black, width: 0.5)
-                            .opacity(0.1)
+                            .frame(maxWidth: .infinity, minHeight: 150, maxHeight: 150, alignment: .center)
+                            .border(.gray, width: 0.5)
                         }
                     }
                     // 나머지 빈칸을 채웁니다. border 문제가 귀찮기 때문
                     ForEach(0 ..< 7 - (daysInMonth + firstWeekday) % 7, id: \.self) { _ in
                         Rectangle()
-                            .frame(height: 150)
-                            .border(Color.black, width: 0.5)
+                            .frame(maxHeight: 150)
+                            .border(.gray, width: 0.5)
                             .foregroundColor(.white)
-                            .opacity(0.1)
                     }
                 }
-                .border(Color.black.opacity(0.1), width: 0.7)
+                .border(Color.black.opacity(0.3), width: 1)
             }
             .scrollIndicators(.hidden)
         }
-        .frame(maxHeight: 500)
     }
 }
 
@@ -105,7 +101,14 @@ private struct CellView: View {
     
     var body: some View {
         VStack {
-            Text("h")
+            HStack {
+                Spacer()
+                Text("\(day)")
+                    .foregroundStyle(.black)
+                    .padding(10)
+            }
+            
+            Spacer()
         }
     }
 }
@@ -153,21 +156,18 @@ extension CalenderView {
         return formatter
     }()
     
-//    static let weekdaySymbols = Calendar.current.veryShortWeekdaySymbols
     static let weekdaySymbols: [String] = {
-//        let formatter = DateFormatter()
-//        formatter.locale = Locale(identifier: "ko_KR")
-//        return formatter.veryShortWeekdaySymbols
         let calendar = Calendar(identifier: .gregorian)
         var localizedCalendar = calendar
-        localizedCalendar.locale = Locale(identifier: "ko_KR")
+        localizedCalendar.locale = Locale(identifier: "ko-KR")
+        
         localizedCalendar.firstWeekday = 2 // 1 = Sunday, 2 = Monday, ...
         
         // Get the very short weekday symbols in the correct order
         let symbols = localizedCalendar.veryShortWeekdaySymbols
         
         // Reorder the symbols based on the firstWeekday
-        let reorderedSymbols = Array(symbols[calendar.firstWeekday - 1..<symbols.count] + symbols[0..<calendar.firstWeekday - 1])
+        let reorderedSymbols = Array(symbols[localizedCalendar.firstWeekday - 1..<symbols.count] + symbols[0..<localizedCalendar.firstWeekday - 1])
         
         return reorderedSymbols
     }()

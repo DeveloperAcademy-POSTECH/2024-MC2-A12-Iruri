@@ -22,17 +22,47 @@ struct PlanView: View {
             }
             .navigationTitle("Title")
         } detail: {
-            VStack {
-                HStack {
-                    Text("hello")
+            ZStack {
+                VStack {
+                    HStack {
+                        Text("hello")
+                        Spacer()
+                        Text("hello")
+                            .fontWeight(.black)
+                    }
+                    
                     Spacer()
-                    Text("hello")
+                    
+                    CalenderView(month: setMonth(month: 5))
+                        .padding(.horizontal, 20)
                 }
-                
-                CalenderView(month: date)
-                    .padding(.horizontal, 20)
             }
         }
+    }
+    
+    private func setMonth(month: Int) -> Date {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        
+        var components = calendar.dateComponents([.year, .day], from: currentDate)
+        components.month = month
+        
+        return calendar.date(from: components) ?? currentDate
+    }
+    
+    private func calculateDaysInMonth(year: Int, month: Int) -> Int {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        
+        let calendar = Calendar.current
+        
+        guard let date = calendar.date(from: dateComponents),
+              let range = calendar.range(of: .day, in: .month, for: date) else {
+            return 0 // Invalid date or range
+        }
+        
+        return range.count
     }
 }
 
