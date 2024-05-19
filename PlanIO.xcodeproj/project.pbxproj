@@ -16,6 +16,7 @@
 		510BE73C2BF71D7200524EA9 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE73B2BF71D7200524EA9 /* InputView.swift */; };
 		510BE73F2BF71D8600524EA9 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE73E2BF71D8600524EA9 /* PlanView.swift */; };
 		510BE7422BF71DB600524EA9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7412BF71DB600524EA9 /* TestView.swift */; };
+		510BE7492BFA189D00524EA9 /* TodayTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7482BFA189D00524EA9 /* TodayTaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		510BE73B2BF71D7200524EA9 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		510BE73E2BF71D8600524EA9 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		510BE7412BF71DB600524EA9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		510BE7482BFA189D00524EA9 /* TodayTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				510BE7382BF715BC00524EA9 /* AchieveView.swift */,
+				510BE7472BFA185300524EA9 /* TodayTask */,
 			);
 			path = Achieve;
 			sourceTree = "<group>";
@@ -128,6 +131,14 @@
 				510BE7412BF71DB600524EA9 /* TestView.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		510BE7472BFA185300524EA9 /* TodayTask */ = {
+			isa = PBXGroup;
+			children = (
+				510BE7482BFA189D00524EA9 /* TodayTaskView.swift */,
+			);
+			path = TodayTask;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				510BE7422BF71DB600524EA9 /* TestView.swift in Sources */,
+				510BE7492BFA189D00524EA9 /* TodayTaskView.swift in Sources */,
 				510BE7392BF715BC00524EA9 /* AchieveView.swift in Sources */,
 				510BE73C2BF71D7200524EA9 /* InputView.swift in Sources */,
 				510BE7302BF5AB8400524EA9 /* TextBook.swift in Sources */,

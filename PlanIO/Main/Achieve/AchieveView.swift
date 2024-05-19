@@ -13,6 +13,7 @@ struct AchieveView: View {
             HStack {
                 Text("실천해보자")
                     .font(.title).bold()
+                    .foregroundStyle(Color.planIODarkYellow)
                 
                 Spacer()
                 
@@ -24,12 +25,8 @@ struct AchieveView: View {
             
             HStack(spacing: 24) {
                 // 오늘의 할 일
-                Rectangle()
+                TodayTaskView()
                     .frame(width: 360)
-                    .overlay {
-                        Text("오늘의 할 일\n이오")
-                            .foregroundStyle(Color.planIOYellow)
-                    }
                 
                 VStack(spacing: 24) {
                     // 전체 공부 현황
@@ -69,6 +66,7 @@ struct AchieveView: View {
             .padding(.horizontal, 60)
             .padding(.bottom, 40)
         }
+        .background(Color.planIOLightGray)
     }
 }
 
