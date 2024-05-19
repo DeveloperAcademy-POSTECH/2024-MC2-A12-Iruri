@@ -8,40 +8,52 @@
 import SwiftUI
 
 struct TodayTaskListView: View {
+    let type: TaskType
+    @State var tasks: [Task]
+    @State private var selectedTask: Task?
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("개념")
+            Text(type.title)
                 .font(.body).bold()
                 .foregroundStyle(Color.planIODarkGray)
                 .padding(.leading, 10)
             
-            HStack {
-                Text("1. 자극을 전달하는 신경계")
-                    .font(.footnote).bold()
-                
-                Spacer()
-                
-                Text("완료")
-                    .font(.caption)
-                    .foregroundStyle(Color.planIODarkBlue)
-                    .frame(width: 50, height: 22)
-                    .background(Color.planIOLightBlue)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 12)
-                            .inset(by: 0.5)
-                            .stroke(Color.planIODarkBlue, lineWidth: 1)
+            ForEach(tasks.indices) { index in
+                let task = tasks[index]
+                ZStack {
+                    Button {
+                        if selectedTask == nil {
+                            withAnimation {
+                                selectedTask = task
+                            }
+                        } else {
+                            selectedTask = nil
+                        }
+                    } label: {
+                        TaskLow(task: task)
                     }
+                    
+//                    TaskLow(task: task)
+//                        .onTapGesture {
+//                            if selectedTask == nil {
+//                                withAnimation {
+//                                    selectedTask = task
+//                                }
+//                            } else {
+//                                selectedTask = nil
+//                            }
+//                        }
+                    
+                    if let selectedTask = selectedTask, task == selectedTask {
+                        StatusSelectPopUp(task: $tasks[index], selectedTask: $selectedTask)
+                    }
+                }
             }
-            .padding(10)
-            .padding(.leading, 6)
-            .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 6))
-            .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 1)
         }
     }
 }
 
 #Preview {
-    TodayTaskListView()
+    AchieveView()
 }

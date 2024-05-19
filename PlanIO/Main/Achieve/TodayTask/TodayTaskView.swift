@@ -29,8 +29,15 @@ struct TodayTaskView: View {
             .frame(height: 40)
             
             ScrollView {
-                VStack {
-                    TodayTaskListView()
+                VStack(spacing: 40) {
+                    // 개념
+                    TodayTaskListView(type: .concept, tasks: Task.dummy3)
+                    
+                    // 응용
+                    TodayTaskListView(type: .practice, tasks: Task.dummy3)
+                    
+                    // 기타
+                    TodayTaskListView(type: .other, tasks: Task.dummy3)
                 }
                 .padding(.vertical, 30)
                 .padding(.horizontal, 24)
