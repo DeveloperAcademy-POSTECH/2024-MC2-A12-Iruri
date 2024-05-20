@@ -37,26 +37,27 @@ struct AchieveView: View {
                     HStack(spacing: 24) {
                         VStack(spacing: 12) {
                             // 오늘의 성취
-                            Rectangle()
-                                .overlay {
-                                    Text("오늘의 성취\n다다? 블리시?")
-                                        .foregroundStyle(Color.white)
-                                }
+                            TodayAchieveView()
+                                .achieveComponentBackground()
                             
                             // 남은 기간
-                            Rectangle()
-                                .overlay {
-                                    Text("남은 기간\n이오")
-                                        .foregroundStyle(Color.white)
-                                }
+                            RemainTimeView()
+                                .achieveComponentBackground()
                         }
+                        .achieveComponentTitle("오늘 공부 현황")
                         
                         // 오늘의 한마디
-                        Rectangle()
-                            .overlay {
-                                Text("오늘의 한마디\n다다? 블리시?")
-                                    .foregroundStyle(Color.white)
+                        VStack {
+                            HStack {
+                                Text("오늘의 성취")
+                                
+                                Spacer()
                             }
+                            
+                            Spacer()
+                        }
+                        .achieveComponentBackground()
+                        .achieveComponentTitle("오늘의 한마디")
                     }
                 }
             }
