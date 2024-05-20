@@ -30,36 +30,27 @@ struct AchieveView: View {
                 
                 VStack(spacing: 24) {
                     // 전체 공부 현황
-                    Rectangle()
-                        .frame(height: 160)
-                        .overlay {
-                            Text("전체 공부 현황\n다다? 블리시?")
-                                .foregroundStyle(Color.white)
-                        }
+                    EntireStatusView()
+                        .achieveComponentBackground()
+                        .achieveComponentTitle("전체 공부 현황")
                     
                     HStack(spacing: 24) {
+                        // 오늘 공부 현황
                         VStack(spacing: 12) {
                             // 오늘의 성취
-                            Rectangle()
-                                .overlay {
-                                    Text("오늘의 성취\n다다? 블리시?")
-                                        .foregroundStyle(Color.white)
-                                }
+                            TodayAchieveView()
+                                .achieveComponentBackground()
                             
                             // 남은 기간
-                            Rectangle()
-                                .overlay {
-                                    Text("남은 기간\n이오")
-                                        .foregroundStyle(Color.white)
-                                }
+                            RemainTimeView()
+                                .achieveComponentBackground()
                         }
+                        .achieveComponentTitle("오늘 공부 현황")
                         
-                        // 오늘의 한마디
-                        Rectangle()
-                            .overlay {
-                                Text("오늘의 한마디\n다다? 블리시?")
-                                    .foregroundStyle(Color.white)
-                            }
+                        // 오늘의 한 마디
+                        TodayAdviceView()
+                            .achieveComponentBackground()
+                            .achieveComponentTitle("오늘의 한 마디")
                     }
                 }
             }

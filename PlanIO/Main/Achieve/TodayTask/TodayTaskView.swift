@@ -13,6 +13,7 @@ struct TodayTaskView: View {
             HStack {
                 Text("오늘의 할 일")
                     .font(.title).bold()
+                    .padding(.leading, 6)
                 
                 Spacer()
                 
