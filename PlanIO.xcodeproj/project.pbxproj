@@ -26,6 +26,7 @@
 		510BE7572BFB28C500524EA9 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7562BFB28C500524EA9 /* Plan.swift */; };
 		510BE75A2BFB587D00524EA9 /* AchieveComponentTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7592BFB587D00524EA9 /* AchieveComponentTitle.swift */; };
 		510BE75C2BFB589200524EA9 /* AchieveComponentBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE75B2BFB589200524EA9 /* AchieveComponentBackground.swift */; };
+		510BE75E2BFB5A5800524EA9 /* EntireStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE75D2BFB5A5800524EA9 /* EntireStatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		510BE7562BFB28C500524EA9 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		510BE7592BFB587D00524EA9 /* AchieveComponentTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveComponentTitle.swift; sourceTree = "<group>"; };
 		510BE75B2BFB589200524EA9 /* AchieveComponentBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveComponentBackground.swift; sourceTree = "<group>"; };
+		510BE75D2BFB5A5800524EA9 /* EntireStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntireStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				510BE7582BFB586D00524EA9 /* AchieveMain */,
 				510BE7472BFA185300524EA9 /* TodayTask */,
+				510BE75D2BFB5A5800524EA9 /* EntireStatusView.swift */,
 			);
 			path = Achieve;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				510BE7552BFB24C200524EA9 /* WorkBook.swift in Sources */,
 				510BE7492BFA189D00524EA9 /* TodayTaskView.swift in Sources */,
 				510BE7532BFA606400524EA9 /* StatusSelectPopUp.swift in Sources */,
+				510BE75E2BFB5A5800524EA9 /* EntireStatusView.swift in Sources */,
 				510BE7392BF715BC00524EA9 /* AchieveView.swift in Sources */,
 				510BE75C2BFB589200524EA9 /* AchieveComponentBackground.swift in Sources */,
 				510BE7512BFA5CA200524EA9 /* TaskLow.swift in Sources */,

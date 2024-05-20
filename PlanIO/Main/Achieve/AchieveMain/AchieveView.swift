@@ -30,12 +30,9 @@ struct AchieveView: View {
                 
                 VStack(spacing: 24) {
                     // 전체 공부 현황
-                    Rectangle()
-                        .frame(height: 160)
-                        .overlay {
-                            Text("전체 공부 현황\n다다? 블리시?")
-                                .foregroundStyle(Color.white)
-                        }
+                    EntireStatusView()
+                        .achieveComponentBackground()
+                        .achieveComponentTitle("전체 공부 현황")
                     
                     HStack(spacing: 24) {
                         VStack(spacing: 12) {

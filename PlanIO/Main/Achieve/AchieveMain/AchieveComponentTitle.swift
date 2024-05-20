@@ -15,6 +15,7 @@ struct AchieveComponentTitle: ViewModifier {
             HStack {
                 Text(title)
                     .font(.title).bold()
+                    .padding(.leading, 6)
                 
                 Spacer()
             }
