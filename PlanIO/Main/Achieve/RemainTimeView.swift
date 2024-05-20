@@ -11,7 +11,7 @@ struct RemainTimeView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("남은 기간")
+                Text("RemainTimeView\n남은 기간 - 이오")
                 
                 Spacer()
             }

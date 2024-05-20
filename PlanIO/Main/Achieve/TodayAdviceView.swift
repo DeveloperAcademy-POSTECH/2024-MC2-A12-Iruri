@@ -1,5 +1,5 @@
 //
-//  EntireStatusView.swift
+//  TodayAdviceView.swift
 //  PlanIO
 //
 //  Created by Anjin on 5/20/24.
@@ -7,14 +7,16 @@
 
 import SwiftUI
 
-struct EntireStatusView: View {
+struct TodayAdviceView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("EntireStatusView\n다다? 블리시?")
+                Text("TodayAdviceView\n오늘의 한 마디 - 다다")
                 
                 Spacer()
             }
+            
+            Spacer()
         }
     }
 }

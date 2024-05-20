@@ -35,6 +35,7 @@ struct AchieveView: View {
                         .achieveComponentTitle("전체 공부 현황")
                     
                     HStack(spacing: 24) {
+                        // 오늘 공부 현황
                         VStack(spacing: 12) {
                             // 오늘의 성취
                             TodayAchieveView()
@@ -46,18 +47,10 @@ struct AchieveView: View {
                         }
                         .achieveComponentTitle("오늘 공부 현황")
                         
-                        // 오늘의 한마디
-                        VStack {
-                            HStack {
-                                Text("오늘의 성취")
-                                
-                                Spacer()
-                            }
-                            
-                            Spacer()
-                        }
-                        .achieveComponentBackground()
-                        .achieveComponentTitle("오늘의 한마디")
+                        // 오늘의 한 마디
+                        TodayAdviceView()
+                            .achieveComponentBackground()
+                            .achieveComponentTitle("오늘의 한 마디")
                     }
                 }
             }

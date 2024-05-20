@@ -11,7 +11,7 @@ struct TodayAchieveView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("오늘의 성취 - 즈언하")
+                Text("TodayAchieveView\n오늘의 성취 - 즈언하")
                 
                 Spacer()
             }
