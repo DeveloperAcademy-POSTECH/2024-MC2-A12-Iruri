@@ -17,6 +17,7 @@
 		510BE73F2BF71D8600524EA9 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE73E2BF71D8600524EA9 /* PlanView.swift */; };
 		510BE7422BF71DB600524EA9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7412BF71DB600524EA9 /* TestView.swift */; };
 		510BE7552BFB24C200524EA9 /* WorkBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7542BFB24C200524EA9 /* WorkBook.swift */; };
+		510BE7572BFB28C500524EA9 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7562BFB28C500524EA9 /* Plan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		510BE73E2BF71D8600524EA9 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		510BE7412BF71DB600524EA9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		510BE7542BFB24C200524EA9 /* WorkBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBook.swift; sourceTree = "<group>"; };
+		510BE7562BFB28C500524EA9 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				510BE72F2BF5AB8400524EA9 /* TextBook.swift */,
 				510BE7542BFB24C200524EA9 /* WorkBook.swift */,
+				510BE7562BFB28C500524EA9 /* Plan.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				510BE7572BFB28C500524EA9 /* Plan.swift in Sources */,
 				510BE7422BF71DB600524EA9 /* TestView.swift in Sources */,
 				510BE7552BFB24C200524EA9 /* WorkBook.swift in Sources */,
 				510BE7392BF715BC00524EA9 /* AchieveView.swift in Sources */,
