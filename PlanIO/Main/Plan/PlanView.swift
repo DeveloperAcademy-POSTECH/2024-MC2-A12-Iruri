@@ -33,7 +33,7 @@ struct PlanView: View {
                     
                     Spacer()
                     
-                    CalenderView(month: setMonth(month: 5))
+                    MonthCalendarView(startDate: Calendar.current.date(from: DateComponents(year: 2024, month: 5, day: 21))!, endDate: Calendar.current.date(from: DateComponents(year: 2024, month: 6, day: 17))!)
                         .padding(.horizontal, 20)
                 }
             }
