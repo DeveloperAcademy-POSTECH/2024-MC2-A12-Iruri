@@ -26,7 +26,7 @@ struct AchieveView: View {
             HStack(spacing: 24) {
                 // 오늘의 할 일
                 TodayTaskView()
-                    .frame(width: 360)
+                    .frame(width: 340)
                 
                 VStack(spacing: 24) {
                     // 전체 공부 현황
