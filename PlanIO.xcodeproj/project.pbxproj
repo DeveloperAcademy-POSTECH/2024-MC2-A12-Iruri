@@ -34,6 +34,7 @@
 		510BE7602BFB5B8B00524EA9 /* TodayAchieveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE75F2BFB5B8B00524EA9 /* TodayAchieveView.swift */; };
 		510BE7622BFB5BE600524EA9 /* RemainTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7612BFB5BE600524EA9 /* RemainTimeView.swift */; };
 		510BE7642BFB5C7100524EA9 /* TodayAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7632BFB5C7000524EA9 /* TodayAdviceView.swift */; };
+		510BE7662BFCE73800524EA9 /* SelectBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7652BFCE73800524EA9 /* SelectBookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		510BE75F2BFB5B8B00524EA9 /* TodayAchieveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAchieveView.swift; sourceTree = "<group>"; };
 		510BE7612BFB5BE600524EA9 /* RemainTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainTimeView.swift; sourceTree = "<group>"; };
 		510BE7632BFB5C7000524EA9 /* TodayAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAdviceView.swift; sourceTree = "<group>"; };
+		510BE7652BFCE73800524EA9 /* SelectBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			children = (
 				510BE73B2BF71D7200524EA9 /* InputView.swift */,
 				246A2F782BFB687B00DD7830 /* InputStep */,
+				510BE7652BFCE73800524EA9 /* SelectBookView.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				510BE7552BFB24C200524EA9 /* WorkBook.swift in Sources */,
 				510BE7492BFA189D00524EA9 /* TodayTaskView.swift in Sources */,
 				510BE7532BFA606400524EA9 /* StatusSelectPopUp.swift in Sources */,
+				510BE7662BFCE73800524EA9 /* SelectBookView.swift in Sources */,
 				510BE75E2BFB5A5800524EA9 /* EntireStatusView.swift in Sources */,
 				510BE7392BF715BC00524EA9 /* AchieveView.swift in Sources */,
 				510BE75C2BFB589200524EA9 /* AchieveComponentBackground.swift in Sources */,
