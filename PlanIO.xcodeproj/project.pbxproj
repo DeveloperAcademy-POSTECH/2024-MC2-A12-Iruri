@@ -331,7 +331,6 @@
 				4C6FC5082BF34FEC0035FFC0 /* PlanIOApp.swift in Sources */,
 				510BE74D2BFA52B400524EA9 /* Task.swift in Sources */,
 				246A2F7C2BFB689C00DD7830 /* InputStepView.swift in Sources */,
-				4C6FC5082BF34FEC0035FFC0 /* PlanIOApp.swift in Sources */,
 				246A2F7F2BFC8A6500DD7830 /* InputData.swift in Sources */,
 				510BE73F2BF71D8600524EA9 /* PlanView.swift in Sources */,
 			);
