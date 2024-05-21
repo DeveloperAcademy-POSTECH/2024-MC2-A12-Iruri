@@ -7,14 +7,38 @@
 
 import SwiftUI
 
+struct Temp {
+    var date: Date
+    var tasks: [Task]
+}
+
 struct MonthCalendarView: View {
     @State var startDate: Date
     @State var endDate: Date
+    @State var currentlyDragging: Task?
+    
+    @State var tempTasks: [Temp] = []
     
     var body: some View {
         VStack {
             headerView
             calendarGridView
+        }
+        .onAppear {
+            func formattedShortDate(date: Date) -> String {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "d일"
+                return dateFormatter.string(from: date)
+            }
+            
+            for idx in 0..<getDaysBetween(startDate, endDate) {
+                var tasks: [Task] = []
+                for item in 0..<2 {
+                    tasks.append(.init(title: "\(formattedShortDate(date: startDate + TimeInterval(idx * 86400))) \(item + 1)번째", type: .concept, status: .none))
+                }
+                var sample = Temp(date: startDate + TimeInterval(idx * 86400), tasks: tasks)
+                tempTasks.append(sample)
+            }
         }
     }
     
@@ -62,7 +86,7 @@ struct MonthCalendarView: View {
                             VStack {
                                 // firstDayOfWeek가 3일때 (수요일) 월, 화를 채우고 온 index는 2입니다.
                                 // 해당일부터 종료일까지 날짜를 채워야 하기 때문에 +1 하여 날짜를 맞추었습니다.
-                                CellView(date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400))
+                                CellView(date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400), currentlyDragging: $currentlyDragging, tempTasks: $tempTasks)
                             }
                             .frame(maxWidth: .infinity, minHeight: 150, maxHeight: 150, alignment: .center)
                             .border(.gray, width: 0.5)
@@ -80,31 +104,6 @@ struct MonthCalendarView: View {
             }
             .scrollIndicators(.hidden)
         }
-    }
-}
-
-// MARK: - 일자 셀 뷰
-private struct CellView: View {
-    var date: Date
-    var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-
-                Text("\(formattedDate(date: date))")
-                    .foregroundStyle(.black)
-                    .padding(10)
-            }
-            
-            Spacer()
-        }
-    }
-    
-    // 날짜를 "6월 1일" 형식으로 포맷하는 함수
-    func formattedDate(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M월 d일"
-        return dateFormatter.string(from: date)
     }
 }
 

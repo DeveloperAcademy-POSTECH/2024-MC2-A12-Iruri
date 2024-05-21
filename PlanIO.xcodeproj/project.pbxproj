@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C6C78AC2BFD07AD00E2BD09 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */; };
 		4C6FC5082BF34FEC0035FFC0 /* PlanIOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */; };
 		4C6FC50C2BF34FED0035FFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */; };
 		4C6FC50F2BF34FED0035FFC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50E2BF34FED0035FFC0 /* Preview Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		4C6FC5042BF34FEC0035FFC0 /* PlanIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanIOApp.swift; sourceTree = "<group>"; };
 		4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				4CC1E8052BF7B2DD00038958 /* MonthCalendarView.swift */,
+				4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6C78AC2BFD07AD00E2BD09 /* CellView.swift in Sources */,
 				510BE7572BFB28C500524EA9 /* Plan.swift in Sources */,
 				510BE7622BFB5BE600524EA9 /* RemainTimeView.swift in Sources */,
 				510BE7422BF71DB600524EA9 /* TestView.swift in Sources */,
