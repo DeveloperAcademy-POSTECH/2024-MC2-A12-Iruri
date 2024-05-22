@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		080A75F02BFC86AB00A82A39 /* EmptyAchieveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A75EF2BFC86AB00A82A39 /* EmptyAchieveView.swift */; };
+		246A2F7A2BFB688700DD7830 /* InputStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F792BFB688700DD7830 /* InputStep.swift */; };
+		246A2F7C2BFB689C00DD7830 /* InputStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F7B2BFB689C00DD7830 /* InputStepView.swift */; };
+		246A2F7F2BFC8A6500DD7830 /* InputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F7E2BFC8A6500DD7830 /* InputData.swift */; };
 		4C6FC5082BF34FEC0035FFC0 /* PlanIOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */; };
 		4C6FC50C2BF34FED0035FFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */; };
 		4C6FC50F2BF34FED0035FFC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50E2BF34FED0035FFC0 /* Preview Assets.xcassets */; };
@@ -32,10 +35,14 @@
 		510BE7602BFB5B8B00524EA9 /* TodayAchieveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE75F2BFB5B8B00524EA9 /* TodayAchieveView.swift */; };
 		510BE7622BFB5BE600524EA9 /* RemainTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7612BFB5BE600524EA9 /* RemainTimeView.swift */; };
 		510BE7642BFB5C7100524EA9 /* TodayAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7632BFB5C7000524EA9 /* TodayAdviceView.swift */; };
+		510BE7662BFCE73800524EA9 /* SelectBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7652BFCE73800524EA9 /* SelectBookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		080A75EF2BFC86AB00A82A39 /* EmptyAchieveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyAchieveView.swift; sourceTree = "<group>"; };
+		246A2F792BFB688700DD7830 /* InputStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStep.swift; sourceTree = "<group>"; };
+		246A2F7B2BFB689C00DD7830 /* InputStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStepView.swift; sourceTree = "<group>"; };
+		246A2F7E2BFC8A6500DD7830 /* InputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputData.swift; sourceTree = "<group>"; };
 		4C6FC5042BF34FEC0035FFC0 /* PlanIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanIOApp.swift; sourceTree = "<group>"; };
 		4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,6 +68,7 @@
 		510BE75F2BFB5B8B00524EA9 /* TodayAchieveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAchieveView.swift; sourceTree = "<group>"; };
 		510BE7612BFB5BE600524EA9 /* RemainTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainTimeView.swift; sourceTree = "<group>"; };
 		510BE7632BFB5C7000524EA9 /* TodayAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAdviceView.swift; sourceTree = "<group>"; };
+		510BE7652BFCE73800524EA9 /* SelectBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		246A2F782BFB687B00DD7830 /* InputStep */ = {
+			isa = PBXGroup;
+			children = (
+				246A2F792BFB688700DD7830 /* InputStep.swift */,
+				246A2F7B2BFB689C00DD7830 /* InputStepView.swift */,
+			);
+			path = InputStep;
+			sourceTree = "<group>";
+		};
 		4C6FC4FB2BF34FEC0035FFC0 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +144,7 @@
 				510BE7542BFB24C200524EA9 /* WorkBook.swift */,
 				510BE7562BFB28C500524EA9 /* Plan.swift */,
 				510BE74C2BFA52B400524EA9 /* Task.swift */,
+				246A2F7E2BFC8A6500DD7830 /* InputData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -158,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				510BE73B2BF71D7200524EA9 /* InputView.swift */,
+				246A2F782BFB687B00DD7830 /* InputStep */,
+				510BE7652BFCE73800524EA9 /* SelectBookView.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -297,10 +317,12 @@
 			files = (
 				510BE7572BFB28C500524EA9 /* Plan.swift in Sources */,
 				510BE7622BFB5BE600524EA9 /* RemainTimeView.swift in Sources */,
+				246A2F7A2BFB688700DD7830 /* InputStep.swift in Sources */,
 				510BE7422BF71DB600524EA9 /* TestView.swift in Sources */,
 				510BE7552BFB24C200524EA9 /* WorkBook.swift in Sources */,
 				510BE7492BFA189D00524EA9 /* TodayTaskView.swift in Sources */,
 				510BE7532BFA606400524EA9 /* StatusSelectPopUp.swift in Sources */,
+				510BE7662BFCE73800524EA9 /* SelectBookView.swift in Sources */,
 				510BE75E2BFB5A5800524EA9 /* EntireStatusView.swift in Sources */,
 				510BE7392BF715BC00524EA9 /* AchieveView.swift in Sources */,
 				510BE75C2BFB589200524EA9 /* AchieveComponentBackground.swift in Sources */,
@@ -316,6 +338,8 @@
 				510BE7642BFB5C7100524EA9 /* TodayAdviceView.swift in Sources */,
 				4C6FC5082BF34FEC0035FFC0 /* PlanIOApp.swift in Sources */,
 				510BE74D2BFA52B400524EA9 /* Task.swift in Sources */,
+				246A2F7C2BFB689C00DD7830 /* InputStepView.swift in Sources */,
+				246A2F7F2BFC8A6500DD7830 /* InputData.swift in Sources */,
 				510BE73F2BF71D8600524EA9 /* PlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
