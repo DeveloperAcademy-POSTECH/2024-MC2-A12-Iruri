@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080A75F02BFC86AB00A82A39 /* EmptyAchieveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A75EF2BFC86AB00A82A39 /* EmptyAchieveView.swift */; };
 		4C6FC5082BF34FEC0035FFC0 /* PlanIOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */; };
 		4C6FC50C2BF34FED0035FFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */; };
 		4C6FC50F2BF34FED0035FFC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50E2BF34FED0035FFC0 /* Preview Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		080A75EF2BFC86AB00A82A39 /* EmptyAchieveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyAchieveView.swift; sourceTree = "<group>"; };
 		4C6FC5042BF34FEC0035FFC0 /* PlanIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanIOApp.swift; sourceTree = "<group>"; };
 		4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				510BE7382BF715BC00524EA9 /* AchieveView.swift */,
 				510BE7592BFB587D00524EA9 /* AchieveComponentTitle.swift */,
 				510BE75B2BFB589200524EA9 /* AchieveComponentBackground.swift */,
+				080A75EF2BFC86AB00A82A39 /* EmptyAchieveView.swift */,
 			);
 			path = AchieveMain;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				510BE7392BF715BC00524EA9 /* AchieveView.swift in Sources */,
 				510BE75C2BFB589200524EA9 /* AchieveComponentBackground.swift in Sources */,
 				510BE7512BFA5CA200524EA9 /* TaskLow.swift in Sources */,
+				080A75F02BFC86AB00A82A39 /* EmptyAchieveView.swift in Sources */,
 				510BE73C2BF71D7200524EA9 /* InputView.swift in Sources */,
 				510BE74F2BFA54F300524EA9 /* TaskStatusButton.swift in Sources */,
 				510BE7302BF5AB8400524EA9 /* TextBook.swift in Sources */,
