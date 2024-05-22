@@ -8,8 +8,8 @@
 import SwiftData
 import SwiftUI
 
-//@Model
-//class Plan {
+// @Model
+// class Plan {
 //    let date: Date
 //    var tasks: [Task]
 //    
@@ -17,4 +17,4 @@ import SwiftUI
 //        self.date = date
 //        self.tasks = tasks
 //    }
-//}
+// }
