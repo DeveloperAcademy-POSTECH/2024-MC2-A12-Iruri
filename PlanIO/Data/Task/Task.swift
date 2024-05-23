@@ -22,7 +22,7 @@ class Task: Identifiable, Equatable {
     }
 }
 
-enum TaskType: String, Codable {
+enum TaskType: String, Codable, CaseIterable {
     case concept = "개념"
     case practice = "응용"
     case other = "기타"
