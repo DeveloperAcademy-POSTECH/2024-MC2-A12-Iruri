@@ -19,14 +19,36 @@ struct CellView: View {
     @Binding var draggingTarget: Task?
     @Binding var draggingTargetDate: Date
     
+    init(date: Date, draggingTarget: Binding<Task?>, draggingTargetDate: Binding<Date>) {
+        self.date = date
+        self._draggingTarget = draggingTarget
+        self._draggingTargetDate = draggingTargetDate
+
+        let predicate = #Predicate<Task> {
+            $0.date == date
+        }
+        
+        _tasks = Query(filter: predicate, sort: \.title)
+    }
+    
     var body: some View {
         VStack {
             HStack {
                 Spacer()
                 
-                Text(cleanDate(date: date))
-                    .foregroundStyle(.black)
-                    .padding(10)
+                ZStack {
+                    if date.isToday() {
+                        Circle()
+                            .foregroundStyle(Color.planIODarkYellow)
+                            .frame(width: 25, height: 25)
+                    }
+                    
+                    Text(cleanDate(date: date))
+                        .font(.footnote).bold()
+                        .foregroundStyle(dateColor())
+                }
+                .padding(.top, 10)
+                .padding(.trailing, 14)
             }
             
             ForEach(tasks) { task in
@@ -44,7 +66,6 @@ struct CellView: View {
             Spacer()
         }
         .frame(height: 150)
-        .background(.white)
         .dropDestination(for: String.self) { _, _ in
             if draggingTargetDate == Date(year: 0, month: 0, day: 0) {
                 // task -> calendar 로의 정보 이동
@@ -73,16 +94,15 @@ struct CellView: View {
         }
     }
     
-    init(date: Date, draggingTarget: Binding<Task?>, draggingTargetDate: Binding<Date>) {
-        self.date = date
-        self._draggingTarget = draggingTarget
-        self._draggingTargetDate = draggingTargetDate
-
-        let predicate = #Predicate<Task> {
-            $0.date == date
+    private func dateColor() -> Color {
+        let calendar = Calendar.current
+        if calendar.isDateInToday(self.date) {
+            return Color.white
+        } else if calendar.isDateInWeekend(self.date) {
+            return Color.planIODarkYellow
+        } else {
+            return Color.planIODarkGray
         }
-        
-        _tasks = Query(filter: predicate, sort: \.title)
     }
     
     private func queryTasks(date: Date) -> [Task] {
@@ -106,9 +126,16 @@ struct CellView: View {
     
     private func cleanDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd일"
+        dateFormatter.dateFormat = "d"
         let dateString = dateFormatter.string(from: date)
         
         return dateString
+    }
+}
+
+extension Date {
+    func isToday() -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDateInToday(self)
     }
 }
