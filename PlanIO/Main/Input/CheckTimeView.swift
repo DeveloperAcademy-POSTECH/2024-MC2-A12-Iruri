@@ -20,20 +20,20 @@ struct CheckTimeView: View {
             HStack(spacing: 0) {
                 ForEach(week.indices, id: \.self) { index in
                     Text(week[index])
-                        .frame(width: 65, height: 25)
+                        .frame(width: 65, height: 20)
                         .font(.system(size: 18))
                         .fontWeight(.semibold)
                         .foregroundColor(index >= 5 ? .planIODarkYellow : .planIODarkGray)
                 }
             }
             .padding(.bottom, 10)
-            .padding(.leading, 65)
+            .padding(.leading, 60)
             
             HStack(spacing: 0) {
                 VStack(spacing: 0) {
                     ForEach(times, id: \.self) { time in
                         Text(time)
-                            .frame(width: 65, height: 25)
+                            .frame(width: 65, height: 23)
                             .font(.system(size: 12))
                             .foregroundColor(.planIODarkGray)
                     }
@@ -44,7 +44,7 @@ struct CheckTimeView: View {
                             ForEach(0 ..< 7, id: \.self) { column in
                                 Rectangle()
                                     .fill(cellColors[row][column])
-                                    .frame(width: 65, height: 25)
+                                    .frame(width: 65, height: 23)
                                     .border(Color.planIODarkGray, width: 0.5)
                                     .gesture(
                                         LongPressGesture(minimumDuration: 0.01)

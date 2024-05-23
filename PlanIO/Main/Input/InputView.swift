@@ -17,7 +17,7 @@ struct InputView: View {
     @State private var showCalendarView = false
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 16) {
             InputStepView(inputData: inputData)
             
             // 펭귄이오
@@ -44,7 +44,7 @@ struct InputView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 13))
                     }
                 }
-
+                
                 Spacer()
             }
             
@@ -105,7 +105,7 @@ struct InputView: View {
                     PlanView().navigationBarBackButtonHidden() }
             }
         }
-        .padding(.vertical, 30)
+        .padding(.bottom, 30)
         Spacer()
     }
 }
@@ -122,5 +122,9 @@ struct InputTriangle: Shape {
 }
 
 #Preview {
-    InputView()
+    NavigationStack {
+        InputView()
+            .navigationTitle("f")
+            .navigationBarTitleDisplayMode(.inline)
+    }
 }
