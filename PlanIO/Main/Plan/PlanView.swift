@@ -12,15 +12,7 @@ struct PlanView: View {
     
     var body: some View {
         NavigationSplitView {
-            VStack {
-                List {
-                    Text("first")
-                    Text("second")
-                    Text("third")
-                    Text("fourth")
-                }
-            }
-            .navigationTitle("Title")
+            PlanNavigationSplitView().background(.planIOLightGray)
         } detail: {
             ZStack {
                 VStack {
