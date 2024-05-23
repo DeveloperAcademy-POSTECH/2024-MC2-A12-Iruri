@@ -27,7 +27,7 @@ struct InputView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 0) {
-                        Triangle()
+                        InputTriangle()
                             .fill(Color.planIOLightGray)
                             .frame(width: 15, height: 35)
                         
@@ -98,7 +98,7 @@ struct InputView: View {
     }
 }
 
-struct Triangle: Shape {
+struct InputTriangle: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         path.move(to: CGPoint(x: 0, y: rect.midY))
