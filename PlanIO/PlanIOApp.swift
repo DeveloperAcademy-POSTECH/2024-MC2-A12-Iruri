@@ -21,10 +21,17 @@ struct PlanIOApp: App {
             fatalError("Model Create Fail")
         }
     }
+    @Query var tasks: [Task]
     
     var body: some Scene {
         WindowGroup {
-            AchieveView()
+            NavigationStack {
+                if tasks.isEmpty {
+                    EmptyAchieveView()
+                } else {
+                    AchieveView()
+                }
+            }
         }
         .modelContainer(modelContainer)
     }

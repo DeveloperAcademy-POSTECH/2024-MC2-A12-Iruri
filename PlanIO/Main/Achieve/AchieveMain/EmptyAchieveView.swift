@@ -33,8 +33,8 @@ struct EmptyAchieveView: View {
                 .resizable()
                 .frame(width: 200, height: 200)
             
-            Button {
-                
+            NavigationLink {
+                InputView()
             } label: {
                 Text("계획하기")
                     .font(.title2)
