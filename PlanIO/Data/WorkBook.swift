@@ -25,7 +25,7 @@ struct WorkBook {
         LargeWorkBookChapter(chapter: 1, title: "화학 반응의 규칙과 에너지 변화", midChapters: [
             MidWorkBookChapter(chapter: 1, title: "물질 변화와 화학 반응식"),
             MidWorkBookChapter(chapter: 2, title: "화학 반응의 규칙"),
-            MidWorkBookChapter(chapter: 3, title: "화학 반응에서의 에너지 출입"),
+            MidWorkBookChapter(chapter: 3, title: "화학 반응에서의 에너지 출입")
         ]),
         
         LargeWorkBookChapter(chapter: 2, title: "기권과 날씨", midChapters: [
@@ -35,17 +35,17 @@ struct WorkBook {
             // 각각 소단원 (1), (2,3)
             MidWorkBookChapter(chapter: 3, title: "기압과 바람"), // 교과서 3
             // 위와 같음
-            MidWorkBookChapter(chapter: 4, title: "날씨와 변화"), // 교과서 3
+            MidWorkBookChapter(chapter: 4, title: "날씨와 변화") // 교과서 3
         ]),
         
         LargeWorkBookChapter(chapter: 3, title: "운동과 에너지", midChapters: [
             MidWorkBookChapter(chapter: 1, title: "등속 운동과 자유 낙하 운동"),
-            MidWorkBookChapter(chapter: 2, title: "일과 에너지"),
+            MidWorkBookChapter(chapter: 2, title: "일과 에너지")
         ]),
         
         LargeWorkBookChapter(chapter: 4, title: "자극과 반응", midChapters: [
             MidWorkBookChapter(chapter: 1, title: "감각 기관"),
-            MidWorkBookChapter(chapter: 2, title: "신경계와 호르몬"),
+            MidWorkBookChapter(chapter: 2, title: "신경계와 호르몬")
         ])
     ]
     
@@ -61,12 +61,12 @@ struct WorkBook {
             // 각각 소단원 (1,2), (3,4)
             MidWorkBookChapter(chapter: 3, title: "멘델의 유전 원리"), // 교과서 2
             // 위와 같음
-            MidWorkBookChapter(chapter: 4, title: "사람의 유전"), // 교과서 2
+            MidWorkBookChapter(chapter: 4, title: "사람의 유전") // 교과서 2
         ]),
         
         LargeWorkBookChapter(chapter: 2, title: "에너지 전환과 보존", midChapters: [
             MidWorkBookChapter(chapter: 1, title: "역학적 에너지의 전환과 보존"),
-            MidWorkBookChapter(chapter: 2, title: "전기 에너지의 발생과 전환"),
+            MidWorkBookChapter(chapter: 2, title: "전기 에너지의 발생과 전환")
         ]),
         
         LargeWorkBookChapter(chapter: 3, title: "별과 우주", midChapters: [
@@ -77,11 +77,11 @@ struct WorkBook {
             MidWorkBookChapter(chapter: 2, title: "별의 성질"), // 교과서 1
             
             // 교과서(2.은하와 우주, 3.우주 탐사) = 문제지3-2(3.은하와 우주)
-            MidWorkBookChapter(chapter: 3, title: "은하와 우주"), // 교과서 2, 3
+            MidWorkBookChapter(chapter: 3, title: "은하와 우주") // 교과서 2, 3
         ]),
         
         LargeWorkBookChapter(chapter: 4, title: "과학기술과 인류 문명", midChapters: [
-            MidWorkBookChapter(chapter: 1, title: "과학기술과 인류 문명"),
+            MidWorkBookChapter(chapter: 1, title: "과학기술과 인류 문명")
         ])
     ]
 }

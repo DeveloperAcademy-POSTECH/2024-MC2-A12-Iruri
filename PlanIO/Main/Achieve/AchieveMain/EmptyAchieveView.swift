@@ -27,19 +27,20 @@ struct EmptyAchieveView: View {
                 .foregroundColor(.white)
                 .shadow(color: .black.opacity(0.25), radius: 3, x: 0, y: 3)
                 
-                //f.offset(x: 20, y: 90)
+                // f.offset(x: 20, y: 90)
             // 사과
             Image("apple")
                 .resizable()
                 .frame(width: 200, height: 200)
-            Button(action: {
+            
+            Button {
                 
-            }) {
+            } label: {
                 Text("계획하기")
                     .font(.title2)
                     .bold()
                     .foregroundColor(.black)
-                    .frame(width: 553,  height: 60, alignment: .center) // 크기 조정
+                    .frame(width: 553, height: 60, alignment: .center) // 크기 조정
                     .background(Color.yellow) // 배경 색상 추가
                     .cornerRadius(10) // 모서리 둥글림
                     .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2) // 그림자 추가

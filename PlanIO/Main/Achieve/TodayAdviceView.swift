@@ -14,7 +14,7 @@ struct TodayAdviceView: View {
     var body: some View {
         VStack {
             HStack {
-                VStack(alignment: .leading){
+                VStack(alignment: .leading) {
                     Text("가현아!")
                         .foregroundColor(.planIODarkYellow)
                         .font(.system(size: 24))
@@ -34,7 +34,7 @@ struct TodayAdviceView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 207, height: 207) // 이미지 크기 지정
                     }
-                    HStack{
+                    HStack {
                         Spacer()
                         Text("나를 눌러봐")
                             .font(.system(size: 12))
