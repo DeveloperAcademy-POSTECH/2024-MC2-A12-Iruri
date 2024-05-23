@@ -11,14 +11,16 @@ struct LargeTextBookChapter {
     let id = UUID()
     let chapter: Int
     let title: String
-    let midChapters: [MidTextBookChapter]
+    var midChapters: [MidTextBookChapter]
+    var isExpanded: Bool = false
 }
 
 struct MidTextBookChapter {
     let id = UUID()
     let chapter: Int
     let title: String
-    let smallChapters: [SmallTextBookChapter]
+    var smallChapters: [SmallTextBookChapter]
+    var isExpanded: Bool = false
 }
 
 struct SmallTextBookChapter {
@@ -26,6 +28,7 @@ struct SmallTextBookChapter {
     let chapter: Int
     let title: String
     let startPage: Int
+    var isChecked: Bool = false
 }
 
 struct TextBook {

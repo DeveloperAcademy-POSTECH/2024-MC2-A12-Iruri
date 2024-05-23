@@ -8,29 +8,29 @@
 import SwiftUI
 
 struct TestScopeView: View {
-    @State private var isSectionExpanded: Bool = true
-    @State private var isSection2Expanded: Bool = true
-    @State private var isCheckedScope: Bool = false
-    private let contents = TextBook.contents
+    @State private var contents = TextBook.contents
     
     var body: some View {
         List {
+            // 대단원
             ForEach(contents, id: \.id) { large in
-                
-                Section(isExpanded: $isSectionExpanded) {
+                let largeIndex = large.chapter - 1
+                Section(isExpanded: $contents[largeIndex].isExpanded) {
+                    // 중단원
                     ForEach(large.midChapters, id: \.id) { mid in
-                        
-                        Section(isExpanded: $isSection2Expanded) {
+                        let midIndex = mid.chapter - 1
+                        Section(isExpanded: $contents[largeIndex].midChapters[midIndex].isExpanded) {
+                            // 소단원 반복
                             ForEach(mid.smallChapters, id: \.id) { small in
-                                
+                                let smallIndex = small.chapter - 1
                                 Button {
-                                    isCheckedScope.toggle()
+                                    contents[largeIndex].midChapters[midIndex].smallChapters[smallIndex].isChecked.toggle()
                                 } label: {
                                     HStack {
                                         Text("(\(small.chapter)) \(small.title) - p.\(small.startPage)")
                                         
                                         Spacer()
-                                        Image(systemName: isCheckedScope ? "checkmark.square" : "square")
+                                        Image(systemName: contents[largeIndex].midChapters[midIndex].smallChapters[smallIndex].isChecked ? "checkmark.square" : "square")
                                     }
                                 }
                                 .padding(.leading, 20)
@@ -43,7 +43,7 @@ struct TestScopeView: View {
                         }
                     }
                 } header: {
-                    Text("\(large.chapter). \(large.title)")
+                    Text("\(large.chapter). \(large.title) - p.12")
                         .font(.system(size: 18))
                         .bold()
                         .foregroundColor(.black)
