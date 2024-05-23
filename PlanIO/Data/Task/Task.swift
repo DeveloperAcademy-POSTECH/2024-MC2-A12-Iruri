@@ -50,4 +50,13 @@ enum TaskStatus: String, Codable, CaseIterable {
         case .none: Color.planIODarkGray
         }
     }
+    
+    var lightColor: Color {
+        switch self {
+        case .complete: Color.planIOLightBlue
+        case .inProgress: Color.planIOLightYellow
+        case .incomplete: Color.planIOLightRed
+        case .none: Color.planIOLightGray
+        }
+    }
 }
