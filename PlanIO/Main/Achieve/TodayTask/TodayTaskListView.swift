@@ -10,12 +10,7 @@ import SwiftUI
 
 struct TodayTaskListView: View {
     let type: TaskType
-    @Query var tasks: [Task]
-    /*
-     @Query(filter: #Predicate<AuthorModel> { author in
-         author.name.starts(with: "Chase")
-     }) private var authors: [AuthorModel]
-     */
+    @Query(sort: \Task.title) var tasks: [Task]
     
     @State private var selectedTask: Task?
     
@@ -31,8 +26,7 @@ struct TodayTaskListView: View {
             }
             
             if tasks.isEmpty == false {
-                ForEach(0 ..< tasks.count, id: \.self) { index in
-                    let task = tasks[index]
+                ForEach(tasks) { task in
                     ZStack {
                         Button {
                             if selectedTask == nil {
@@ -47,7 +41,7 @@ struct TodayTaskListView: View {
                         }
                         
                         if let selectedTask = selectedTask, task == selectedTask {
-                            //                        StatusSelectPopUp(task: $tasks[index], selectedTask: $selectedTask)
+//                            StatusSelectPopUp(taskId: task.id, selectedTask: $selectedTask)
                         }
                     }
                 }
