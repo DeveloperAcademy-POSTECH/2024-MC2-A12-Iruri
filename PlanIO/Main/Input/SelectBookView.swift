@@ -42,6 +42,7 @@ struct SelectBookView: View {
         }
         .background(Color.white)
         .scrollContentBackground(.hidden)
+        .frame(width: 550)
     }
 }
 

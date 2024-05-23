@@ -46,6 +46,7 @@ struct TestScopeView: View {
                     Text("\(large.chapter). \(large.title)")
                         .font(.system(size: 18))
                         .bold()
+                        .foregroundColor(.black)
                 }
             }
         }

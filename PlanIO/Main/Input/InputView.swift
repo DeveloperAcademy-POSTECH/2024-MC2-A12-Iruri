@@ -16,7 +16,7 @@ struct InputView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            InputStepView()
+            InputStepView(inputData: inputData)
             
             // 펭귄이오
             HStack(spacing: 20) {
@@ -27,7 +27,7 @@ struct InputView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 0) {
-                        Triangle()
+                        InputTriangle()
                             .fill(Color.planIOLightGray)
                             .frame(width: 15, height: 35)
                         
@@ -52,9 +52,13 @@ struct InputView: View {
                 switch inputData.selectedStep {
                 case .schedule:
                     TestDateView(isNextButtonEnabled: $isNextButtonEnabled, testDate: $testDate)
-                case .scope, .book, .time:
+                case .scope:
                     TestScopeView()
                         .clipShape(RoundedRectangle(cornerRadius: 12))
+                case .book:
+                    SelectBookView()
+                case .time:
+                    CheckTimeView()
                 }
                 Spacer()
                 
@@ -98,7 +102,7 @@ struct InputView: View {
     }
 }
 
-struct Triangle: Shape {
+struct InputTriangle: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         path.move(to: CGPoint(x: 0, y: rect.midY))

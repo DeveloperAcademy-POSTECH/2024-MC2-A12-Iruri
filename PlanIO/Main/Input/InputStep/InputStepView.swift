@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InputStepView: View {
-    @State private var inputData = InputData()
+    @Bindable var inputData: InputData
     
     var body: some View {
         VStack(spacing: 12) {
@@ -38,14 +38,14 @@ struct InputStepView: View {
         HStack(spacing: 0) {
             if step != .schedule {
                 Rectangle()
-                    .frame(height: 5)
-                    .foregroundColor(backgroundColor())
+                    .frame(width: rectangleWidth(for: step), height: 5)
+                    .foregroundColor(inputData.selectedStep.rawValue >= step.rawValue ? .planIOYellow : .planIOLightGray)
             }
             
             ZStack {
                 Circle()
                     .frame(width: 54, height: 54)
-                    .foregroundColor(backgroundColor())
+                    .foregroundColor(backgroundColor(for: step))
                 
                 Image(systemName: step.imageName)
                     .font(.system(size: 22))
@@ -53,17 +53,28 @@ struct InputStepView: View {
         }
     }
     
-    // TODO: step에 맞춰 색상 변경
-    private func backgroundColor() -> Color {
-        switch inputData.selectedStep {
-        case .schedule: .planIOLightGray
-        case .scope: .planIOLightGray
-        case .book: .planIOLightGray
-        case .time: .planIOLightGray
+    private func backgroundColor(for step: InputStep) -> Color {
+        if inputData.selectedStep.rawValue >= step.rawValue {
+            return .planIOYellow
+        } else {
+            return .planIOLightGray
+        }
+    }
+    
+    private func rectangleWidth(for step: InputStep) -> CGFloat {
+        switch step {
+        case .scope:
+            return 110
+        case .book:
+            return 110
+        case .time:
+            return 110
+        default:
+            return 0
         }
     }
 }
 
 #Preview {
-    InputView()
+    InputStepView(inputData: InputData())
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		24337D522BFCDDED002A7359 /* TestDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24337D512BFCDDED002A7359 /* TestDateView.swift */; };
 		24337D542BFCE8F3002A7359 /* TestScopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24337D532BFCE8F3002A7359 /* TestScopeView.swift */; };
+		24522C312BFE36D000C02472 /* CheckTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24522C302BFE36D000C02472 /* CheckTimeView.swift */; };
 		246A2F7A2BFB688700DD7830 /* InputStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F792BFB688700DD7830 /* InputStep.swift */; };
 		246A2F7C2BFB689C00DD7830 /* InputStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F7B2BFB689C00DD7830 /* InputStepView.swift */; };
 		246A2F7F2BFC8A6500DD7830 /* InputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F7E2BFC8A6500DD7830 /* InputData.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		24337D512BFCDDED002A7359 /* TestDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDateView.swift; sourceTree = "<group>"; };
 		24337D532BFCE8F3002A7359 /* TestScopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScopeView.swift; sourceTree = "<group>"; };
+		24522C302BFE36D000C02472 /* CheckTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTimeView.swift; sourceTree = "<group>"; };
 		246A2F792BFB688700DD7830 /* InputStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStep.swift; sourceTree = "<group>"; };
 		246A2F7B2BFB689C00DD7830 /* InputStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStepView.swift; sourceTree = "<group>"; };
 		246A2F7E2BFC8A6500DD7830 /* InputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputData.swift; sourceTree = "<group>"; };
@@ -180,8 +182,9 @@
 				510BE73B2BF71D7200524EA9 /* InputView.swift */,
 				24337D512BFCDDED002A7359 /* TestDateView.swift */,
 				24337D532BFCE8F3002A7359 /* TestScopeView.swift */,
-				246A2F782BFB687B00DD7830 /* InputStep */,
 				510BE7652BFCE73800524EA9 /* SelectBookView.swift */,
+				24522C302BFE36D000C02472 /* CheckTimeView.swift */,
+				246A2F782BFB687B00DD7830 /* InputStep */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			files = (
 				510BE7572BFB28C500524EA9 /* Plan.swift in Sources */,
 				510BE7622BFB5BE600524EA9 /* RemainTimeView.swift in Sources */,
+				24522C312BFE36D000C02472 /* CheckTimeView.swift in Sources */,
 				246A2F7A2BFB688700DD7830 /* InputStep.swift in Sources */,
 				510BE7422BF71DB600524EA9 /* TestView.swift in Sources */,
 				510BE7552BFB24C200524EA9 /* WorkBook.swift in Sources */,
