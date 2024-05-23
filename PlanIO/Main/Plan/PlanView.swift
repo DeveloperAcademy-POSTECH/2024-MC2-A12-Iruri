@@ -8,17 +8,13 @@
 import SwiftUI
 
 struct PlanView: View {
-    @State private var date = Date()
+    @State var draggingTarget: Task?
+    @State var draggingTargetDate: Date = Date(year: 0, month: 0, day: 0)
     
     var body: some View {
         NavigationSplitView {
             VStack {
-                List {
-                    Text("first")
-                    Text("second")
-                    Text("third")
-                    Text("fourth")
-                }
+                SideBarView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
             }
             .navigationTitle("Title")
         } detail: {
@@ -33,39 +29,10 @@ struct PlanView: View {
                     
                     Spacer()
                     
-                    MonthCalendarView(startDate: Calendar.current.date(from: DateComponents(year: 2024, month: 5, day: 21))!, endDate: Calendar.current.date(from: DateComponents(year: 2024, month: 6, day: 17))!)
+                    MonthCalendarView(startDate: Date(year: 2024, month: 5, day: 12), endDate: Date(year: 2024, month: 6, day: 15), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                         .padding(.horizontal, 20)
                 }
             }
         }
     }
-    
-    private func setMonth(month: Int) -> Date {
-        let calendar = Calendar.current
-        let currentDate = Date()
-        
-        var components = calendar.dateComponents([.year, .day], from: currentDate)
-        components.month = month
-        
-        return calendar.date(from: components) ?? currentDate
-    }
-    
-    private func calculateDaysInMonth(year: Int, month: Int) -> Int {
-        var dateComponents = DateComponents()
-        dateComponents.year = year
-        dateComponents.month = month
-        
-        let calendar = Calendar.current
-        
-        guard let date = calendar.date(from: dateComponents),
-              let range = calendar.range(of: .day, in: .month, for: date) else {
-            return 0 // Invalid date or range
-        }
-        
-        return range.count
-    }
-}
-
-#Preview {
-    PlanView()
 }

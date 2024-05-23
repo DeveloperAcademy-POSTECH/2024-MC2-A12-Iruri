@@ -7,38 +7,24 @@
 
 import SwiftUI
 
-struct Temp {
-    var date: Date
-    var tasks: [Task]
-}
-
 struct MonthCalendarView: View {
+//    @Environment(\.modelContext) var modelContext
+    
     @State var startDate: Date
     @State var endDate: Date
-    @State var currentlyDragging: Task?
     
-    @State var tempTasks: [Temp] = []
+    @Binding var draggingTarget: Task?
+    @Binding var draggingTargetDate: Date
     
     var body: some View {
         VStack {
+//            Button {
+//                TaskManager.makeTask(modelContext: modelContext, scopes: TextBook.contents)
+//            } label: {
+//                Text("task 추가")
+//            }
             headerView
             calendarGridView
-        }
-        .onAppear {
-            func formattedShortDate(date: Date) -> String {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "d일"
-                return dateFormatter.string(from: date)
-            }
-            
-            for idx in 0..<getDaysBetween(startDate, endDate) {
-                var tasks: [Task] = []
-                for item in 0..<2 {
-                    tasks.append(.init(title: "\(formattedShortDate(date: startDate + TimeInterval(idx * 86400))) \(item + 1)번째", type: .concept, status: .none))
-                }
-                var sample = Temp(date: startDate + TimeInterval(idx * 86400), tasks: tasks)
-                tempTasks.append(sample)
-            }
         }
     }
     
@@ -86,7 +72,7 @@ struct MonthCalendarView: View {
                             VStack {
                                 // firstDayOfWeek가 3일때 (수요일) 월, 화를 채우고 온 index는 2입니다.
                                 // 해당일부터 종료일까지 날짜를 채워야 하기 때문에 +1 하여 날짜를 맞추었습니다.
-                                CellView(date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400), currentlyDragging: $currentlyDragging, tempTasks: $tempTasks)
+                                CellView(date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                             }
                             .frame(maxWidth: .infinity, minHeight: 150, maxHeight: 150, alignment: .center)
                             .border(.gray, width: 0.5)
@@ -105,12 +91,9 @@ struct MonthCalendarView: View {
             .scrollIndicators(.hidden)
         }
     }
-}
-
-// MARK: - 내부 메서드
-private extension MonthCalendarView {
-    /// 날짜간의 차이를 구함
-    func getDaysBetween(_ start: Date, _ end: Date) -> Int {
+    
+    // date 간의 차이를 구합니다.
+    private func getDaysBetween(_ start: Date, _ end: Date) -> Int {
         let calendar = Calendar.current
         
         // day를 컴포넌트로 설정하여 일 차이를 계산합니다.
@@ -122,7 +105,7 @@ private extension MonthCalendarView {
     }
     
     /// 특정 날짜가 무슨 요일인지 정수로 반환하는 함수
-    func getDayOfWeek(for date: Date) -> Int {
+    private func getDayOfWeek(for date: Date) -> Int {
         let calendar = Calendar.current
 
         // .weekday는 1(일요일)부터 7(토요일)까지의 값을 가짐
@@ -140,22 +123,17 @@ private extension MonthCalendarView {
 // MARK: - Static 프로퍼티
 extension MonthCalendarView {
     static let weekdaySymbols: [String] = {
-        let calendar = Calendar(identifier: .gregorian)
-        var localizedCalendar = calendar
-        localizedCalendar.locale = Locale(identifier: "ko-KR")
+        var calendar = Calendar.current
+        calendar.locale = Locale(identifier: "ko-KR")
         
-        localizedCalendar.firstWeekday = 2 // 1 = Sunday, 2 = Monday, ...
+        calendar.firstWeekday = 2 // 1 = Sunday, 2 = Monday, ...
         
         // 일, 월, 화, 수, 목, 금, 토 형식의 배열을 불러옵니다.
-        let symbols = localizedCalendar.veryShortWeekdaySymbols
+        let symbols = calendar.veryShortWeekdaySymbols
         
         // 월요일이 첫날이기 때문에 일요일을 맨 뒤로 보냅니다.
-        let reorderedSymbols = Array(symbols[localizedCalendar.firstWeekday - 1..<symbols.count] + symbols[0..<localizedCalendar.firstWeekday - 1])
+        let reorderedSymbols = Array(symbols[calendar.firstWeekday - 1..<symbols.count] + symbols[0..<calendar.firstWeekday - 1])
         
         return reorderedSymbols
     }()
-}
-
-#Preview {
-    PlanView()
 }
