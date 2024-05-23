@@ -8,8 +8,15 @@
 import SwiftData
 import SwiftUI
 
+/*
+ @Query(filter: #Predicate<Movie> { movie in
+     movie.releaseDate > now
+ }) var unreleasedMovies: [Movie]
+ */
+
 struct TodayTaskListView: View {
     let type: TaskType
+    
     @Query(sort: \Task.title) var tasks: [Task]
     @State private var selectedTask: Task?
     
@@ -42,7 +49,10 @@ struct TodayTaskListView: View {
                         }
                         
                         if let selectedTask = selectedTask, task == selectedTask {
-//                            StatusSelectPopUp(taskId: task.id, selectedTask: $selectedTask)
+                            StatusSelectPopUp { status in
+                                task.status = status
+                            }
+                            .shadow(color: .black.opacity(0.35), radius: 2.5, x: 0, y: 2)
                         }
                     }
                 }
@@ -56,5 +66,13 @@ struct TodayTaskListView: View {
 }
 
 #Preview {
-    AchieveView()
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Task.self, configurations: config)
+
+    for _ in 1 ..< 10 {
+        let task = TaskManager.dummy1
+        container.mainContext.insert(task)
+    }
+
+    return AchieveView().modelContainer(container)
 }
