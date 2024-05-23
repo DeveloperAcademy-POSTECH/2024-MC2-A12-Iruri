@@ -10,7 +10,7 @@ import SwiftUI
 @Observable
 class InputData {
     // 현재 화면 step
-    var seletedStep: InputStep = .schedule
+    var selectedStep: InputStep = .schedule
     
     // 시험 날짜
     var testDates: [Date] = []
