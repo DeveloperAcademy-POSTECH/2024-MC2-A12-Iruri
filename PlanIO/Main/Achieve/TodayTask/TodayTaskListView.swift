@@ -11,7 +11,6 @@ import SwiftUI
 struct TodayTaskListView: View {
     let type: TaskType
     @Query(sort: \Task.title) var tasks: [Task]
-    
     @State private var selectedTask: Task?
     
     var body: some View {
@@ -25,8 +24,10 @@ struct TodayTaskListView: View {
                 Spacer()
             }
             
-            if tasks.isEmpty == false {
-                ForEach(tasks) { task in
+            let filteredTasks: [Task] = tasks.filter { $0.type == type }
+            
+            if filteredTasks.isEmpty == false {
+                ForEach(filteredTasks) { task in
                     ZStack {
                         Button {
                             if selectedTask == nil {
@@ -37,7 +38,7 @@ struct TodayTaskListView: View {
                                 selectedTask = nil
                             }
                         } label: {
-                            TaskLow(task: task)
+                            TaskRow(task: task)
                         }
                         
                         if let selectedTask = selectedTask, task == selectedTask {
@@ -45,6 +46,10 @@ struct TodayTaskListView: View {
                         }
                     }
                 }
+            } else {
+                Text("할 일이 없어요 ✨")
+                    .font(.footnote).bold()
+                    .padding(.leading, 30)
             }
         }
     }
