@@ -40,6 +40,7 @@
 		510BE7642BFB5C7100524EA9 /* TodayAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7632BFB5C7000524EA9 /* TodayAdviceView.swift */; };
 		510BE7662BFCE73800524EA9 /* SelectBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7652BFCE73800524EA9 /* SelectBookView.swift */; };
 		510BE7692BFF0EB000524EA9 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7682BFF0EB000524EA9 /* TaskManager.swift */; };
+		510BE76C2BFF712000524EA9 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE76B2BFF712000524EA9 /* NavigationUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		510BE7632BFB5C7000524EA9 /* TodayAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAdviceView.swift; sourceTree = "<group>"; };
 		510BE7652BFCE73800524EA9 /* SelectBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBookView.swift; sourceTree = "<group>"; };
 		510BE7682BFF0EB000524EA9 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		510BE76B2BFF712000524EA9 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		4C6FC5062BF34FEC0035FFC0 /* PlanIO */ = {
 			isa = PBXGroup;
 			children = (
+				510BE76A2BFF710600524EA9 /* Service */,
 				510BE7292BF3899C00524EA9 /* Data */,
 				510BE72C2BF389C200524EA9 /* Main */,
 				510BE7402BF71DA900524EA9 /* Test */,
@@ -242,6 +245,14 @@
 			path = Task;
 			sourceTree = "<group>";
 		};
+		510BE76A2BFF710600524EA9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				510BE76B2BFF712000524EA9 /* NavigationUtil.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -350,6 +361,7 @@
 				510BE75C2BFB589200524EA9 /* AchieveComponentBackground.swift in Sources */,
 				510BE7512BFA5CA200524EA9 /* TaskRow.swift in Sources */,
 				080A75F02BFC86AB00A82A39 /* EmptyAchieveView.swift in Sources */,
+				510BE76C2BFF712000524EA9 /* NavigationUtil.swift in Sources */,
 				510BE73C2BF71D7200524EA9 /* InputView.swift in Sources */,
 				510BE74F2BFA54F300524EA9 /* TaskStatusButton.swift in Sources */,
 				510BE7302BF5AB8400524EA9 /* TextBook.swift in Sources */,
