@@ -29,9 +29,6 @@ struct PlanView: View {
                         Spacer()
                         Text("hello")
                             .fontWeight(.black)
-                            .onTapGesture {
-                                NavigationUtil.popToRootView()
-                            }
                     }
                     
                     Spacer()
