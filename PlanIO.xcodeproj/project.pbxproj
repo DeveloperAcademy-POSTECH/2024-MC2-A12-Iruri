@@ -38,6 +38,7 @@
 		510BE7622BFB5BE600524EA9 /* RemainTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7612BFB5BE600524EA9 /* RemainTimeView.swift */; };
 		510BE7642BFB5C7100524EA9 /* TodayAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7632BFB5C7000524EA9 /* TodayAdviceView.swift */; };
 		510BE7662BFCE73800524EA9 /* SelectBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7652BFCE73800524EA9 /* SelectBookView.swift */; };
+		510BE7692BFF0EB000524EA9 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7682BFF0EB000524EA9 /* TaskManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		510BE7612BFB5BE600524EA9 /* RemainTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainTimeView.swift; sourceTree = "<group>"; };
 		510BE7632BFB5C7000524EA9 /* TodayAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAdviceView.swift; sourceTree = "<group>"; };
 		510BE7652BFCE73800524EA9 /* SelectBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBookView.swift; sourceTree = "<group>"; };
+		510BE7682BFF0EB000524EA9 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,10 +146,10 @@
 		510BE7292BF3899C00524EA9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				510BE7672BFF0E9600524EA9 /* Task */,
 				510BE72F2BF5AB8400524EA9 /* TextBook.swift */,
 				510BE7542BFB24C200524EA9 /* WorkBook.swift */,
 				510BE7562BFB28C500524EA9 /* Plan.swift */,
-				510BE74C2BFA52B400524EA9 /* Task.swift */,
 				246A2F7E2BFC8A6500DD7830 /* InputData.swift */,
 			);
 			path = Data;
@@ -226,6 +228,15 @@
 				080A75EF2BFC86AB00A82A39 /* EmptyAchieveView.swift */,
 			);
 			path = AchieveMain;
+			sourceTree = "<group>";
+		};
+		510BE7672BFF0E9600524EA9 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				510BE74C2BFA52B400524EA9 /* Task.swift */,
+				510BE7682BFF0EB000524EA9 /* TaskManager.swift */,
+			);
+			path = Task;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +350,7 @@
 				510BE74F2BFA54F300524EA9 /* TaskStatusButton.swift in Sources */,
 				510BE7302BF5AB8400524EA9 /* TextBook.swift in Sources */,
 				510BE7602BFB5B8B00524EA9 /* TodayAchieveView.swift in Sources */,
+				510BE7692BFF0EB000524EA9 /* TaskManager.swift in Sources */,
 				4CC1E8062BF7B2DD00038958 /* MonthCalendarView.swift in Sources */,
 				510BE74B2BFA51E400524EA9 /* TodayTaskListView.swift in Sources */,
 				510BE75A2BFB587D00524EA9 /* AchieveComponentTitle.swift in Sources */,

@@ -9,9 +9,17 @@ import SwiftUI
 
 @Observable
 class InputData {
+    // 현재 화면 step
     var selectedStep: InputStep = .schedule
     
+    // 시험 날짜
     var testDates: [Date] = []
+    var scienceTestDate: Date?
     
-    var scopes: [SmallTextBookChapter] = []
+    // 시험 범위
+    var scopes: [LargeTextBookChapter] = []
+    
+    // 교재 선택
+    
+    // 가능 시간
 }
