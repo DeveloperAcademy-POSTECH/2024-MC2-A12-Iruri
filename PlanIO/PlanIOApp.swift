@@ -22,9 +22,27 @@ struct PlanIOApp: App {
         }
     }
     
+    @Query var tasks: [Task]
+    @State private var showAchieve: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            AchieveView()
+            NavigationStack {
+                VStack {
+//                    if tasks.isEmpty {
+                    if showAchieve == false {
+                        EmptyAchieveView()
+                    } else {
+                        AchieveView()
+                    }
+                    
+                    Button {
+                        showAchieve.toggle()
+                    } label: {
+                        Text(showAchieve ? "계획 세우기 화면으로" : "실천화면으로")
+                    }
+                }
+            }
         }
         .modelContainer(modelContainer)
     }
