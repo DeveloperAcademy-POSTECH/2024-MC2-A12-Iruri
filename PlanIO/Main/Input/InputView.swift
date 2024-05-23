@@ -55,7 +55,7 @@ struct InputView: View {
                 case .schedule:
                     TestDateView(isNextButtonEnabled: $isNextButtonEnabled, testDate: $testDate)
                 case .scope:
-                    TestScopeView()
+                    TestScopeView(inputData: inputData)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 case .book:
                     SelectBookView()

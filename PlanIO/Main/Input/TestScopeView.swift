@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TestScopeView: View {
+    @Bindable var inputData: InputData
     @State private var contents = TextBook.contents
     
     var body: some View {
@@ -25,6 +26,7 @@ struct TestScopeView: View {
                                 let smallIndex = small.chapter - 1
                                 Button {
                                     contents[largeIndex].midChapters[midIndex].smallChapters[smallIndex].isChecked.toggle()
+                                    inputData.scopes = filteredChapters(from: contents)
                                 } label: {
                                     HStack {
                                         Text("(\(small.chapter)) \(small.title) - p.\(small.startPage)")
@@ -54,8 +56,32 @@ struct TestScopeView: View {
         .listStyle(SidebarListStyle())
         .frame(width: 550)
     }
+    
+    private func filteredChapters(from chapters: [LargeTextBookChapter]) -> [LargeTextBookChapter] {
+        let data = chapters.compactMap { chapter in
+            let filteredMidChapters = chapter.midChapters.compactMap { midChapter in
+                let filteredSmallChapters = midChapter.smallChapters.filter { $0.isChecked }
+                
+                let mid = MidTextBookChapter(chapter: midChapter.chapter,
+                                             title: midChapter.title,
+                                             smallChapters: filteredSmallChapters,
+                                             isExpanded: midChapter.isExpanded)
+                
+                return filteredSmallChapters.isEmpty ? nil : mid
+            }
+            
+            let large = LargeTextBookChapter(chapter: chapter.chapter,
+                                             title: chapter.title,
+                                             midChapters: filteredMidChapters,
+                                             isExpanded: chapter.isExpanded)
+            
+            return filteredMidChapters.isEmpty ? nil : large
+        }
+        
+        return(data)
+    }
 }
 
 #Preview {
-    TestScopeView()
+    TestScopeView(inputData: InputData())
 }
