@@ -30,7 +30,7 @@ struct InputStepView: View {
                 }
             }
         }
-        .frame(width: 500)
+        .frame(width: 550)
     }
     
     @ViewBuilder
@@ -55,8 +55,8 @@ struct InputStepView: View {
     
     // TODO: step에 맞춰 색상 변경
     private func backgroundColor() -> Color {
-        switch inputData.seletedStep {
-        case .schedule: .planIOYellow
+        switch inputData.selectedStep {
+        case .schedule: .planIOLightGray
         case .scope: .planIOLightGray
         case .book: .planIOLightGray
         case .time: .planIOLightGray

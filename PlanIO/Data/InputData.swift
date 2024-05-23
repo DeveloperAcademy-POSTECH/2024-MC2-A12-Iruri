@@ -9,7 +9,7 @@ import SwiftUI
 
 @Observable
 class InputData {
-    var seletedStep: InputStep = .schedule
+    var selectedStep: InputStep = .schedule
     
     var testDates: [Date] = []
     
