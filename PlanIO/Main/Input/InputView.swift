@@ -16,7 +16,7 @@ struct InputView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            InputStepView()
+            InputStepView(inputData: inputData)
             
             // 펭귄이오
             HStack(spacing: 20) {
@@ -52,9 +52,13 @@ struct InputView: View {
                 switch inputData.selectedStep {
                 case .schedule:
                     TestDateView(isNextButtonEnabled: $isNextButtonEnabled, testDate: $testDate)
-                case .scope, .book, .time:
+                case .scope:
                     TestScopeView()
                         .clipShape(RoundedRectangle(cornerRadius: 12))
+                case .book:
+                    SelectBookView()
+                case .time:
+                    CheckTimeView()
                 }
                 Spacer()
                 
