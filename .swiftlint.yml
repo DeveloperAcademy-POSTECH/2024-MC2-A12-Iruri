@@ -13,6 +13,8 @@ disabled_rules: # Default Rules에서 비활성화할 규칙
     - line_length
     
     - large_tuple
+    
+    - force_try
 
 opt_in_rules:
 

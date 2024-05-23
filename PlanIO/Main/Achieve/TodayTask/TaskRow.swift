@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TaskLow: View {
+struct TaskRow: View {
     let task: Task
     
     var body: some View {

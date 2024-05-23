@@ -14,9 +14,11 @@ struct InputView: View {
     
     var isExamScheduleChecked: Bool { testDate != nil }
     
+    @State private var showCalendarView = false
+    
     var body: some View {
         VStack(spacing: 20) {
-            InputStepView()
+            InputStepView(inputData: inputData)
             
             // 펭귄이오
             HStack(spacing: 20) {
@@ -52,9 +54,13 @@ struct InputView: View {
                 switch inputData.selectedStep {
                 case .schedule:
                     TestDateView(isNextButtonEnabled: $isNextButtonEnabled, testDate: $testDate)
-                case .scope, .book, .time:
+                case .scope:
                     TestScopeView()
                         .clipShape(RoundedRectangle(cornerRadius: 12))
+                case .book:
+                    SelectBookView()
+                case .time:
+                    CheckTimeView()
                 }
                 Spacer()
                 
@@ -78,19 +84,25 @@ struct InputView: View {
                 .disabled(inputData.selectedStep == .schedule)
                 
                 Button(action: {
-                    inputData.selectedStep = inputData.selectedStep.nextStep() ?? .schedule
+                    if inputData.selectedStep != .time {
+                        inputData.selectedStep = inputData.selectedStep.nextStep() ?? .schedule
+                    } else {
+                        showCalendarView = true
+                    }
                 }, label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 266, height: 60)
-                            .foregroundColor(isExamScheduleChecked && inputData.selectedStep != .time ? .planIOYellow : .planIOGray)
+                            .foregroundColor(isExamScheduleChecked ? .planIOYellow : .planIOGray)
                             .shadow(color: .planIOGray, radius: 3, y: 2 )
                         Text("다음으로")
-                            .foregroundColor(inputData.selectedStep == .time ? .planIODarkGray : (isExamScheduleChecked ? .black : .planIODarkGray))
+                            .foregroundColor(isExamScheduleChecked ? .black : .planIODarkGray)
                             .bold()
                     }
                 })
-                .disabled(!isExamScheduleChecked || inputData.selectedStep == .time)
+                .disabled(!isExamScheduleChecked)
+                .navigationDestination(isPresented: $showCalendarView) {
+                    PlanView().navigationBarBackButtonHidden() }
             }
         }
         .padding(.vertical, 30)
