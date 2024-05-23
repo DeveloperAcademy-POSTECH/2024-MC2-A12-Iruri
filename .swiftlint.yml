@@ -18,3 +18,7 @@ opt_in_rules:
 
     # Imports should be sorted
     - sorted_imports
+
+identifier_name:
+
+    allowed_symbols: "_"

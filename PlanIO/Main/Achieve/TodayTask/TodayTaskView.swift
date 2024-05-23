@@ -32,13 +32,13 @@ struct TodayTaskView: View {
             ScrollView {
                 VStack(spacing: 40) {
                     // 개념
-                    TodayTaskListView(type: .concept, tasks: Task.dummy3)
+                    TodayTaskListView(type: .concept, tasks: [])
                     
                     // 응용
-                    TodayTaskListView(type: .practice, tasks: Task.dummy3)
+                    TodayTaskListView(type: .practice, tasks: [])
                     
                     // 기타
-                    TodayTaskListView(type: .other, tasks: Task.dummy3)
+                    TodayTaskListView(type: .other, tasks: [])
                 }
                 .padding(.vertical, 30)
                 .padding(.horizontal, 24)
