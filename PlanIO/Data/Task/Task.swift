@@ -14,11 +14,20 @@ class Task: Identifiable, Equatable {
     var title: String
     var type: TaskType
     var status: TaskStatus
+    var date: Date
     
     init(title: String, type: TaskType, status: TaskStatus) {
         self.title = title
         self.type = type
         self.status = status
+        self.date = Date(year: 0, month: 0, day: 0)
+    }
+    
+    init(title: String, type: TaskType, status: TaskStatus, date: Date) {
+        self.title = title
+        self.type = type
+        self.status = status
+        self.date = date
     }
 }
 

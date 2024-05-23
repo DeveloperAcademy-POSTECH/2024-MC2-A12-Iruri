@@ -14,6 +14,9 @@
 		246A2F7A2BFB688700DD7830 /* InputStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F792BFB688700DD7830 /* InputStep.swift */; };
 		246A2F7C2BFB689C00DD7830 /* InputStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F7B2BFB689C00DD7830 /* InputStepView.swift */; };
 		246A2F7F2BFC8A6500DD7830 /* InputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F7E2BFC8A6500DD7830 /* InputData.swift */; };
+		4C2678972BFF313A0032D85E /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2678962BFF313A0032D85E /* SideBarView.swift */; };
+		4C26789A2BFF58340032D85E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2678992BFF58340032D85E /* DateExtension.swift */; };
+		4C6C78AC2BFD07AD00E2BD09 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */; };
 		4C6FC5082BF34FEC0035FFC0 /* PlanIOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */; };
 		4C6FC50C2BF34FED0035FFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */; };
 		4C6FC50F2BF34FED0035FFC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50E2BF34FED0035FFC0 /* Preview Assets.xcassets */; };
@@ -51,6 +54,9 @@
 		246A2F792BFB688700DD7830 /* InputStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStep.swift; sourceTree = "<group>"; };
 		246A2F7B2BFB689C00DD7830 /* InputStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStepView.swift; sourceTree = "<group>"; };
 		246A2F7E2BFC8A6500DD7830 /* InputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputData.swift; sourceTree = "<group>"; };
+		4C2678962BFF313A0032D85E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
+		4C2678992BFF58340032D85E /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		4C6FC5042BF34FEC0035FFC0 /* PlanIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanIOApp.swift; sourceTree = "<group>"; };
 		4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +107,22 @@
 			path = InputStep;
 			sourceTree = "<group>";
 		};
+		4C2678952BFF31230032D85E /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+				4C2678962BFF313A0032D85E /* SideBarView.swift */,
+			);
+			path = SideBar;
+			sourceTree = "<group>";
+		};
+		4C2678982BFF55C70032D85E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4C2678992BFF58340032D85E /* DateExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		4C6FC4FB2BF34FEC0035FFC0 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +143,7 @@
 		4C6FC5062BF34FEC0035FFC0 /* PlanIO */ = {
 			isa = PBXGroup;
 			children = (
+				4C2678982BFF55C70032D85E /* Extension */,
 				510BE76A2BFF710600524EA9 /* Service */,
 				510BE7292BF3899C00524EA9 /* Data */,
 				510BE72C2BF389C200524EA9 /* Main */,
@@ -144,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				4CC1E8052BF7B2DD00038958 /* MonthCalendarView.swift */,
+				4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -199,6 +223,7 @@
 		510BE73D2BF71D7C00524EA9 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
+				4C2678952BFF31230032D85E /* SideBar */,
 				4CC1E8032BF7B29000038958 /* Calendar */,
 				510BE73E2BF71D8600524EA9 /* PlanView.swift */,
 			);
@@ -346,6 +371,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6C78AC2BFD07AD00E2BD09 /* CellView.swift in Sources */,
+				4C2678972BFF313A0032D85E /* SideBarView.swift in Sources */,
 				510BE7572BFB28C500524EA9 /* Plan.swift in Sources */,
 				510BE7622BFB5BE600524EA9 /* RemainTimeView.swift in Sources */,
 				24522C312BFE36D000C02472 /* CheckTimeView.swift in Sources */,
@@ -354,6 +381,7 @@
 				510BE7552BFB24C200524EA9 /* WorkBook.swift in Sources */,
 				24337D542BFCE8F3002A7359 /* TestScopeView.swift in Sources */,
 				510BE7492BFA189D00524EA9 /* TodayTaskView.swift in Sources */,
+				4C26789A2BFF58340032D85E /* DateExtension.swift in Sources */,
 				510BE7532BFA606400524EA9 /* StatusSelectPopUp.swift in Sources */,
 				510BE7662BFCE73800524EA9 /* SelectBookView.swift in Sources */,
 				510BE75E2BFB5A5800524EA9 /* EntireStatusView.swift in Sources */,

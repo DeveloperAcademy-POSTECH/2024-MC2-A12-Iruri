@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct MonthCalendarView: View {
+//    @Environment(\.modelContext) var modelContext
+    
     @State var startDate: Date
     @State var endDate: Date
     
+    @Binding var draggingTarget: Task?
+    @Binding var draggingTargetDate: Date
+    
     var body: some View {
         VStack {
+//            Button {
+//                TaskManager.makeTask(modelContext: modelContext, scopes: TextBook.contents)
+//            } label: {
+//                Text("task 추가")
+//            }
             headerView
             calendarGridView
         }
@@ -62,7 +72,7 @@ struct MonthCalendarView: View {
                             VStack {
                                 // firstDayOfWeek가 3일때 (수요일) 월, 화를 채우고 온 index는 2입니다.
                                 // 해당일부터 종료일까지 날짜를 채워야 하기 때문에 +1 하여 날짜를 맞추었습니다.
-                                CellView(date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400))
+                                CellView(date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                             }
                             .frame(maxWidth: .infinity, minHeight: 150, maxHeight: 150, alignment: .center)
                             .border(.gray, width: 0.5)
@@ -81,37 +91,9 @@ struct MonthCalendarView: View {
             .scrollIndicators(.hidden)
         }
     }
-}
-
-// MARK: - 일자 셀 뷰
-private struct CellView: View {
-    var date: Date
-    var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-
-                Text("\(formattedDate(date: date))")
-                    .foregroundStyle(.black)
-                    .padding(10)
-            }
-            
-            Spacer()
-        }
-    }
     
-    // 날짜를 "6월 1일" 형식으로 포맷하는 함수
-    func formattedDate(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M월 d일"
-        return dateFormatter.string(from: date)
-    }
-}
-
-// MARK: - 내부 메서드
-private extension MonthCalendarView {
-    /// 날짜간의 차이를 구함
-    func getDaysBetween(_ start: Date, _ end: Date) -> Int {
+    // date 간의 차이를 구합니다.
+    private func getDaysBetween(_ start: Date, _ end: Date) -> Int {
         let calendar = Calendar.current
         
         // day를 컴포넌트로 설정하여 일 차이를 계산합니다.
@@ -123,7 +105,7 @@ private extension MonthCalendarView {
     }
     
     /// 특정 날짜가 무슨 요일인지 정수로 반환하는 함수
-    func getDayOfWeek(for date: Date) -> Int {
+    private func getDayOfWeek(for date: Date) -> Int {
         let calendar = Calendar.current
 
         // .weekday는 1(일요일)부터 7(토요일)까지의 값을 가짐
@@ -141,22 +123,17 @@ private extension MonthCalendarView {
 // MARK: - Static 프로퍼티
 extension MonthCalendarView {
     static let weekdaySymbols: [String] = {
-        let calendar = Calendar(identifier: .gregorian)
-        var localizedCalendar = calendar
-        localizedCalendar.locale = Locale(identifier: "ko-KR")
+        var calendar = Calendar.current
+        calendar.locale = Locale(identifier: "ko-KR")
         
-        localizedCalendar.firstWeekday = 2 // 1 = Sunday, 2 = Monday, ...
+        calendar.firstWeekday = 2 // 1 = Sunday, 2 = Monday, ...
         
         // 일, 월, 화, 수, 목, 금, 토 형식의 배열을 불러옵니다.
-        let symbols = localizedCalendar.veryShortWeekdaySymbols
+        let symbols = calendar.veryShortWeekdaySymbols
         
         // 월요일이 첫날이기 때문에 일요일을 맨 뒤로 보냅니다.
-        let reorderedSymbols = Array(symbols[localizedCalendar.firstWeekday - 1..<symbols.count] + symbols[0..<localizedCalendar.firstWeekday - 1])
+        let reorderedSymbols = Array(symbols[calendar.firstWeekday - 1..<symbols.count] + symbols[0..<calendar.firstWeekday - 1])
         
         return reorderedSymbols
     }()
-}
-
-#Preview {
-    PlanView()
 }
