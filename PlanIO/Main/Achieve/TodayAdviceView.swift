@@ -19,12 +19,12 @@ struct TodayAdviceView: View {
                         .foregroundColor(.planIODarkYellow)
                         .font(.system(size: 24))
                         .bold()
+                        .padding(.bottom, 3)
                     Text(randomText)
-                        .font(.system(size: 14))
+                        .font(.system(size: 18))
                         .bold()
-                    Spacer()
                     
-                    .padding(32)
+                    Spacer()
                     
                     Button {
                         getRandomText()
@@ -40,20 +40,19 @@ struct TodayAdviceView: View {
                             .font(.system(size: 12))
                         Spacer()
                     }
-                    
-                    Spacer()
                 }
-                
-                Spacer()
             }
-            
-            Spacer()
         }
         .onAppear { getRandomText() }
     }
     
     private func getRandomText() {
-        let newRandomText = randomTexts.randomElement()
+        var newRandomText = randomTexts.randomElement()
+        
+        while randomText == newRandomText {
+            newRandomText = randomTexts.randomElement()
+        }
+        
         randomText = newRandomText ?? ""
     }
 }
