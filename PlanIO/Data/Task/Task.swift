@@ -22,7 +22,7 @@ class Task: Identifiable, Equatable {
     }
 }
 
-enum TaskType: String, Codable {
+enum TaskType: String, Codable, CaseIterable {
     case concept = "개념"
     case practice = "응용"
     case other = "기타"
@@ -48,6 +48,15 @@ enum TaskStatus: String, Codable, CaseIterable {
         case .inProgress: Color.planIODarkYellow
         case .incomplete: Color.red
         case .none: Color.planIODarkGray
+        }
+    }
+    
+    var lightColor: Color {
+        switch self {
+        case .complete: Color.planIOLightBlue
+        case .inProgress: Color.planIOLightYellow
+        case .incomplete: Color.planIOLightRed
+        case .none: Color.planIOLightGray
         }
     }
 }

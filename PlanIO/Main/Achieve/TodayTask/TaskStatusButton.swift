@@ -12,24 +12,10 @@ struct TaskStatusButton: View {
     
     var body: some View {
         Text(status.title)
-            .font(.caption)
-            .foregroundStyle(status.color)
+            .font(.caption).fontWeight(.semibold)
+            .foregroundStyle(.black)
             .frame(width: 50, height: 22)
-            .background(backgroundColor())
+            .background(status.lightColor)
             .clipShape(RoundedRectangle(cornerRadius: 12))
-            .overlay {
-                RoundedRectangle(cornerRadius: 12)
-                    .inset(by: 0.5)
-                    .stroke(status.color, lineWidth: 1)
-            }
-    }
-    
-    private func backgroundColor() -> Color {
-        switch status {
-        case .complete: Color.planIOLightBlue
-        case .inProgress: Color.planIOLightYellow
-        case .incomplete: Color.planIORed
-        case .none: Color.planIOLightGray
-        }
     }
 }

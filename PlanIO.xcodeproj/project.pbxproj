@@ -27,7 +27,7 @@
 		510BE74B2BFA51E400524EA9 /* TodayTaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE74A2BFA51E400524EA9 /* TodayTaskListView.swift */; };
 		510BE74D2BFA52B400524EA9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE74C2BFA52B400524EA9 /* Task.swift */; };
 		510BE74F2BFA54F300524EA9 /* TaskStatusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE74E2BFA54F300524EA9 /* TaskStatusButton.swift */; };
-		510BE7512BFA5CA200524EA9 /* TaskLow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7502BFA5CA200524EA9 /* TaskLow.swift */; };
+		510BE7512BFA5CA200524EA9 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7502BFA5CA200524EA9 /* TaskRow.swift */; };
 		510BE7532BFA606400524EA9 /* StatusSelectPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7522BFA606400524EA9 /* StatusSelectPopUp.swift */; };
 		510BE7552BFB24C200524EA9 /* WorkBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7542BFB24C200524EA9 /* WorkBook.swift */; };
 		510BE7572BFB28C500524EA9 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7562BFB28C500524EA9 /* Plan.swift */; };
@@ -63,7 +63,7 @@
 		510BE74A2BFA51E400524EA9 /* TodayTaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTaskListView.swift; sourceTree = "<group>"; };
 		510BE74C2BFA52B400524EA9 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		510BE74E2BFA54F300524EA9 /* TaskStatusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusButton.swift; sourceTree = "<group>"; };
-		510BE7502BFA5CA200524EA9 /* TaskLow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLow.swift; sourceTree = "<group>"; };
+		510BE7502BFA5CA200524EA9 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		510BE7522BFA606400524EA9 /* StatusSelectPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSelectPopUp.swift; sourceTree = "<group>"; };
 		510BE7542BFB24C200524EA9 /* WorkBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBook.swift; sourceTree = "<group>"; };
 		510BE7562BFB28C500524EA9 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 				510BE7482BFA189D00524EA9 /* TodayTaskView.swift */,
 				510BE74A2BFA51E400524EA9 /* TodayTaskListView.swift */,
 				510BE7522BFA606400524EA9 /* StatusSelectPopUp.swift */,
-				510BE7502BFA5CA200524EA9 /* TaskLow.swift */,
+				510BE7502BFA5CA200524EA9 /* TaskRow.swift */,
 				510BE74E2BFA54F300524EA9 /* TaskStatusButton.swift */,
 			);
 			path = TodayTask;
@@ -344,7 +344,7 @@
 				510BE75E2BFB5A5800524EA9 /* EntireStatusView.swift in Sources */,
 				510BE7392BF715BC00524EA9 /* AchieveView.swift in Sources */,
 				510BE75C2BFB589200524EA9 /* AchieveComponentBackground.swift in Sources */,
-				510BE7512BFA5CA200524EA9 /* TaskLow.swift in Sources */,
+				510BE7512BFA5CA200524EA9 /* TaskRow.swift in Sources */,
 				080A75F02BFC86AB00A82A39 /* EmptyAchieveView.swift in Sources */,
 				510BE73C2BF71D7200524EA9 /* InputView.swift in Sources */,
 				510BE74F2BFA54F300524EA9 /* TaskStatusButton.swift in Sources */,
