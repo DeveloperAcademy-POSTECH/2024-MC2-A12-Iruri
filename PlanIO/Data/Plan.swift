@@ -8,13 +8,13 @@
 import SwiftData
 import SwiftUI
 
-//@Model
-//class Plan {
-//    let date: Date
-//    var tasks: [Task]
-//    
-//    init(date: Date, tasks: [Task]) {
-//        self.date = date
-//        self.tasks = tasks
-//    }
-//}
+@Model
+class Plan {
+    let date: Date
+    var tasks: [Task]
+    
+    init(date: Date, tasks: [Task]) {
+        self.date = date
+        self.tasks = tasks
+    }
+}
