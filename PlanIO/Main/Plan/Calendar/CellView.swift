@@ -43,7 +43,6 @@ struct CellView: View {
             }
             Spacer()
         }
-        .frame(height: 150)
         .background(.white)
         .dropDestination(for: String.self) { _, _ in
             if draggingTargetDate == Date(year: 0, month: 0, day: 0) {

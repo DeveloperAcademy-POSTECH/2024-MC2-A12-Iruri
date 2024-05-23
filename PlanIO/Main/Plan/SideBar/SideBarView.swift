@@ -33,9 +33,11 @@ struct SideBarView: View {
         }
         .onAppear {
             // 임시 Task를 넣어서 실험하기 위함
-            for idx in 0..<10 {
-                let task = Task(title: "task \(idx)", type: .concept, status: .complete)
-                modelContext.insert(task)
+            if tasks.isEmpty {
+                for idx in 0..<10 {
+                    let task = Task(title: "task \(idx)", type: .concept, status: .complete)
+                    modelContext.insert(task)
+                }
             }
         }
     }
