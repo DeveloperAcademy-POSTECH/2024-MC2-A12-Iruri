@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TestDateView: View {
+    @Environment(InputData.self) private var inputData
+    
     @Binding var isNextButtonEnabled: Bool
     
     @State private var isDatePickerShowing: [Bool] = [false]
     @State private var selectedIndex: Int = 0
-    
-    @Bindable var inputData: InputData
     
     var body: some View {
         VStack {
@@ -127,9 +127,29 @@ struct TestDateView: View {
     
     @ViewBuilder
     private func datePicker(at index: Int) -> some View {
+        /*
+         
+         
+         [quote='757342022, zunda, /thread/732658?answerId=757342022#757342022, /profile/zunda']
+         ```
+         var body: some View {
+             TextField("Text", text: Binding(get: {
+               viewModel.text
+             }, set: { newValue in
+               viewModel.text = newValue
+             }))
+           }
+         ```
+         [/quote]
+
+
+         */
         if isDatePickerShowing[index] {
-                                GeometryReader { geo in
-                DatePicker("", selection: $inputData.testDates[index], displayedComponents: .date)
+            GeometryReader { geo in
+                DatePicker("",
+                           selection: Binding(get: {inputData.testDates[index] }, 
+                                              set: { newValue in inputData.testDates[index] = newValue}),
+                           displayedComponents: .date)
                     .datePickerStyle(.graphical)
                     .padding()
                     .background(Color.white)
@@ -140,7 +160,7 @@ struct TestDateView: View {
                     .onChange(of: inputData.testDates[index]) { _, _ in
                         isDatePickerShowing[index] = false
                     }
-                                }
+            }
         }
     }
     
@@ -156,6 +176,6 @@ struct TestDateView_Previews: PreviewProvider {
     static var previews: some View {
         let inputData = InputData() // InputData 객체를 생성하고 초기화
         
-        return TestDateView(isNextButtonEnabled: .constant(false), inputData: inputData)
+        return TestDateView(isNextButtonEnabled: .constant(false))
     }
 }

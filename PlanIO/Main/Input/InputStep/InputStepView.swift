@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InputStepView: View {
-    @Bindable var inputData: InputData
+    @Environment(InputData.self) private var inputData
     
     var body: some View {
         VStack(spacing: 12) {
@@ -76,5 +76,5 @@ struct InputStepView: View {
 }
 
 #Preview {
-    InputStepView(inputData: InputData())
+    InputStepView()
 }
