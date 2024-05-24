@@ -17,7 +17,7 @@ struct MonthCalendarView: View {
     @Binding var draggingTargetDate: Date
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
 //            Button {
 //                TaskManager.makeTask(modelContext: modelContext, scopes: TextBook.contents)
 //            } label: {
@@ -35,13 +35,12 @@ struct MonthCalendarView: View {
                 // 캘린더의 요일은 월요일부터 시작입니다.
                 ForEach(Self.weekdaySymbols, id: \.self) { symbol in
                     Text(symbol)
+                        .font(.subheadline).fontWeight(.semibold)
+                        .foregroundStyle((symbol == "토" || symbol == "일") ? .planIODarkYellow : .black)
                         .frame(maxWidth: .infinity)
-                        .font(.caption2)
-                        .bold()
-                        .foregroundStyle(.black)
                 }
             }
-            .padding(.bottom, 10)
+            .padding(.bottom, 2)
         }
     }
     
@@ -65,31 +64,53 @@ struct MonthCalendarView: View {
                         // 그럴 경우 2번 반복하면 되기 때문에 firstDayOfWeek - 1 입니다.
                         if index < firstDayOfWeek - 1 {
                             Rectangle()
-                                .frame(maxHeight: 150)
-                                .border(.gray, width: 0.5)
-                                .foregroundColor(.white)
+                                .frame(maxHeight: 160)
+                                .foregroundColor(isWeekDay(index: index) ? .planIOFilledYellow : .white)
+                                .overlay {
+                                    Rectangle()
+                                        .inset(by: 0.5)
+                                        .stroke(Color.planIOSemiLightGray, lineWidth: 0.3)
+                                }
                         } else {
-                            VStack {
+                            VStack(spacing: 0) {
                                 // firstDayOfWeek가 3일때 (수요일) 월, 화를 채우고 온 index는 2입니다.
                                 // 해당일부터 종료일까지 날짜를 채워야 하기 때문에 +1 하여 날짜를 맞추었습니다.
                                 CellView(date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                             }
-                            .frame(maxWidth: .infinity, minHeight: 150, maxHeight: 150, alignment: .center)
-                            .border(.gray, width: 0.5)
+                            .background(isWeekDay(index: index) ? .planIOFilledYellow : .white)
+                            .frame(maxWidth: .infinity, minHeight: 160, maxHeight: 160, alignment: .center)
+                            .overlay {
+                                Rectangle()
+                                    .inset(by: 0.5)
+                                    .stroke(Color.planIOSemiLightGray, lineWidth: 0.3)
+                            }
                         }
                     }
                     // 나머지 빈칸을 채웁니다. 종료일이 3(수요일) 이면 나머지 4일을 채워야 하기 때문에 7 - lastDayOfWeek
-                    ForEach(0 ..< 7 - lastDayOfWeek, id: \.self) { _ in
+                    ForEach(0 ..< 7 - lastDayOfWeek, id: \.self) { index in
                         Rectangle()
-                            .frame(maxHeight: 150)
-                            .border(.gray, width: 0.5)
-                            .foregroundColor(.white)
+                            .frame(maxHeight: 160)
+                            .foregroundColor(index == 0 || index == 1 ? .planIOFilledYellow : .white)
+                            .overlay {
+                                Rectangle()
+                                    .inset(by: 0.5)
+                                    .stroke(Color.planIOSemiLightGray, lineWidth: 0.3)
+                            }
                     }
                 }
-                .border(Color.black.opacity(0.3), width: 1)
+                .overlay {
+                    Rectangle()
+                        .inset(by: 0.5)
+                        .stroke(Color.planIOSemiLightGray, lineWidth: 0.4)
+                }
             }
             .scrollIndicators(.hidden)
         }
+    }
+    
+    private func isWeekDay(index: Int) -> Bool {
+        let weekday = index + 1
+        return (weekday + 1).isMultiple(of: 7) || weekday.isMultiple(of: 7)
     }
     
     // date 간의 차이를 구합니다.
