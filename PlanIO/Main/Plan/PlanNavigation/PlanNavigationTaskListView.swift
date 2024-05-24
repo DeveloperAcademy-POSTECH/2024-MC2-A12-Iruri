@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct PlanNavigationTaskListView: View {
-    @Query(sort: \Task.title) var tasks: [Task]
+    @Query var tasks: [Task]
     
     @State private var isConceptSectionExpanded: Bool = true
     @State private var isPracticeSectionExpanded: Bool = true
@@ -29,7 +29,7 @@ struct PlanNavigationTaskListView: View {
                 // 개념
                 HStack {
                     Text(TaskType.concept.title)
-                        .font(.body).bold()
+                        .font(.footnote).bold()
                         .foregroundStyle(Color.planIODarkGray)
                         .padding(.leading, 10)
                     
@@ -52,7 +52,7 @@ struct PlanNavigationTaskListView: View {
                 // 응용
                 HStack {
                     Text(TaskType.practice.title)
-                        .font(.body).bold()
+                        .font(.footnote).bold()
                         .foregroundStyle(Color.planIODarkGray)
                         .padding(.leading, 10)
                     
@@ -75,7 +75,7 @@ struct PlanNavigationTaskListView: View {
                 // 기타
                 HStack {
                     Text(TaskType.other.title)
-                        .font(.body).bold()
+                        .font(.footnote).bold()
                         .foregroundStyle(Color.planIODarkGray)
                         .padding(.leading, 10)
                     
@@ -94,8 +94,8 @@ struct PlanNavigationTaskListView: View {
                         PlanNavigationTaskRow(task: item, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     }
                 }
-                
             }
+            .scrollIndicators(.hidden)
         }
     }
 }

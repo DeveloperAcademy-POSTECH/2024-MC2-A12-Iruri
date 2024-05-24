@@ -19,9 +19,9 @@ struct PlanNavigationSplitView: View {
     
     var body: some View {
         VStack {
-            HStack {
+            HStack(alignment: .bottom) {
                 Text("학습 계획")
-                    .font(.title).bold()
+                    .font(.title2).bold()
                 Spacer()
                 Text("+")
                     .font(.title)
@@ -31,7 +31,7 @@ struct PlanNavigationSplitView: View {
                         showPopover.toggle()
                     }
             }
-            .padding(.horizontal, 10)
+            .padding(.horizontal, 15)
             .popover(isPresented: $showPopover) {
                 TaskAddView(showPopover: $showPopover, addDataFunc: addData)
             }
@@ -62,7 +62,7 @@ struct PlanNavigationSplitView: View {
         .onAppear {
             // 임시 Task를 넣어서 실험하기 위함
             if tasks.isEmpty {
-                for idx in 0..<4 {
+                for idx in 0..<2 {
                     let task = Task(title: "concept \(idx) this is very long tasks, here we go, I like potato", type: .concept, status: .none)
                     
                     modelContext.insert(task)
@@ -74,7 +74,7 @@ struct PlanNavigationSplitView: View {
                     modelContext.insert(task)
                 }
                 
-                for idx in 0..<5 {
+                for idx in 0..<2 {
                     let task = Task(title: "other \(idx)", type: .other, status: .none)
                     
                     modelContext.insert(task)

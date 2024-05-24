@@ -5,6 +5,7 @@
 //  Created by Anjin on 5/17/24.
 //
 
+import SwiftData
 import SwiftUI
 
 enum ScreenSelection: String, CaseIterable, Identifiable {
@@ -15,12 +16,28 @@ enum ScreenSelection: String, CaseIterable, Identifiable {
 }
 
 struct PlanView: View {
+    @Environment(\.modelContext) private var modelContext
+    
+    @Query var tasks: [Task]
+    
     @State var draggingTarget: Task?
     @State var draggingTargetDate: Date = Date(year: 0, month: 0, day: 0)
     @State private var selectedScreen: ScreenSelection? = .month
     
     // 주간 캘린더의 현재 페이지 위치
     @State var savedWeekIdx: Int = 0
+    
+    init(draggingTarget: Task? = nil) {
+        self.draggingTarget = draggingTarget
+        
+        let dateDefault = Date(year: 0, month: 0, day: 0)
+        
+        let predicate = #Predicate<Task> {
+            $0.date == dateDefault
+        }
+        
+        _tasks = Query(filter: predicate, sort: \.title)
+    }
     
     var body: some View {
         NavigationSplitView {
@@ -46,12 +63,22 @@ struct PlanView: View {
                     }
                     .padding(.top, 0)
                     
-                    HStack {
-                        Text("hello")
-                        Spacer()
-                        Text("hello")
-                            .fontWeight(.black)
+                    NavigationLink {
+                        EmptyView()
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text("다음 단계")
+                                .font(.title3)
+                                .fontWeight(.black)
+                            Image(systemName: "chevron.right")
+                                .font(.title2)
+                                .fontWeight(.heavy)
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 10)
                     }
+                    .disabled(!tasks.isEmpty)
                     
                     selectedView
                 }

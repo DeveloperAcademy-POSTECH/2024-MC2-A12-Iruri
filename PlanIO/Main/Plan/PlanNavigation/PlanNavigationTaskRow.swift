@@ -97,7 +97,7 @@ struct PlanNavigationTaskRow: View {
         return []
     }
     
-    private func deleteData(target: Task) -> Void {
+    private func deleteData(target: Task) {
         modelContext.delete(target)
     }
 }
