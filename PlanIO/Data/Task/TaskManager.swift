@@ -37,9 +37,32 @@ struct TaskManager {
 
 extension TaskManager {
     static let dummy3: [Task] = [
-        Task(title: "1-1-1. 자극을 전달하는 신경계", type: .concept, status: .complete),
-        Task(title: "1-1-2. 신경계를 통해 일어나는 반응", type: .concept, status: .inProgress),
-        Task(title: "1-1-3. 신경계를 통해 일어나는 반응을 뭘까용구링", type: .concept, status: .incomplete)
+        Task(title: "1-1-1.concept 자극을 전달하는 신경계", type: .concept, status: .complete),
+        Task(title: "1-1-2.concept 신경계를 통해 일어나는 반응", type: .concept, status: .inProgress),
+        Task(title: "1-1-3.concept 신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을반응을 뭘까용구링", type: .concept, status: .incomplete),
+        Task(title: "1-2-1.concept 자극을 전달하는 신경계", type: .concept, status: .complete),
+        Task(title: "1-2-2.practice 신경계를 통해 일어나는 반응", type: .practice, status: .inProgress),
+        Task(title: "1-2-3.concept 신경계를 통해 일어나는 반응을 뭘까용구링", type: .concept, status: .incomplete),
+        Task(title: "1-3-1.other 자극을 전달하는 신경계", type: .other, status: .complete),
+        Task(title: "1-3-2.concept 신경계를 통해 일어나는 반응", type: .concept, status: .inProgress),
+        Task(title: "1-1-1.concept 자극을 전달하는 신경계", type: .concept, status: .complete),
+        Task(title: "1-1-2.concept 신경계를 통해 일어나는 반응", type: .concept, status: .inProgress),
+        Task(title: "1-1-3.concept 신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을 뭘까용구링", type: .concept, status: .incomplete),
+        Task(title: "1-2-1.concept 자극을 전달하는 신경계", type: .concept, status: .complete),
+        Task(title: "1-2-2.practice 신경계를 통해 일어나는 반응", type: .practice, status: .inProgress),
+        Task(title: "1-2-3.concept 신경계를 통해 일어나는 반응을 뭘까용구링", type: .concept, status: .incomplete),
+        Task(title: "1-3-1.other 자극을 전달하는 신경계", type: .other, status: .complete),
+        Task(title: "1-3-2.concept 신경계를 통해 일어나는 반응", type: .concept, status: .inProgress),
+        Task(title: "1-1-1.concept 자극을 전달하는 신경계", type: .concept, status: .complete),
+        Task(title: "1-1-2.concept 신경계를 통해 일어나는 반응", type: .concept, status: .inProgress),
+        Task(title: "1-1-3.concept 신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을 뭘까용구링신경계를 통해 일어나는 반응을응을 뭘까용구링", type: .concept, status: .incomplete),
+        Task(title: "1-2-1.concept 자극을 전달하는 신경계", type: .concept, status: .complete),
+        Task(title: "1-2-2.practice 신경계를 통해 일어나는 반응", type: .practice, status: .inProgress),
+        Task(title: "1-2-3.concept 신경계를 통해 일어나는 반응을 뭘까용구링", type: .concept, status: .incomplete),
+        Task(title: "1-3-1.other 자극을 전달하는 신경계", type: .other, status: .complete),
+        Task(title: "1-3-2.concept 신경계를 통해 일어나는 반응", type: .concept, status: .inProgress),
+        Task(title: "1-3-3.practice 신경계를 통해 일어나는 반응을 뭘까용구링", type: .practice, status: .incomplete)
+        
     ]
     
     static let dummy1 = Task(title: "1-1-1. 자극을 전달하는 신경계", type: .concept, status: .complete)

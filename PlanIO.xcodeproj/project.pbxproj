@@ -44,6 +44,9 @@
 		510BE7642BFB5C7100524EA9 /* TodayAdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7632BFB5C7000524EA9 /* TodayAdviceView.swift */; };
 		510BE7662BFCE73800524EA9 /* SelectBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7652BFCE73800524EA9 /* SelectBookView.swift */; };
 		510BE7692BFF0EB000524EA9 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7682BFF0EB000524EA9 /* TaskManager.swift */; };
+		7CD1B9192BFF488000FC3677 /* PlanNavigationSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B9182BFF488000FC3677 /* PlanNavigationSplitView.swift */; };
+		7CD1B91B2BFF489100FC3677 /* PlanNavigationTaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B91A2BFF489000FC3677 /* PlanNavigationTaskListView.swift */; };
+		7CD1B91D2BFF48A400FC3677 /* PlanNavigationTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B91C2BFF48A400FC3677 /* PlanNavigationTaskRow.swift */; };
 		510BE76C2BFF712000524EA9 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE76B2BFF712000524EA9 /* NavigationUtil.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +89,9 @@
 		510BE7632BFB5C7000524EA9 /* TodayAdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayAdviceView.swift; sourceTree = "<group>"; };
 		510BE7652BFCE73800524EA9 /* SelectBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBookView.swift; sourceTree = "<group>"; };
 		510BE7682BFF0EB000524EA9 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		7CD1B9182BFF488000FC3677 /* PlanNavigationSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanNavigationSplitView.swift; sourceTree = "<group>"; };
+		7CD1B91A2BFF489000FC3677 /* PlanNavigationTaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanNavigationTaskListView.swift; sourceTree = "<group>"; };
+		7CD1B91C2BFF48A400FC3677 /* PlanNavigationTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanNavigationTaskRow.swift; sourceTree = "<group>"; };
 		510BE76B2BFF712000524EA9 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +232,7 @@
 		510BE73D2BF71D7C00524EA9 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
+				7CD1B9172BFF486600FC3677 /* PlanNavigation */,
 				4C2678952BFF31230032D85E /* SideBar */,
 				4CC1E8032BF7B29000038958 /* Calendar */,
 				510BE73E2BF71D8600524EA9 /* PlanView.swift */,
@@ -272,6 +279,16 @@
 			);
 			path = Task;
 			sourceTree = "<group>";
+		};
+		7CD1B9172BFF486600FC3677 /* PlanNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1B9182BFF488000FC3677 /* PlanNavigationSplitView.swift */,
+				7CD1B91A2BFF489000FC3677 /* PlanNavigationTaskListView.swift */,
+				7CD1B91C2BFF48A400FC3677 /* PlanNavigationTaskRow.swift */,
+			);
+			path = PlanNavigation;
+      sourceTree = "<group>";
 		};
 		510BE76A2BFF710600524EA9 /* Service */ = {
 			isa = PBXGroup;
@@ -394,6 +411,7 @@
 				080A75F02BFC86AB00A82A39 /* EmptyAchieveView.swift in Sources */,
 				510BE76C2BFF712000524EA9 /* NavigationUtil.swift in Sources */,
 				510BE73C2BF71D7200524EA9 /* InputView.swift in Sources */,
+				7CD1B91B2BFF489100FC3677 /* PlanNavigationTaskListView.swift in Sources */,
 				510BE74F2BFA54F300524EA9 /* TaskStatusButton.swift in Sources */,
 				510BE7302BF5AB8400524EA9 /* TextBook.swift in Sources */,
 				4C26789C2BFFA7DC0032D85E /* WeekCalendarView.swift in Sources */,
@@ -407,7 +425,9 @@
 				24337D522BFCDDED002A7359 /* TestDateView.swift in Sources */,
 				510BE74D2BFA52B400524EA9 /* Task.swift in Sources */,
 				246A2F7C2BFB689C00DD7830 /* InputStepView.swift in Sources */,
+				7CD1B91D2BFF48A400FC3677 /* PlanNavigationTaskRow.swift in Sources */,
 				246A2F7F2BFC8A6500DD7830 /* InputData.swift in Sources */,
+				7CD1B9192BFF488000FC3677 /* PlanNavigationSplitView.swift in Sources */,
 				510BE73F2BF71D8600524EA9 /* PlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

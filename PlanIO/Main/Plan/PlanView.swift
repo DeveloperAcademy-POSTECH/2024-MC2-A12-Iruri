@@ -25,10 +25,12 @@ struct PlanView: View {
     var body: some View {
         NavigationSplitView {
             VStack {
+                // PlanNavigationSplitView().background(.planIOLightGray)
                 SideBarView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
             }
             .navigationTitle("Title")
             .navigationSplitViewColumnWidth(min: 200, ideal: 250)
+
         } detail: {
             ZStack {
                 VStack {
