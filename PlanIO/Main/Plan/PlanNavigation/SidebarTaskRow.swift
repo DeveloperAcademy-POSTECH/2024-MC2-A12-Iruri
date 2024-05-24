@@ -8,7 +8,7 @@
 import SwiftData
 import SwiftUI
 
-struct PlanNavigationTaskRow: View {
+struct SidebarTaskRow: View {
     @Environment(\.modelContext) var modelContext
     
     let task: Task
@@ -44,7 +44,7 @@ struct PlanNavigationTaskRow: View {
             } else {
                 Text(task.title)
                     .draggable(task.id.uuidString) {
-                        PlanNavigationTaskRow(task: task, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                        SidebarTaskRow(task: task, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                             .onAppear {
                                 // 사이드바에서 드래그 된 목록은 Date가 0년 0월 0일
                                 draggingTarget = task

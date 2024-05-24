@@ -8,7 +8,7 @@
 import SwiftData
 import SwiftUI
 
-struct PlanNavigationTaskListView: View {
+struct SidebarTaskListView: View {
     @Query var tasks: [Task]
     
     @State private var isConceptSectionExpanded: Bool = true
@@ -45,7 +45,7 @@ struct PlanNavigationTaskListView: View {
                 
                 ForEach(tasks) { item in
                     if item.type == .concept, isConceptSectionExpanded, item.date == Date(year: 0, month: 0, day: 0) {
-                        PlanNavigationTaskRow(task: item, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                        SidebarTaskRow(task: item, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     }
                 }
                 
@@ -68,7 +68,7 @@ struct PlanNavigationTaskListView: View {
                 
                 ForEach(tasks) { item in
                     if item.type == .practice, isPracticeSectionExpanded, item.date == Date(year: 0, month: 0, day: 0) {
-                        PlanNavigationTaskRow(task: item, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                        SidebarTaskRow(task: item, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     }
                 }
                 
@@ -91,7 +91,7 @@ struct PlanNavigationTaskListView: View {
                 
                 ForEach(tasks) { item in
                     if item.type == .other, isOtherSectionExpanded, item.date == Date(year: 0, month: 0, day: 0) {
-                        PlanNavigationTaskRow(task: item, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                        SidebarTaskRow(task: item, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     }
                 }
             }

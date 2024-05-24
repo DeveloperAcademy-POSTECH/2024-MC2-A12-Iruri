@@ -8,7 +8,7 @@
 import SwiftData
 import SwiftUI
 
-struct PlanNavigationSplitView: View {
+struct SidebarView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Task.title) var tasks: [Task]
     
@@ -36,7 +36,7 @@ struct PlanNavigationSplitView: View {
                 TaskAddView(showPopover: $showPopover, addDataFunc: addData)
             }
             
-            PlanNavigationTaskListView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+            SidebarTaskListView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
             
             Spacer()
             

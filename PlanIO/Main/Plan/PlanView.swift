@@ -42,10 +42,8 @@ struct PlanView: View {
     var body: some View {
         NavigationSplitView {
             VStack {
-                 PlanNavigationSplitView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                 SidebarView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     .background(.planIOLightGray)
-                
-//                SideBarView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
             }
             .navigationSplitViewColumnWidth(min: 200, ideal: 250)
 

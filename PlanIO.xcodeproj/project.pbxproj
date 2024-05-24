@@ -14,7 +14,6 @@
 		246A2F7A2BFB688700DD7830 /* InputStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F792BFB688700DD7830 /* InputStep.swift */; };
 		246A2F7C2BFB689C00DD7830 /* InputStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F7B2BFB689C00DD7830 /* InputStepView.swift */; };
 		246A2F7F2BFC8A6500DD7830 /* InputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F7E2BFC8A6500DD7830 /* InputData.swift */; };
-		4C2678972BFF313A0032D85E /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2678962BFF313A0032D85E /* SideBarView.swift */; };
 		4C26789A2BFF58340032D85E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2678992BFF58340032D85E /* DateExtension.swift */; };
 		4C26789C2BFFA7DC0032D85E /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26789B2BFFA7DC0032D85E /* WeekCalendarView.swift */; };
 		4C6C78AC2BFD07AD00E2BD09 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */; };
@@ -46,9 +45,9 @@
 		510BE7662BFCE73800524EA9 /* SelectBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7652BFCE73800524EA9 /* SelectBookView.swift */; };
 		510BE7692BFF0EB000524EA9 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7682BFF0EB000524EA9 /* TaskManager.swift */; };
 		510BE76C2BFF712000524EA9 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE76B2BFF712000524EA9 /* NavigationUtil.swift */; };
-		7CD1B9192BFF488000FC3677 /* PlanNavigationSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B9182BFF488000FC3677 /* PlanNavigationSplitView.swift */; };
-		7CD1B91B2BFF489100FC3677 /* PlanNavigationTaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B91A2BFF489000FC3677 /* PlanNavigationTaskListView.swift */; };
-		7CD1B91D2BFF48A400FC3677 /* PlanNavigationTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B91C2BFF48A400FC3677 /* PlanNavigationTaskRow.swift */; };
+		7CD1B9192BFF488000FC3677 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B9182BFF488000FC3677 /* SidebarView.swift */; };
+		7CD1B91B2BFF489100FC3677 /* SidebarTaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B91A2BFF489000FC3677 /* SidebarTaskListView.swift */; };
+		7CD1B91D2BFF48A400FC3677 /* SidebarTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B91C2BFF48A400FC3677 /* SidebarTaskRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +58,6 @@
 		246A2F792BFB688700DD7830 /* InputStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStep.swift; sourceTree = "<group>"; };
 		246A2F7B2BFB689C00DD7830 /* InputStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStepView.swift; sourceTree = "<group>"; };
 		246A2F7E2BFC8A6500DD7830 /* InputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputData.swift; sourceTree = "<group>"; };
-		4C2678962BFF313A0032D85E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		4C2678992BFF58340032D85E /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		4C26789B2BFFA7DC0032D85E /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
 		4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
@@ -92,9 +90,9 @@
 		510BE7652BFCE73800524EA9 /* SelectBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBookView.swift; sourceTree = "<group>"; };
 		510BE7682BFF0EB000524EA9 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		510BE76B2BFF712000524EA9 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
-		7CD1B9182BFF488000FC3677 /* PlanNavigationSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanNavigationSplitView.swift; sourceTree = "<group>"; };
-		7CD1B91A2BFF489000FC3677 /* PlanNavigationTaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanNavigationTaskListView.swift; sourceTree = "<group>"; };
-		7CD1B91C2BFF48A400FC3677 /* PlanNavigationTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanNavigationTaskRow.swift; sourceTree = "<group>"; };
+		7CD1B9182BFF488000FC3677 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		7CD1B91A2BFF489000FC3677 /* SidebarTaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTaskListView.swift; sourceTree = "<group>"; };
+		7CD1B91C2BFF48A400FC3677 /* SidebarTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTaskRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,14 +113,6 @@
 				246A2F7B2BFB689C00DD7830 /* InputStepView.swift */,
 			);
 			path = InputStep;
-			sourceTree = "<group>";
-		};
-		4C2678952BFF31230032D85E /* SideBar */ = {
-			isa = PBXGroup;
-			children = (
-				4C2678962BFF313A0032D85E /* SideBarView.swift */,
-			);
-			path = SideBar;
 			sourceTree = "<group>";
 		};
 		4C2678982BFF55C70032D85E /* Extension */ = {
@@ -235,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				7CD1B9172BFF486600FC3677 /* PlanNavigation */,
-				4C2678952BFF31230032D85E /* SideBar */,
 				4CC1E8032BF7B29000038958 /* Calendar */,
 				510BE73E2BF71D8600524EA9 /* PlanView.swift */,
 			);
@@ -293,9 +282,9 @@
 		7CD1B9172BFF486600FC3677 /* PlanNavigation */ = {
 			isa = PBXGroup;
 			children = (
-				7CD1B9182BFF488000FC3677 /* PlanNavigationSplitView.swift */,
-				7CD1B91A2BFF489000FC3677 /* PlanNavigationTaskListView.swift */,
-				7CD1B91C2BFF48A400FC3677 /* PlanNavigationTaskRow.swift */,
+				7CD1B9182BFF488000FC3677 /* SidebarView.swift */,
+				7CD1B91A2BFF489000FC3677 /* SidebarTaskListView.swift */,
+				7CD1B91C2BFF48A400FC3677 /* SidebarTaskRow.swift */,
 				4CC306C12C00E166007F7CDC /* TaskAddView.swift */,
 			);
 			path = PlanNavigation;
@@ -395,7 +384,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C6C78AC2BFD07AD00E2BD09 /* CellView.swift in Sources */,
-				4C2678972BFF313A0032D85E /* SideBarView.swift in Sources */,
 				510BE7572BFB28C500524EA9 /* Plan.swift in Sources */,
 				510BE7622BFB5BE600524EA9 /* RemainTimeView.swift in Sources */,
 				24522C312BFE36D000C02472 /* CheckTimeView.swift in Sources */,
@@ -414,7 +402,7 @@
 				080A75F02BFC86AB00A82A39 /* EmptyAchieveView.swift in Sources */,
 				510BE76C2BFF712000524EA9 /* NavigationUtil.swift in Sources */,
 				510BE73C2BF71D7200524EA9 /* InputView.swift in Sources */,
-				7CD1B91B2BFF489100FC3677 /* PlanNavigationTaskListView.swift in Sources */,
+				7CD1B91B2BFF489100FC3677 /* SidebarTaskListView.swift in Sources */,
 				510BE74F2BFA54F300524EA9 /* TaskStatusButton.swift in Sources */,
 				510BE7302BF5AB8400524EA9 /* TextBook.swift in Sources */,
 				4C26789C2BFFA7DC0032D85E /* WeekCalendarView.swift in Sources */,
@@ -429,9 +417,9 @@
 				24337D522BFCDDED002A7359 /* TestDateView.swift in Sources */,
 				510BE74D2BFA52B400524EA9 /* Task.swift in Sources */,
 				246A2F7C2BFB689C00DD7830 /* InputStepView.swift in Sources */,
-				7CD1B91D2BFF48A400FC3677 /* PlanNavigationTaskRow.swift in Sources */,
+				7CD1B91D2BFF48A400FC3677 /* SidebarTaskRow.swift in Sources */,
 				246A2F7F2BFC8A6500DD7830 /* InputData.swift in Sources */,
-				7CD1B9192BFF488000FC3677 /* PlanNavigationSplitView.swift in Sources */,
+				7CD1B9192BFF488000FC3677 /* SidebarView.swift in Sources */,
 				510BE73F2BF71D8600524EA9 /* PlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
