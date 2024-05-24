@@ -12,6 +12,7 @@ struct CheckTimeView: View {
     @State private var week: [String] = ["월", "화", "수", "목", "금", "토", "일"]
     @State private var times: [String] = ["15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00", "01:00", "02:00"]
     
+    @Binding var isAnyCellFilled: Bool
     @State private var isPressed: Bool = false
     @State private var firstColor: Color = Color.white
     
@@ -85,9 +86,12 @@ struct CheckTimeView: View {
                                                             } else {
                                                                 cellColors[newRow][newColumn] = .white
                                                             }
+                                                            
+                                                            updateIsAnyCellFilled()
                                                         }
                                                     }
-                                                default: break
+                                                default:
+                                                    break
                                                 }
                                             }
                                         // Press가 끝났을 때, 다시 false로 변경
@@ -95,13 +99,16 @@ struct CheckTimeView: View {
                                     )
                             }
                         }
-                    }}
+                    }
+                }
             }
         }
-        
+        .onAppear {
+            // 초기에는 아무 셀도 색칠되지 않았음을 설정
+            isAnyCellFilled = false
+        }
     }
-}
-
-#Preview {
-    CheckTimeView()
+    private func updateIsAnyCellFilled() {
+        isAnyCellFilled = cellColors.contains { $0.contains(.planIOYellow) }
+    }
 }
