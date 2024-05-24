@@ -25,6 +25,8 @@ struct PlanView: View {
     // 주간 캘린더의 현재 페이지 위치
     @State var savedWeekIdx: Int = 0
     
+    var fromAchieveView: Bool = false
+    
     var body: some View {
         NavigationSplitView {
             VStack {
@@ -60,20 +62,22 @@ struct PlanView: View {
                         
                         Spacer()
                         
-                        Button {
-                            TaskManager.makeTask(modelContext: modelContext, scopes: inputData.scopes)
-                            NavigationUtil.popToRootView()
-                        } label: {
-                            HStack {
-                                Text("계획 완료")
-                                    .fontWeight(.black)
-                                
-                                Image(systemName: "chevron.right")
-                                    .resizable()
-                                    .frame(width: 10, height: 18)
-                                    .foregroundStyle(Color.planIOSemiLightGray)
+                        if fromAchieveView == false {
+                            Button {
+                                TaskManager.makeTask(modelContext: modelContext, scopes: inputData.scopes)
+                                NavigationUtil.popToRootView()
+                            } label: {
+                                HStack {
+                                    Text("계획 완료")
+                                        .fontWeight(.black)
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .resizable()
+                                        .frame(width: 10, height: 18)
+                                        .foregroundStyle(Color.planIOSemiLightGray)
+                                }
+                                .foregroundStyle(Color.planIOSemiLightGray)
                             }
-                            .foregroundStyle(Color.planIOSemiLightGray)
                         }
                     }
                     .padding(.horizontal, 20)
