@@ -126,7 +126,7 @@ struct WeekCalendarView: View {
                         .foregroundStyle(.white)
                         .border(.gray, width: 0.5)
                 } else {
-                    CellView(date: currentDateList[idx], draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                    CellView(date: currentDateList[idx], draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, isMonthCalendar: false)
                         .border(.gray, width: 0.5)
                 }
             }

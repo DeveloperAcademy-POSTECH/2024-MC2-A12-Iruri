@@ -18,10 +18,13 @@ struct CellView: View {
     @Binding var draggingTarget: Task?
     @Binding var draggingTargetDate: Date
     
-    init(date: Date, draggingTarget: Binding<Task?>, draggingTargetDate: Binding<Date>) {
+    var isMonthCalendar: Bool = true
+    
+    init(date: Date, draggingTarget: Binding<Task?>, draggingTargetDate: Binding<Date>, isMonthCalendar: Bool = true) {
         self.date = date
         self._draggingTarget = draggingTarget
         self._draggingTargetDate = draggingTargetDate
+        self.isMonthCalendar = isMonthCalendar
 
         let predicate = #Predicate<Task> {
             $0.date == date
@@ -53,7 +56,7 @@ struct CellView: View {
             
             // Task
             VStack(alignment: .leading, spacing: 4) {
-                ForEach(tasks.prefix(4)) { task in
+                ForEach(isMonthCalendar ? Array(tasks.prefix(4)) : tasks) { task in
                     taskRow(task)
                         .draggable(task.title) {
                             taskRow(task)
@@ -66,7 +69,7 @@ struct CellView: View {
             }
             .padding(.horizontal, 6)
             
-            if tasks.count > 4 {
+            if isMonthCalendar && tasks.count > 4 {
                 Text("+ \(tasks.count - 4)")
                     .font(.system(size: 10)).bold()
                     .foregroundStyle(Color.planIODarkGray)
@@ -75,8 +78,7 @@ struct CellView: View {
             
             Spacer(minLength: 0)
         }
-        .frame(height: 160)
-        .background(.white)
+        .background(isWeekend(date: date) ? .planIOFilledYellow : .white)
         .dropDestination(for: String.self) { _, _ in
             if draggingTargetDate == Date(year: 0, month: 0, day: 0) {
                 // task -> calendar 로의 정보 이동
@@ -110,7 +112,7 @@ struct CellView: View {
         HStack {
             Text("[\(task.type.rawValue)] \(task.title)")
                 .font(.system(size: 10)).bold(task.status != .none)
-                .lineLimit(1)
+                .lineLimit(isMonthCalendar ? 1 : 0)
                 .foregroundStyle(task.status == .none ? .black : .planIOSemiLightGray)
             
             Spacer(minLength: 0)
@@ -168,5 +170,10 @@ struct CellView: View {
         let dateString = dateFormatter.string(from: date)
         
         return dateString
+    }
+    
+    private func isWeekend(date: Date) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDateInWeekend(date)
     }
 }
