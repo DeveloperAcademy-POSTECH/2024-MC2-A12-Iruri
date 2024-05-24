@@ -76,6 +76,7 @@ struct CellView: View {
             Spacer(minLength: 0)
         }
         .frame(height: 160)
+        .background(.white)
         .dropDestination(for: String.self) { _, _ in
             if draggingTargetDate == Date(year: 0, month: 0, day: 0) {
                 // task -> calendar 로의 정보 이동
