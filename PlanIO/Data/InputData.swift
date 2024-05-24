@@ -13,7 +13,7 @@ class InputData {
     var selectedStep: InputStep = .schedule
     
     // 시험 날짜
-    var testDates: [Date] = []
+    var testDates: [Date] = [Date()]
     var scienceTestDate: Date?
     
     // 시험 범위

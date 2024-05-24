@@ -12,6 +12,7 @@ struct CheckTimeView: View {
     @State private var week: [String] = ["월", "화", "수", "목", "금", "토", "일"]
     @State private var times: [String] = ["15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00", "01:00", "02:00"]
     
+    @Binding var isAnyCellFilled: Bool
     @State private var isPressed: Bool = false
     @State private var firstColor: Color = Color.white
     
@@ -20,20 +21,20 @@ struct CheckTimeView: View {
             HStack(spacing: 0) {
                 ForEach(week.indices, id: \.self) { index in
                     Text(week[index])
-                        .frame(width: 65, height: 25)
+                        .frame(width: 65, height: 20)
                         .font(.system(size: 18))
                         .fontWeight(.semibold)
                         .foregroundColor(index >= 5 ? .planIODarkYellow : .planIODarkGray)
                 }
             }
             .padding(.bottom, 10)
-            .padding(.leading, 65)
+            .padding(.leading, 60)
             
             HStack(spacing: 0) {
                 VStack(spacing: 0) {
                     ForEach(times, id: \.self) { time in
                         Text(time)
-                            .frame(width: 65, height: 25)
+                            .frame(width: 65, height: 23)
                             .font(.system(size: 12))
                             .foregroundColor(.planIODarkGray)
                     }
@@ -44,7 +45,7 @@ struct CheckTimeView: View {
                             ForEach(0 ..< 7, id: \.self) { column in
                                 Rectangle()
                                     .fill(cellColors[row][column])
-                                    .frame(width: 65, height: 25)
+                                    .frame(width: 65, height: 23)
                                     .border(Color.planIODarkGray, width: 0.5)
                                     .gesture(
                                         LongPressGesture(minimumDuration: 0.01)
@@ -85,9 +86,12 @@ struct CheckTimeView: View {
                                                             } else {
                                                                 cellColors[newRow][newColumn] = .white
                                                             }
+                                                            
+                                                            updateIsAnyCellFilled()
                                                         }
                                                     }
-                                                default: break
+                                                default:
+                                                    break
                                                 }
                                             }
                                         // Press가 끝났을 때, 다시 false로 변경
@@ -95,13 +99,16 @@ struct CheckTimeView: View {
                                     )
                             }
                         }
-                    }}
+                    }
+                }
             }
         }
-        
+        .onAppear {
+            // 초기에는 아무 셀도 색칠되지 않았음을 설정
+            isAnyCellFilled = false
+        }
     }
-}
-
-#Preview {
-    CheckTimeView()
+    private func updateIsAnyCellFilled() {
+        isAnyCellFilled = cellColors.contains { $0.contains(.planIOYellow) }
+    }
 }

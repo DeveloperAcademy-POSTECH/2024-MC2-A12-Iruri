@@ -40,7 +40,7 @@ struct EmptyAchieveView: View {
                     .padding(.vertical, 40)
                 
                 NavigationLink {
-                    InputView()
+                    InputView(inputData: InputData())
                 } label: {
                     Text("계획하기")
                         .font(.title2)

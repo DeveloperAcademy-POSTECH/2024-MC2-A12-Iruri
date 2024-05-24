@@ -10,39 +10,37 @@ import SwiftUI
 struct TestDateView: View {
     @Binding var isNextButtonEnabled: Bool
     
-    @State private var selectedDate: [Date] = [Date()]
     @State private var isDatePickerShowing: [Bool] = [false]
-    
     @State private var selectedIndex: Int = 0
     
-    @Binding var testDate: Date?
+    @Bindable var inputData: InputData
     
     var body: some View {
         VStack {
             ScrollView {
                 VStack {
-                    ForEach($selectedDate.indices, id: \.self) { index in
-                        let isTestDate: Bool = testDate == selectedDate[index]
+                    ForEach(inputData.testDates.indices, id: \.self) { index in
+                        let isTestDate: Bool = inputData.scienceTestDate == inputData.testDates[index]
                         
                         // 시험 보는 날
                         HStack(spacing: 16) {
                             // 날짜 제거 버튼
                             Button(action: {
-                                if selectedDate.indices.contains(index) {
-                                    selectedDate.remove(at: index)
+                                if inputData.testDates.indices.contains(index) {
+                                    inputData.testDates.remove(at: index)
                                     isDatePickerShowing.remove(at: index)
                                 }
                             }, label: {
                                 Image(systemName: "minus.circle")
                                     .resizable()
-                                    .foregroundColor(selectedDate.count > 1 ? .red : .gray)
+                                    .foregroundColor(inputData.testDates.count > 1 ? .red : .gray)
                                     .frame(width: 30, height: 30)
                             })
-                            .disabled(selectedDate.count <= 1)
+                            .disabled(inputData.testDates.count <= 1)
                             
                             HStack(spacing: 0) {
                                 // 날짜
-                                Text("\(formattedDate(selectedDate[index]))")
+                                Text("\(formattedDate(inputData.testDates[index]))")
                                     .bold()
                                     .font(.system(size: 20))
                                     .foregroundColor(.planIODarkGray)
@@ -69,10 +67,10 @@ struct TestDateView: View {
                             
                             // 체크박스
                             Button(action: {
-                                if let testDate = testDate, testDate == selectedDate[index] {
-                                    self.testDate = nil
+                                if case inputData.scienceTestDate = inputData.scienceTestDate, inputData.scienceTestDate == inputData.testDates[index] {
+                                    self.inputData.scienceTestDate = nil
                                 } else {
-                                    testDate = selectedDate[index]
+                                    inputData.scienceTestDate = inputData.testDates[index]
                                 }
                             }, label: {
                                 Image(systemName: isTestDate ? "checkmark.square" : "square")
@@ -100,7 +98,7 @@ struct TestDateView: View {
             
             // 날짜 추가
             Button {
-                selectedDate.append(Date())
+                inputData.testDates.append(Date())
                 isDatePickerShowing.append(false)
             } label: {
                 HStack {
@@ -131,7 +129,7 @@ struct TestDateView: View {
     private func datePicker(at index: Int) -> some View {
         if isDatePickerShowing[index] {
                                 GeometryReader { geo in
-                DatePicker("", selection: $selectedDate[index], displayedComponents: .date)
+                DatePicker("", selection: $inputData.testDates[index], displayedComponents: .date)
                     .datePickerStyle(.graphical)
                     .padding()
                     .background(Color.white)
@@ -139,7 +137,7 @@ struct TestDateView: View {
                     .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 2)
                     .position(x: geo.size.width * 1.29, y: 70)
                     .scaleEffect(0.8)
-                    .onChange(of: selectedDate[index]) { _, _ in
+                    .onChange(of: inputData.testDates[index]) { _, _ in
                         isDatePickerShowing[index] = false
                     }
                                 }
@@ -154,9 +152,10 @@ struct TestDateView: View {
     }
 }
 
-#Preview {
-    @State var isNextButtonEnabled = false
-    @State var testDate: Date?
-    
-    return TestDateView(isNextButtonEnabled: $isNextButtonEnabled, testDate: $testDate)
+struct TestDateView_Previews: PreviewProvider {
+    static var previews: some View {
+        let inputData = InputData() // InputData 객체를 생성하고 초기화
+        
+        return TestDateView(isNextButtonEnabled: .constant(false), inputData: inputData)
+    }
 }
