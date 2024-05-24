@@ -9,6 +9,12 @@ import SwiftData
 import SwiftUI
 
 struct PlanNavigationSplitView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \Task.title) var tasks: [Task]
+    
+    @Binding var draggingTarget: Task?
+    @Binding var draggingTargetDate: Date
+    
     var body: some View {
         VStack {
             HStack {
@@ -22,7 +28,7 @@ struct PlanNavigationSplitView: View {
             }
             .padding(.horizontal, 10)
             
-            PlanNavigationTaskListView()
+            PlanNavigationTaskListView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
             
             Spacer()
             
@@ -45,18 +51,28 @@ struct PlanNavigationSplitView: View {
                 .padding(.bottom, 12)
             }
         }
+        .onAppear {
+            // 임시 Task를 넣어서 실험하기 위함
+            if tasks.isEmpty {
+                for idx in 0..<4 {
+                    let task = Task(title: "concept \(idx) this is very long tasks, here we go, I like potato", type: .concept, status: .none)
+                    
+                    modelContext.insert(task)
+                }
+                
+                for idx in 0..<2 {
+                    let task = Task(title: "practice \(idx)", type: .practice, status: .none)
+                    
+                    modelContext.insert(task)
+                }
+                
+                for idx in 0..<5 {
+                    let task = Task(title: "other \(idx)", type: .other, status: .none)
+                    
+                    modelContext.insert(task)
+                }
+                
+            }
+        }
     }
-}
-
-#Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: Task.self, configurations: config)
-    
-    for item in TaskManager.dummy3 {
-        container.mainContext.insert(item)
-    }
-    
-    return PlanView().modelContainer(container)
-    
-    // PlanView()
 }

@@ -10,19 +10,20 @@ import SwiftUI
 
 struct PlanNavigationTaskListView: View {
     @Query(sort: \Task.title) var tasks: [Task]
+    
     @State private var isConceptSectionExpanded: Bool = true
     @State private var isPracticeSectionExpanded: Bool = true
     @State private var isOtherSectionExpanded: Bool = true
     
+    @Binding var draggingTarget: Task?
+    @Binding var draggingTargetDate: Date
+    
     private let valueListRowInsets: [CGFloat] = [3, -5, 3, -5]
+  
+    let toggleup = Image(systemName: "chevron.up")
+    let toggledown = Image(systemName: "chevron.down")
     
     var body: some View {
-        let conceptTasks: [Task] = tasks.filter { $0.type == .concept }
-        let practiceTasks: [Task] = tasks.filter { $0.type == .practice }
-        let otherTasks: [Task] = tasks.filter { $0.type == .other }
-        let toggleup = Image(systemName: "chevron.up")
-        let toggledown = Image(systemName: "chevron.down")
-
         VStack(alignment: .leading, spacing: 0) {
             List {
                 // 개념
@@ -42,10 +43,9 @@ struct PlanNavigationTaskListView: View {
                 }
                 .listRowInsets(EdgeInsets(top: valueListRowInsets[0], leading: valueListRowInsets[1], bottom: valueListRowInsets[2], trailing: valueListRowInsets[3]))
                 
-                if isConceptSectionExpanded {
-                    ForEach(conceptTasks.indices, id: \.self) { index in
-                        let task = conceptTasks[index]
-                        PlanNavigationTaskRow(task: task)
+                ForEach(tasks) { item in
+                    if item.type == .concept, isConceptSectionExpanded, item.date == Date(year: 0, month: 0, day: 0) {
+                        PlanNavigationTaskRow(task: item, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     }
                 }
                 
@@ -66,10 +66,9 @@ struct PlanNavigationTaskListView: View {
                 }
                 .listRowInsets(EdgeInsets(top: valueListRowInsets[0], leading: valueListRowInsets[1], bottom: valueListRowInsets[2], trailing: valueListRowInsets[3]))
                 
-                if isPracticeSectionExpanded {
-                    ForEach(practiceTasks.indices, id: \.self) { index in
-                        let task = practiceTasks[index]
-                        PlanNavigationTaskRow(task: task)
+                ForEach(tasks) { item in
+                    if item.type == .practice, isPracticeSectionExpanded, item.date == Date(year: 0, month: 0, day: 0) {
+                        PlanNavigationTaskRow(task: item, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     }
                 }
                 
@@ -90,25 +89,13 @@ struct PlanNavigationTaskListView: View {
                 }
                 .listRowInsets(EdgeInsets(top: valueListRowInsets[0], leading: valueListRowInsets[1], bottom: valueListRowInsets[2], trailing: valueListRowInsets[3]))
                 
-                if isOtherSectionExpanded {
-                    ForEach(otherTasks.indices, id: \.self) { index in
-                        let task = otherTasks[index]
-                        PlanNavigationTaskRow(task: task)
+                ForEach(tasks) { item in
+                    if item.type == .other, isOtherSectionExpanded, item.date == Date(year: 0, month: 0, day: 0) {
+                        PlanNavigationTaskRow(task: item, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     }
                 }
+                
             }
         }
     }
-}
-
-#Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: Task.self, configurations: config)
-    
-    for item in TaskManager.dummy3 {
-        container.mainContext.insert(item)
-    }
-    
-    return PlanView().modelContainer(container)
-
 }
