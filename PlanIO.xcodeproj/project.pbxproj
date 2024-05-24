@@ -16,6 +16,7 @@
 		246A2F7F2BFC8A6500DD7830 /* InputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F7E2BFC8A6500DD7830 /* InputData.swift */; };
 		4C2678972BFF313A0032D85E /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2678962BFF313A0032D85E /* SideBarView.swift */; };
 		4C26789A2BFF58340032D85E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2678992BFF58340032D85E /* DateExtension.swift */; };
+		4C26789C2BFFA7DC0032D85E /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26789B2BFFA7DC0032D85E /* WeekCalendarView.swift */; };
 		4C6C78AC2BFD07AD00E2BD09 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */; };
 		4C6FC5082BF34FEC0035FFC0 /* PlanIOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */; };
 		4C6FC50C2BF34FED0035FFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		246A2F7E2BFC8A6500DD7830 /* InputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputData.swift; sourceTree = "<group>"; };
 		4C2678962BFF313A0032D85E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		4C2678992BFF58340032D85E /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		4C26789B2BFFA7DC0032D85E /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
 		4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		4C6FC5042BF34FEC0035FFC0 /* PlanIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanIOApp.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				4CC1E8052BF7B2DD00038958 /* MonthCalendarView.swift */,
 				4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */,
+				4C26789B2BFFA7DC0032D85E /* WeekCalendarView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				510BE73C2BF71D7200524EA9 /* InputView.swift in Sources */,
 				510BE74F2BFA54F300524EA9 /* TaskStatusButton.swift in Sources */,
 				510BE7302BF5AB8400524EA9 /* TextBook.swift in Sources */,
+				4C26789C2BFFA7DC0032D85E /* WeekCalendarView.swift in Sources */,
 				510BE7602BFB5B8B00524EA9 /* TodayAchieveView.swift in Sources */,
 				510BE7692BFF0EB000524EA9 /* TaskManager.swift in Sources */,
 				4CC1E8062BF7B2DD00038958 /* MonthCalendarView.swift in Sources */,

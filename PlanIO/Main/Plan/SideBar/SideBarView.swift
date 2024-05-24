@@ -35,14 +35,11 @@ struct SideBarView: View {
             let status = [TaskStatus.complete, TaskStatus.inProgress, TaskStatus.incomplete, TaskStatus.none]
             
             // 임시 Task를 넣어서 실험하기 위함
-            for idx in 0..<10 {
-                let task = Task(title: "task \(idx)", type: .concept, status: status.randomElement() ?? TaskStatus.none)
-                modelContext.insert(task)
-            }
-            
-            for idx in 11..<20 {
-                let task = Task(title: "task \(idx) 엄청 긴 일", type: .practice, status: status.randomElement() ?? TaskStatus.none)
-                modelContext.insert(task)
+            if tasks.isEmpty {
+                for idx in 0..<10 {
+                    let task = Task(title: "task \(idx)", type: .concept, status: .complete)
+                    modelContext.insert(task)
+                }
             }
         }
     }
