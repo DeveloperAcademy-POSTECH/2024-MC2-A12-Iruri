@@ -6,13 +6,8 @@
 //
 
 import Charts
+import SwiftData
 import SwiftUI
-
-// TODO
-// 1. TmpInput을 실제 값을 받아오는 것으로 변경해야합니다.
-// 2. 레이아웃 변경 이후에 다음의 값을 다시 조정해야합니다.
-// 2-1. 패딩 크기
-// 2-2. 폰트 크기
 
 struct TmpInput: Identifiable {
     var name: String
@@ -21,30 +16,46 @@ struct TmpInput: Identifiable {
 }
 
 struct TodayAchieveView: View {
+    @Query private var tasks: [Task]
+    
+    var completeRatio: Double {
+        let todayTasks = tasks.filter { $0.date.isToday() }
+        
+        if todayTasks.isEmpty {
+            return 100
+        } else {
+            // 오늘 달성률 = (완료 + (진행중 * 0.5)) / 오늘 전체 * 100
+            let completeCount = todayTasks.filter { $0.status == .complete }.count
+            let inprogressCount = todayTasks.filter { $0.status == .inProgress }.count
+            let ratio = (completeCount + (inprogressCount / 2)) / todayTasks.count * 100
+            return Double(ratio)
+        }
+    }
+    
     var body: some View {
         VStack {
             HStack {
                 Text("오늘의 성취").font(.callout).bold()
                 Spacer()
             }
-            PieGraph().padding(10)
+            
+            PieGraph(completeRatio: completeRatio)
+            
             Spacer()
         }
     }
 }
 
 struct PieGraph: View {
-    let data = [
-        TmpInput(name: "아직안함", count: 35),
-        TmpInput(name: "완료", count: 65)
-    ]
+    let completeRatio: Double
+    var inCompleteRatio: Double { 100 - completeRatio }
     
     @State var ratio: [Double] = [1, 0] // 처음에 가지는 표기 비율 값이라, 별 상관이 없음.
     var body: some View {
         Chart {
             ForEach(ratio.indices, id: \.self) { index in
-                SectorMark(angle: .value("이거 항상 궁금했는데 아무 영향도 없는 거 같은데 뭔지 모르겠음", ratio[index]),
-                           innerRadius: .inset(30),
+                SectorMark(angle: .value("", ratio[index]),
+                           innerRadius: .inset(24),
                            angularInset: 0.8
                 )
                 .cornerRadius(5)
@@ -56,21 +67,20 @@ struct PieGraph: View {
         }
         .chartBackground(content: { _ in
             HStack {
-                Text(String(Int(data[1].count)))
+                Text("\(Int(completeRatio))")
                     .foregroundColor(.planIODarkYellow)
-                    .font(.system(size: 60*0.9, weight: .heavy)) // .black .heavy .bold
+                    .font(.system(size: 44, weight: .heavy)) // .black .heavy .bold
                 + Text("%") // + 통해 글자를 밑으로 내렸습니다.
                     .foregroundColor(.planIODarkGray)
-                    .font(.system(size: 16*0.9, weight: .heavy))
+                    .font(.system(size: 14, weight: .heavy))
             }
         }
         )
         .onAppear {
             withAnimation(.easeIn(duration: 0.7).delay(0.1)) {
-                ratio = data.map { $0.count }
+                ratio = [self.inCompleteRatio, self.completeRatio]
             }
         }
-        
     }
 }
 
