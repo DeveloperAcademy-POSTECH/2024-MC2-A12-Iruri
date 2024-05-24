@@ -5,10 +5,21 @@
 //  Created by Anjin on 5/20/24.
 //
 
+import SwiftData
 import SwiftUI
 
 struct EntireStatusView: View {
-    let totalRate: Int = 78
+    @Query private var tasks: [Task]
+    var totalRate: Int {
+        // 실천 / {Task 전체 - (진행중 + 미실천)} * 100
+        let completeTasks = tasks.filter { $0.status == .complete }
+        let uniqueTasks = tasks.filter {
+            $0.status == .complete || $0.status == .none
+        }
+        
+        let ratio = completeTasks.count / uniqueTasks.count * 100
+        return ratio
+    }
     
     var body: some View {
         VStack(spacing: 0) {
