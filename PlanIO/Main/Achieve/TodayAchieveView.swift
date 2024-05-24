@@ -8,7 +8,6 @@
 import Charts
 import SwiftUI
 
-// TODO
 // 1. TmpInput을 실제 값을 받아오는 것으로 변경해야합니다.
 // 2. 레이아웃 변경 이후에 다음의 값을 다시 조정해야합니다.
 // 2-1. 패딩 크기

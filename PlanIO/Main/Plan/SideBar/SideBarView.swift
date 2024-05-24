@@ -32,7 +32,7 @@ struct SideBarView: View {
             }
         }
         .onAppear {
-            let status = [TaskStatus.complete, TaskStatus.inProgress, TaskStatus.incomplete, TaskStatus.none]
+            _ = [TaskStatus.complete, TaskStatus.inProgress, TaskStatus.incomplete, TaskStatus.none]
             
             // 임시 Task를 넣어서 실험하기 위함
             if tasks.isEmpty {
