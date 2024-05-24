@@ -9,6 +9,8 @@ import SwiftData
 import SwiftUI
 
 struct PlanNavigationTaskRow: View {
+    @Environment(\.modelContext) var modelContext
+    
     let task: Task
     
     @Binding var draggingTarget: Task?
@@ -25,9 +27,15 @@ struct PlanNavigationTaskRow: View {
                 TextField(task.title, text: $textValue)
                 
                 Button {
-                    // task id에 접근해서 수정하기. 지금은 임시로 땜빵
-                    task.title = textValue
                     isEnteringText.toggle()
+                    
+                    let datas: [Task] = queryData(id: task.id)
+                    
+                    if !datas.isEmpty {
+                        datas[0].title = textValue
+                    }
+                    
+                    modelContext.insert(datas[0])
                 } label: {
                     // 수정완료 버튼 디자인 변경
                     Image(systemName: "checkmark")
@@ -71,4 +79,19 @@ struct PlanNavigationTaskRow: View {
         .listRowInsets(EdgeInsets(top: valueListRowInsets[0], leading: valueListRowInsets[1], bottom: valueListRowInsets[2], trailing: valueListRowInsets[3]))
     }
     
+    private func queryData(id: UUID) -> [Task] {
+        let predicate = #Predicate<Task> { $0.id == id }
+        let desciptor = FetchDescriptor<Task>(predicate: predicate)
+        
+        do {
+            let tasks = try modelContext.fetch(desciptor)
+            if !tasks.isEmpty {
+                return tasks
+            }
+        } catch {
+            print("query failed")
+        }
+        
+        return []
+    }
 }
