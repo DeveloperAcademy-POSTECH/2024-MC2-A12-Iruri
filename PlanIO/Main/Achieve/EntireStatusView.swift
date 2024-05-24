@@ -11,7 +11,7 @@ struct EntireStatusView: View {
     let totalRate: Int = 78
     
     var body: some View {
-        VStack(spacing:0) {
+        VStack(spacing: 0) {
             
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
@@ -25,23 +25,22 @@ struct EntireStatusView: View {
                 Spacer()
                 
                 HStack {
-//바뀌어야하는 숫자
+// 바뀌어야하는 숫자
                     Text("\(totalRate)")
                         .font(.system(size: 60, weight: .bold))
                         .foregroundStyle(Color.planIODarkYellow)
                     Text("%")
                         .font(.system(size: 16, weight: .black))
                         .foregroundStyle(Color.planIODarkGray)
-                        .padding(.top,25)
+                        .padding(.top, 25)
                 }
             }
-//막대 그래프
-            ZStack(alignment:.leading){
+// 막대 그래프
+            ZStack(alignment: .leading) {
                 Rectangle()
                     .foregroundColor(.planIOLightYellow)
                     
-                
-                //성취에 따라 달라지는 막대기
+                // 성취에 따라 달라지는 막대기
                 GeometryReader { geo in
                     Rectangle()
                         .foregroundColor(.planIODarkYellow)

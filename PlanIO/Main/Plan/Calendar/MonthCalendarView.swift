@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct MonthCalendarView: View {
+//    @Environment(\.modelContext) var modelContext
+    
     @State var startDate: Date
     @State var endDate: Date
     
+    @Binding var draggingTarget: Task?
+    @Binding var draggingTargetDate: Date
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
+//            Button {
+//                TaskManager.makeTask(modelContext: modelContext, scopes: TextBook.contents)
+//            } label: {
+//                Text("task 추가")
+//            }
             headerView
             calendarGridView
         }
@@ -25,13 +35,12 @@ struct MonthCalendarView: View {
                 // 캘린더의 요일은 월요일부터 시작입니다.
                 ForEach(Self.weekdaySymbols, id: \.self) { symbol in
                     Text(symbol)
+                        .font(.subheadline).fontWeight(.semibold)
+                        .foregroundStyle((symbol == "토" || symbol == "일") ? .planIODarkYellow : .black)
                         .frame(maxWidth: .infinity)
-                        .font(.caption2)
-                        .bold()
-                        .foregroundStyle(.black)
                 }
             }
-            .padding(.bottom, 10)
+            .padding(.bottom, 2)
         }
     }
     
@@ -55,63 +64,57 @@ struct MonthCalendarView: View {
                         // 그럴 경우 2번 반복하면 되기 때문에 firstDayOfWeek - 1 입니다.
                         if index < firstDayOfWeek - 1 {
                             Rectangle()
-                                .frame(maxHeight: 150)
-                                .border(.gray, width: 0.5)
-                                .foregroundColor(.white)
+                                .frame(maxHeight: 160)
+                                .foregroundColor(isWeekDay(index: index) ? .planIOFilledYellow : .white)
+                                .overlay {
+                                    Rectangle()
+                                        .inset(by: 0.5)
+                                        .stroke(Color.planIOSemiLightGray, lineWidth: 0.3)
+                                }
                         } else {
-                            VStack {
+                            VStack(spacing: 0) {
                                 // firstDayOfWeek가 3일때 (수요일) 월, 화를 채우고 온 index는 2입니다.
                                 // 해당일부터 종료일까지 날짜를 채워야 하기 때문에 +1 하여 날짜를 맞추었습니다.
-                                CellView(date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400))
+                                CellView(date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                             }
-                            .frame(maxWidth: .infinity, minHeight: 150, maxHeight: 150, alignment: .center)
-                            .border(.gray, width: 0.5)
+                            .background(isWeekDay(index: index) ? .planIOFilledYellow : .white)
+                            .frame(maxWidth: .infinity, minHeight: 160, maxHeight: 160, alignment: .center)
+                            .overlay {
+                                Rectangle()
+                                    .inset(by: 0.5)
+                                    .stroke(Color.planIOSemiLightGray, lineWidth: 0.3)
+                            }
                         }
                     }
                     // 나머지 빈칸을 채웁니다. 종료일이 3(수요일) 이면 나머지 4일을 채워야 하기 때문에 7 - lastDayOfWeek
-                    ForEach(0 ..< 7 - lastDayOfWeek, id: \.self) { _ in
+                    ForEach(0 ..< 7 - lastDayOfWeek, id: \.self) { index in
                         Rectangle()
-                            .frame(maxHeight: 150)
-                            .border(.gray, width: 0.5)
-                            .foregroundColor(.white)
+                            .frame(maxHeight: 160)
+                            .foregroundColor(index == 0 || index == 1 ? .planIOFilledYellow : .white)
+                            .overlay {
+                                Rectangle()
+                                    .inset(by: 0.5)
+                                    .stroke(Color.planIOSemiLightGray, lineWidth: 0.3)
+                            }
                     }
                 }
-                .border(Color.black.opacity(0.3), width: 1)
+                .overlay {
+                    Rectangle()
+                        .inset(by: 0.5)
+                        .stroke(Color.planIOSemiLightGray, lineWidth: 0.4)
+                }
             }
             .scrollIndicators(.hidden)
         }
     }
-}
-
-// MARK: - 일자 셀 뷰
-private struct CellView: View {
-    var date: Date
-    var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-
-                Text("\(formattedDate(date: date))")
-                    .foregroundStyle(.black)
-                    .padding(10)
-            }
-            
-            Spacer()
-        }
+    
+    private func isWeekDay(index: Int) -> Bool {
+        let weekday = index + 1
+        return (weekday + 1).isMultiple(of: 7) || weekday.isMultiple(of: 7)
     }
     
-    // 날짜를 "6월 1일" 형식으로 포맷하는 함수
-    func formattedDate(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M월 d일"
-        return dateFormatter.string(from: date)
-    }
-}
-
-// MARK: - 내부 메서드
-private extension MonthCalendarView {
-    /// 날짜간의 차이를 구함
-    func getDaysBetween(_ start: Date, _ end: Date) -> Int {
+    // date 간의 차이를 구합니다.
+    private func getDaysBetween(_ start: Date, _ end: Date) -> Int {
         let calendar = Calendar.current
         
         // day를 컴포넌트로 설정하여 일 차이를 계산합니다.
@@ -123,7 +126,7 @@ private extension MonthCalendarView {
     }
     
     /// 특정 날짜가 무슨 요일인지 정수로 반환하는 함수
-    func getDayOfWeek(for date: Date) -> Int {
+    private func getDayOfWeek(for date: Date) -> Int {
         let calendar = Calendar.current
 
         // .weekday는 1(일요일)부터 7(토요일)까지의 값을 가짐
@@ -141,22 +144,17 @@ private extension MonthCalendarView {
 // MARK: - Static 프로퍼티
 extension MonthCalendarView {
     static let weekdaySymbols: [String] = {
-        let calendar = Calendar(identifier: .gregorian)
-        var localizedCalendar = calendar
-        localizedCalendar.locale = Locale(identifier: "ko-KR")
+        var calendar = Calendar.current
+        calendar.locale = Locale(identifier: "ko-KR")
         
-        localizedCalendar.firstWeekday = 2 // 1 = Sunday, 2 = Monday, ...
+        calendar.firstWeekday = 2 // 1 = Sunday, 2 = Monday, ...
         
         // 일, 월, 화, 수, 목, 금, 토 형식의 배열을 불러옵니다.
-        let symbols = localizedCalendar.veryShortWeekdaySymbols
+        let symbols = calendar.veryShortWeekdaySymbols
         
         // 월요일이 첫날이기 때문에 일요일을 맨 뒤로 보냅니다.
-        let reorderedSymbols = Array(symbols[localizedCalendar.firstWeekday - 1..<symbols.count] + symbols[0..<localizedCalendar.firstWeekday - 1])
+        let reorderedSymbols = Array(symbols[calendar.firstWeekday - 1..<symbols.count] + symbols[0..<calendar.firstWeekday - 1])
         
         return reorderedSymbols
     }()
-}
-
-#Preview {
-    PlanView()
 }

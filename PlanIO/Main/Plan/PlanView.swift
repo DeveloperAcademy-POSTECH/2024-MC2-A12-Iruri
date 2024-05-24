@@ -7,15 +7,44 @@
 
 import SwiftUI
 
+enum ScreenSelection: String, CaseIterable, Identifiable {
+    case month = "월간"
+    case week = "주간"
+    
+    var id: String { self.rawValue }
+}
+
 struct PlanView: View {
-    @State private var date = Date()
+    @State var draggingTarget: Task?
+    @State var draggingTargetDate: Date = Date(year: 0, month: 0, day: 0)
+    @State private var selectedScreen: ScreenSelection? = .month
+    
+    // 주간 캘린더의 현재 페이지 위치
+    @State var savedWeekIdx: Int = 0
     
     var body: some View {
         NavigationSplitView {
-            PlanNavigationSplitView().background(.planIOLightGray)
+            VStack {
+                // PlanNavigationSplitView().background(.planIOLightGray)
+                SideBarView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+            }
+            .navigationTitle("Title")
+            .navigationSplitViewColumnWidth(min: 200, ideal: 250)
+
         } detail: {
             ZStack {
                 VStack {
+                    HStack {
+                        Picker("Screen Picker", selection: $selectedScreen) {
+                            ForEach(ScreenSelection.allCases) { screen in
+                                Text(screen.rawValue).tag(screen as ScreenSelection?)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 150)
+                    }
+                    .padding(.top, 0)
+                    
                     HStack {
                         Text("hello")
                         Spacer()
@@ -23,41 +52,24 @@ struct PlanView: View {
                             .fontWeight(.black)
                     }
                     
-                    Spacer()
-                    
-                    MonthCalendarView(startDate: Calendar.current.date(from: DateComponents(year: 2024, month: 5, day: 21))!, endDate: Calendar.current.date(from: DateComponents(year: 2024, month: 6, day: 17))!)
-                        .padding(.horizontal, 20)
+                    selectedView
                 }
             }
         }
     }
     
-    private func setMonth(month: Int) -> Date {
-        let calendar = Calendar.current
-        let currentDate = Date()
-        
-        var components = calendar.dateComponents([.year, .day], from: currentDate)
-        components.month = month
-        
-        return calendar.date(from: components) ?? currentDate
-    }
-    
-    private func calculateDaysInMonth(year: Int, month: Int) -> Int {
-        var dateComponents = DateComponents()
-        dateComponents.year = year
-        dateComponents.month = month
-        
-        let calendar = Calendar.current
-        
-        guard let date = calendar.date(from: dateComponents),
-              let range = calendar.range(of: .day, in: .month, for: date) else {
-            return 0 // Invalid date or range
+    @ViewBuilder
+    var selectedView: some View {
+        switch selectedScreen {
+        case .month:
+            MonthCalendarView(startDate: Date(year: 2024, month: 5, day: 12), endDate: Date(year: 2024, month: 5, day: 19), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                .padding(.horizontal, 20)
+        case .week:
+            WeekCalendarView(startDate: Date(year: 2024, month: 5, day: 12), endDate: Date(year: 2024, month: 5, day: 19), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, savedWeekIdx: $savedWeekIdx)
+                .padding(.horizontal, 20)
+        case .none:
+            MonthCalendarView(startDate: Date(year: 2024, month: 5, day: 12), endDate: Date(year: 2024, month: 5, day: 19), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                .padding(.horizontal, 20)
         }
-        
-        return range.count
     }
-}
-
-#Preview {
-    PlanView()
 }

@@ -14,15 +14,24 @@ class Task: Identifiable, Equatable {
     var title: String
     var type: TaskType
     var status: TaskStatus
+    var date: Date
     
     init(title: String, type: TaskType, status: TaskStatus) {
         self.title = title
         self.type = type
         self.status = status
+        self.date = Date(year: 0, month: 0, day: 0)
+    }
+    
+    init(title: String, type: TaskType, status: TaskStatus, date: Date) {
+        self.title = title
+        self.type = type
+        self.status = status
+        self.date = date
     }
 }
 
-enum TaskType: String, Codable {
+enum TaskType: String, Codable, CaseIterable {
     case concept = "개념"
     case practice = "응용"
     case other = "기타"
@@ -48,6 +57,15 @@ enum TaskStatus: String, Codable, CaseIterable {
         case .inProgress: Color.planIODarkYellow
         case .incomplete: Color.red
         case .none: Color.planIODarkGray
+        }
+    }
+    
+    var lightColor: Color {
+        switch self {
+        case .complete: Color.planIOLightBlue
+        case .inProgress: Color.planIOLightYellow
+        case .incomplete: Color.planIOLightRed
+        case .none: Color.planIOLightGray
         }
     }
 }

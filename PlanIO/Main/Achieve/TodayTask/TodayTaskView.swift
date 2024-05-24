@@ -41,14 +41,9 @@ struct TodayTaskView: View {
             
             ScrollView {
                 VStack(spacing: 40) {
-                    // 개념
-                    TodayTaskListView(type: .concept)
-                    
-                    // 응용
-//                    TodayTaskListView(type: .practice)
-                    
-                    // 기타
-//                    TodayTaskListView(type: .other)
+                    ForEach(TaskType.allCases, id: \.self) { type in
+                        TodayTaskListView(type: type)
+                    }
                 }
                 .padding(.vertical, 30)
                 .padding(.horizontal, 24)

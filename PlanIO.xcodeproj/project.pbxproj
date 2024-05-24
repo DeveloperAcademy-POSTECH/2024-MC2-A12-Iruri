@@ -10,9 +10,14 @@
 		080A75F02BFC86AB00A82A39 /* EmptyAchieveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A75EF2BFC86AB00A82A39 /* EmptyAchieveView.swift */; };
 		24337D522BFCDDED002A7359 /* TestDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24337D512BFCDDED002A7359 /* TestDateView.swift */; };
 		24337D542BFCE8F3002A7359 /* TestScopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24337D532BFCE8F3002A7359 /* TestScopeView.swift */; };
+		24522C312BFE36D000C02472 /* CheckTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24522C302BFE36D000C02472 /* CheckTimeView.swift */; };
 		246A2F7A2BFB688700DD7830 /* InputStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F792BFB688700DD7830 /* InputStep.swift */; };
 		246A2F7C2BFB689C00DD7830 /* InputStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F7B2BFB689C00DD7830 /* InputStepView.swift */; };
 		246A2F7F2BFC8A6500DD7830 /* InputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246A2F7E2BFC8A6500DD7830 /* InputData.swift */; };
+		4C2678972BFF313A0032D85E /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2678962BFF313A0032D85E /* SideBarView.swift */; };
+		4C26789A2BFF58340032D85E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2678992BFF58340032D85E /* DateExtension.swift */; };
+		4C26789C2BFFA7DC0032D85E /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C26789B2BFFA7DC0032D85E /* WeekCalendarView.swift */; };
+		4C6C78AC2BFD07AD00E2BD09 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */; };
 		4C6FC5082BF34FEC0035FFC0 /* PlanIOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */; };
 		4C6FC50C2BF34FED0035FFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */; };
 		4C6FC50F2BF34FED0035FFC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50E2BF34FED0035FFC0 /* Preview Assets.xcassets */; };
@@ -27,7 +32,7 @@
 		510BE74B2BFA51E400524EA9 /* TodayTaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE74A2BFA51E400524EA9 /* TodayTaskListView.swift */; };
 		510BE74D2BFA52B400524EA9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE74C2BFA52B400524EA9 /* Task.swift */; };
 		510BE74F2BFA54F300524EA9 /* TaskStatusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE74E2BFA54F300524EA9 /* TaskStatusButton.swift */; };
-		510BE7512BFA5CA200524EA9 /* TaskLow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7502BFA5CA200524EA9 /* TaskLow.swift */; };
+		510BE7512BFA5CA200524EA9 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7502BFA5CA200524EA9 /* TaskRow.swift */; };
 		510BE7532BFA606400524EA9 /* StatusSelectPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7522BFA606400524EA9 /* StatusSelectPopUp.swift */; };
 		510BE7552BFB24C200524EA9 /* WorkBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7542BFB24C200524EA9 /* WorkBook.swift */; };
 		510BE7572BFB28C500524EA9 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7562BFB28C500524EA9 /* Plan.swift */; };
@@ -42,15 +47,21 @@
 		7CD1B9192BFF488000FC3677 /* PlanNavigationSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B9182BFF488000FC3677 /* PlanNavigationSplitView.swift */; };
 		7CD1B91B2BFF489100FC3677 /* PlanNavigationTaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B91A2BFF489000FC3677 /* PlanNavigationTaskListView.swift */; };
 		7CD1B91D2BFF48A400FC3677 /* PlanNavigationTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B91C2BFF48A400FC3677 /* PlanNavigationTaskRow.swift */; };
+		510BE76C2BFF712000524EA9 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE76B2BFF712000524EA9 /* NavigationUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		080A75EF2BFC86AB00A82A39 /* EmptyAchieveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyAchieveView.swift; sourceTree = "<group>"; };
 		24337D512BFCDDED002A7359 /* TestDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDateView.swift; sourceTree = "<group>"; };
 		24337D532BFCE8F3002A7359 /* TestScopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScopeView.swift; sourceTree = "<group>"; };
+		24522C302BFE36D000C02472 /* CheckTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTimeView.swift; sourceTree = "<group>"; };
 		246A2F792BFB688700DD7830 /* InputStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStep.swift; sourceTree = "<group>"; };
 		246A2F7B2BFB689C00DD7830 /* InputStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStepView.swift; sourceTree = "<group>"; };
 		246A2F7E2BFC8A6500DD7830 /* InputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputData.swift; sourceTree = "<group>"; };
+		4C2678962BFF313A0032D85E /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
+		4C2678992BFF58340032D85E /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		4C26789B2BFFA7DC0032D85E /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
+		4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		4C6FC5042BF34FEC0035FFC0 /* PlanIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanIOApp.swift; sourceTree = "<group>"; };
 		4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,7 +77,7 @@
 		510BE74A2BFA51E400524EA9 /* TodayTaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTaskListView.swift; sourceTree = "<group>"; };
 		510BE74C2BFA52B400524EA9 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		510BE74E2BFA54F300524EA9 /* TaskStatusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatusButton.swift; sourceTree = "<group>"; };
-		510BE7502BFA5CA200524EA9 /* TaskLow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLow.swift; sourceTree = "<group>"; };
+		510BE7502BFA5CA200524EA9 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		510BE7522BFA606400524EA9 /* StatusSelectPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSelectPopUp.swift; sourceTree = "<group>"; };
 		510BE7542BFB24C200524EA9 /* WorkBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBook.swift; sourceTree = "<group>"; };
 		510BE7562BFB28C500524EA9 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
@@ -81,6 +92,7 @@
 		7CD1B9182BFF488000FC3677 /* PlanNavigationSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanNavigationSplitView.swift; sourceTree = "<group>"; };
 		7CD1B91A2BFF489000FC3677 /* PlanNavigationTaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanNavigationTaskListView.swift; sourceTree = "<group>"; };
 		7CD1B91C2BFF48A400FC3677 /* PlanNavigationTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanNavigationTaskRow.swift; sourceTree = "<group>"; };
+		510BE76B2BFF712000524EA9 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +115,22 @@
 			path = InputStep;
 			sourceTree = "<group>";
 		};
+		4C2678952BFF31230032D85E /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+				4C2678962BFF313A0032D85E /* SideBarView.swift */,
+			);
+			path = SideBar;
+			sourceTree = "<group>";
+		};
+		4C2678982BFF55C70032D85E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4C2678992BFF58340032D85E /* DateExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		4C6FC4FB2BF34FEC0035FFC0 = {
 			isa = PBXGroup;
 			children = (
@@ -123,8 +151,10 @@
 		4C6FC5062BF34FEC0035FFC0 /* PlanIO */ = {
 			isa = PBXGroup;
 			children = (
+				510BE76A2BFF710600524EA9 /* Service */,
 				510BE7292BF3899C00524EA9 /* Data */,
 				510BE72C2BF389C200524EA9 /* Main */,
+				4C2678982BFF55C70032D85E /* Extension */,
 				510BE7402BF71DA900524EA9 /* Test */,
 				4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */,
 				4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */,
@@ -145,6 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				4CC1E8052BF7B2DD00038958 /* MonthCalendarView.swift */,
+				4C6C78AB2BFD07AD00E2BD09 /* CellView.swift */,
+				4C26789B2BFFA7DC0032D85E /* WeekCalendarView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -190,8 +222,9 @@
 				510BE73B2BF71D7200524EA9 /* InputView.swift */,
 				24337D512BFCDDED002A7359 /* TestDateView.swift */,
 				24337D532BFCE8F3002A7359 /* TestScopeView.swift */,
-				246A2F782BFB687B00DD7830 /* InputStep */,
 				510BE7652BFCE73800524EA9 /* SelectBookView.swift */,
+				24522C302BFE36D000C02472 /* CheckTimeView.swift */,
+				246A2F782BFB687B00DD7830 /* InputStep */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -200,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				7CD1B9172BFF486600FC3677 /* PlanNavigation */,
+				4C2678952BFF31230032D85E /* SideBar */,
 				4CC1E8032BF7B29000038958 /* Calendar */,
 				510BE73E2BF71D8600524EA9 /* PlanView.swift */,
 			);
@@ -220,7 +254,7 @@
 				510BE7482BFA189D00524EA9 /* TodayTaskView.swift */,
 				510BE74A2BFA51E400524EA9 /* TodayTaskListView.swift */,
 				510BE7522BFA606400524EA9 /* StatusSelectPopUp.swift */,
-				510BE7502BFA5CA200524EA9 /* TaskLow.swift */,
+				510BE7502BFA5CA200524EA9 /* TaskRow.swift */,
 				510BE74E2BFA54F300524EA9 /* TaskStatusButton.swift */,
 			);
 			path = TodayTask;
@@ -254,6 +288,14 @@
 				7CD1B91C2BFF48A400FC3677 /* PlanNavigationTaskRow.swift */,
 			);
 			path = PlanNavigation;
+      sourceTree = "<group>";
+		};
+		510BE76A2BFF710600524EA9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				510BE76B2BFF712000524EA9 /* NavigationUtil.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,24 +391,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6C78AC2BFD07AD00E2BD09 /* CellView.swift in Sources */,
+				4C2678972BFF313A0032D85E /* SideBarView.swift in Sources */,
 				510BE7572BFB28C500524EA9 /* Plan.swift in Sources */,
 				510BE7622BFB5BE600524EA9 /* RemainTimeView.swift in Sources */,
+				24522C312BFE36D000C02472 /* CheckTimeView.swift in Sources */,
 				246A2F7A2BFB688700DD7830 /* InputStep.swift in Sources */,
 				510BE7422BF71DB600524EA9 /* TestView.swift in Sources */,
 				510BE7552BFB24C200524EA9 /* WorkBook.swift in Sources */,
 				24337D542BFCE8F3002A7359 /* TestScopeView.swift in Sources */,
 				510BE7492BFA189D00524EA9 /* TodayTaskView.swift in Sources */,
+				4C26789A2BFF58340032D85E /* DateExtension.swift in Sources */,
 				510BE7532BFA606400524EA9 /* StatusSelectPopUp.swift in Sources */,
 				510BE7662BFCE73800524EA9 /* SelectBookView.swift in Sources */,
 				510BE75E2BFB5A5800524EA9 /* EntireStatusView.swift in Sources */,
 				510BE7392BF715BC00524EA9 /* AchieveView.swift in Sources */,
 				510BE75C2BFB589200524EA9 /* AchieveComponentBackground.swift in Sources */,
-				510BE7512BFA5CA200524EA9 /* TaskLow.swift in Sources */,
+				510BE7512BFA5CA200524EA9 /* TaskRow.swift in Sources */,
 				080A75F02BFC86AB00A82A39 /* EmptyAchieveView.swift in Sources */,
+				510BE76C2BFF712000524EA9 /* NavigationUtil.swift in Sources */,
 				510BE73C2BF71D7200524EA9 /* InputView.swift in Sources */,
 				7CD1B91B2BFF489100FC3677 /* PlanNavigationTaskListView.swift in Sources */,
 				510BE74F2BFA54F300524EA9 /* TaskStatusButton.swift in Sources */,
 				510BE7302BF5AB8400524EA9 /* TextBook.swift in Sources */,
+				4C26789C2BFFA7DC0032D85E /* WeekCalendarView.swift in Sources */,
 				510BE7602BFB5B8B00524EA9 /* TodayAchieveView.swift in Sources */,
 				510BE7692BFF0EB000524EA9 /* TaskManager.swift in Sources */,
 				4CC1E8062BF7B2DD00038958 /* MonthCalendarView.swift in Sources */,
@@ -520,7 +568,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -550,7 +598,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (

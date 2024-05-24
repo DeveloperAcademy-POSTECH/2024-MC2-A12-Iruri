@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct InputView: View {
-    @State private var isNextButtonEnabled = false
-    @State private var inputData: InputData = InputData()
-    @State private var testDate: Date?
+    @Environment(\.modelContext) private var modelContext
     
-    var isExamScheduleChecked: Bool { testDate != nil }
+    @State private var isAnyCellFilled: Bool = false
+    @State private var isNextButtonEnabled = false
+    @State var inputData: InputData
+    
+    var isExamScheduleChecked: Bool { inputData.scienceTestDate != nil }
+    
+    @State private var showCalendarView = false
     
     var body: some View {
-        VStack(spacing: 20) {
-            InputStepView()
+        VStack(spacing: 16) {
+            InputStepView(inputData: inputData)
             
             // 펭귄이오
             HStack(spacing: 20) {
@@ -42,7 +46,7 @@ struct InputView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 13))
                     }
                 }
-
+                
                 Spacer()
             }
             
@@ -51,10 +55,14 @@ struct InputView: View {
                 
                 switch inputData.selectedStep {
                 case .schedule:
-                    TestDateView(isNextButtonEnabled: $isNextButtonEnabled, testDate: $testDate)
-                case .scope, .book, .time:
-                    TestScopeView()
+                    TestDateView(isNextButtonEnabled: $isNextButtonEnabled, inputData: inputData)
+                case .scope:
+                    TestScopeView(inputData: inputData)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
+                case .book:
+                    SelectBookView()
+                case .time:
+                    CheckTimeView(isAnyCellFilled: $isAnyCellFilled)
                 }
                 Spacer()
                 
@@ -78,23 +86,43 @@ struct InputView: View {
                 .disabled(inputData.selectedStep == .schedule)
                 
                 Button(action: {
-                    inputData.selectedStep = inputData.selectedStep.nextStep() ?? .schedule
+                    if inputData.selectedStep != .time {
+                        inputData.selectedStep = inputData.selectedStep.nextStep() ?? .schedule
+                    } else {
+                        TaskManager.makeTask(modelContext: modelContext, scopes: inputData.scopes)
+                        showCalendarView = true
+                    }
                 }, label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 266, height: 60)
-                            .foregroundColor(isExamScheduleChecked && inputData.selectedStep != .time ? .planIOYellow : .planIOGray)
+                            .foregroundColor(isNextButtonInactive() == false ? .planIOYellow : .planIOGray)
                             .shadow(color: .planIOGray, radius: 3, y: 2 )
                         Text("다음으로")
-                            .foregroundColor(inputData.selectedStep == .time ? .planIODarkGray : (isExamScheduleChecked ? .black : .planIODarkGray))
+                            .foregroundColor(isNextButtonInactive() == false ? .black : .planIODarkGray)
                             .bold()
                     }
                 })
-                .disabled(!isExamScheduleChecked || inputData.selectedStep == .time)
+                .disabled(isNextButtonInactive())
+                .navigationDestination(isPresented: $showCalendarView) {
+                    PlanView().navigationBarBackButtonHidden() }
             }
         }
-        .padding(.vertical, 30)
+        .padding(.bottom, 30)
         Spacer()
+    }
+    
+    private func isNextButtonInactive() -> Bool {
+        switch inputData.selectedStep {
+        case .schedule:
+            return isExamScheduleChecked == false
+        case .scope:
+            return inputData.scopes.isEmpty == false
+        case .book:
+            return false
+        case .time:
+            return isAnyCellFilled == false
+        }
     }
 }
 
@@ -110,5 +138,5 @@ struct InputTriangle: Shape {
 }
 
 #Preview {
-    InputView()
+    InputView(inputData: InputData())
 }

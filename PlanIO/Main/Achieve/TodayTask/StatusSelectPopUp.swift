@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct StatusSelectPopUp: View {
-    @Binding var task: Task
-    @Binding var selectedTask: Task?
+    var selectAction: (TaskStatus) -> Void
     
     var body: some View {
         HStack {
@@ -19,8 +18,7 @@ struct StatusSelectPopUp: View {
                 ForEach(TaskStatus.allCases, id: \.self) { status in
                     if status != .none {
                         Button {
-                            task.status = status
-                            selectedTask = nil
+                            selectAction(status)
                         } label: {
                             Text(status.title)
                                 .foregroundStyle(status.color)

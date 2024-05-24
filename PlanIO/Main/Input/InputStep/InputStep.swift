@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-enum InputStep: CaseIterable {
-    case schedule, scope, book, time
+enum InputStep: Int, CaseIterable {
+    case schedule = 0
+    case scope = 1
+    case book = 2
+    case time = 3
     
     var title: String {
         switch self {

@@ -10,9 +10,11 @@ import SwiftUI
 
 struct TaskManager {
     static func makeTask(modelContext: ModelContext, scopes: [LargeTextBookChapter]) {
-        let workbooks: [LargeWorkBookChapter] = WorkBook.contents
-        
         for large in scopes {
+            let semester = large.chapter < 5 ? 1 : 2
+            let workbooks: [LargeWorkBookChapter] = semester == 1 ? WorkBook.contents1 : WorkBook.contents2
+            let largeWorkBook = workbooks[large.chapter - (semester == 1 ? 1 : 5)]
+            
             for mid in large.midChapters {
                 for small in mid.smallChapters {
                     // 개념 Task 추가
@@ -21,12 +23,14 @@ struct TaskManager {
                 }
                 
                 // 응용 Task 추가
-                let largeWorkBook = workbooks[large.chapter - 1]
                 let midWorkBook = largeWorkBook.midChapters[mid.chapter - 1]
-                
-                let practiceTask = Task(title: "오투 \(largeWorkBook.chapter)-\(midWorkBook.chapter). \(midWorkBook.title)", type: .practice, status: .none)
+                let practiceTask = Task(title: "[오투 \(semester)학기] \(largeWorkBook.chapter)-\(midWorkBook.chapter). \(midWorkBook.title)", type: .practice, status: .none)
                 modelContext.insert(practiceTask)
             }
+            
+            // 단원 평가 추가
+            let finalTest = Task(title: "[오투 \(semester)학기] \(largeWorkBook.chapter)단원 평가 문제", type: .practice, status: .none)
+            modelContext.insert(finalTest)
         }
     }
 }
