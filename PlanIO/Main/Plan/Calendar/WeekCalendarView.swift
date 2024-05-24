@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct WeekCalendarView: View {
-//    @Environment(\.modelContext) var modelContext
-    
     @State var startDate: Date
     @State var endDate: Date
     
@@ -21,6 +19,7 @@ struct WeekCalendarView: View {
     @State var currentDateList: [Date] = []
     
     @State var currentWeekIdx: Int = 0
+    @Binding var savedWeekIdx: Int
     
     var maxWeek: Int {
         calendarDateList.count / 7
@@ -44,8 +43,6 @@ struct WeekCalendarView: View {
             }
             
             for idx in 0 ..< getDaysBetween(startDate, endDate) + firstDayOfWeek {
-                // index는 0 부터 시작하고, firstDayOfWeek가 3일 경우 (수요일) 월, 화를 빈칸으로 채워야 합니다.
-                // 그럴 경우 2번 반복하면 되기 때문에 firstDayOfWeek - 1 입니다.
                 if idx < firstDayOfWeek - 1 {
                     calendarDateList.append(Date(year: 0, month: 0, day: 0))
                 } else {
@@ -53,7 +50,7 @@ struct WeekCalendarView: View {
                 }
             }
             
-            // 나머지 빈칸을 채웁니다. 종료일이 3(수요일) 이면 나머지 4일을 채워야 하기 때문에 7 - lastDayOfWeek
+            // 나머지 빈칸을 채웁니다.
             for idx in 0 ..< 7 - lastDayOfWeek {
                 calendarDateList.append(Date(year: 0, month: 0, day: 0))
             }
@@ -61,6 +58,10 @@ struct WeekCalendarView: View {
             currentDateList = Array(calendarDateList[0..<7])
             
             dayList = Self.weekdaySymbols
+            
+            // savedWeekIdx가 있다면 그걸 받습니다.
+            currentWeekIdx = savedWeekIdx
+            currentDateList = Array(calendarDateList[currentWeekIdx * 7 ..< currentWeekIdx * 7 + 7])
         }
     }
     
@@ -117,15 +118,15 @@ struct WeekCalendarView: View {
             getDayOfWeek(for: endDate)
         }
         
-        //  만약 기간이 10일이고, 시작일이 수요일이면 firstDayOfWeek가 3이 되면서 ForEach가 13번 동작합니다.
         return HStack(spacing: 0) {
-            ForEach(currentDateList, id: \.self) { item in
-                if item == Date(year: 0, month: 0, day: 0) {
+            // indices 쓰기 싫었는데, Date 000 id 값이 겹친다고 통 난리를 쳐서 사용합니다..
+            ForEach(currentDateList.indices, id: \.self) { idx in
+                if currentDateList[idx] == Date(year: 0, month: 0, day: 0) {
                     Rectangle()
                         .foregroundStyle(.white)
                         .border(.gray, width: 0.5)
                 } else {
-                    CellView(date: item, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                    CellView(date: currentDateList[idx], draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                         .border(.gray, width: 0.5)
                 }
             }
@@ -160,6 +161,7 @@ struct WeekCalendarView: View {
         }
     }
     
+    // formatted date 반환
     private func cleanDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd일"
@@ -171,6 +173,7 @@ struct WeekCalendarView: View {
     private func toNextWeek() {
         if !(currentWeekIdx + 1 == maxWeek) {
             currentWeekIdx += 1
+            savedWeekIdx = currentWeekIdx
             currentDateList = Array(calendarDateList[currentWeekIdx * 7 ..< currentWeekIdx * 7 + 7])
         }
     }
@@ -178,6 +181,7 @@ struct WeekCalendarView: View {
     private func toPrevWeek() {
         if !(currentWeekIdx - 1 < 0) {
             currentWeekIdx -= 1
+            savedWeekIdx = currentWeekIdx
             currentDateList = Array(calendarDateList[currentWeekIdx * 7 ..< currentWeekIdx * 7 + 7])
         }
     }
