@@ -54,12 +54,14 @@ struct PlanNavigationTaskRow: View {
                     .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                         Button(role: .destructive) {
                             // 삭제
+                            deleteData(target: task)
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
+                        
                         Button {
-                            isEnteringText.toggle()
                             // 수정
+                            isEnteringText.toggle()
                         } label: {
                             Label("Edit", systemImage: "applepencil")
                         }
@@ -93,5 +95,9 @@ struct PlanNavigationTaskRow: View {
         }
         
         return []
+    }
+    
+    private func deleteData(target: Task) -> Void {
+        modelContext.delete(target)
     }
 }
