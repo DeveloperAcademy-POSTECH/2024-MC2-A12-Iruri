@@ -224,7 +224,7 @@
 		510BE73D2BF71D7C00524EA9 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
-				7CD1B9172BFF486600FC3677 /* PlanNavigation */,
+				7CD1B9172BFF486600FC3677 /* Sidebar */,
 				4CC1E8032BF7B29000038958 /* Calendar */,
 				510BE73E2BF71D8600524EA9 /* PlanView.swift */,
 			);
@@ -279,7 +279,7 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		7CD1B9172BFF486600FC3677 /* PlanNavigation */ = {
+		7CD1B9172BFF486600FC3677 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
 				7CD1B9182BFF488000FC3677 /* SidebarView.swift */,
@@ -287,7 +287,7 @@
 				7CD1B91C2BFF48A400FC3677 /* SidebarTaskRow.swift */,
 				4CC306C12C00E166007F7CDC /* TaskAddView.swift */,
 			);
-			path = PlanNavigation;
+			path = Sidebar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
