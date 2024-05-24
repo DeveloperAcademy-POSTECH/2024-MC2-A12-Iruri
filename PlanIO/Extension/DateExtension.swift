@@ -20,4 +20,9 @@ extension Date {
         let calendar = Calendar.current
         self = calendar.date(from: components) ?? Date()
     }
+    
+    func isToday() -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDateInToday(self)
+    }
 }

@@ -64,7 +64,7 @@ struct MonthCalendarView: View {
                         // 그럴 경우 2번 반복하면 되기 때문에 firstDayOfWeek - 1 입니다.
                         if index < firstDayOfWeek - 1 {
                             Rectangle()
-                                .frame(maxHeight: 150)
+                                .frame(maxHeight: 160)
                                 .foregroundColor(isWeekDay(index: index) ? .planIOFilledYellow : .white)
                                 .overlay {
                                     Rectangle()
@@ -72,13 +72,13 @@ struct MonthCalendarView: View {
                                         .stroke(Color.planIOSemiLightGray, lineWidth: 0.3)
                                 }
                         } else {
-                            VStack {
+                            VStack(spacing: 0) {
                                 // firstDayOfWeek가 3일때 (수요일) 월, 화를 채우고 온 index는 2입니다.
                                 // 해당일부터 종료일까지 날짜를 채워야 하기 때문에 +1 하여 날짜를 맞추었습니다.
                                 CellView(date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                             }
                             .background(isWeekDay(index: index) ? .planIOFilledYellow : .white)
-                            .frame(maxWidth: .infinity, minHeight: 150, maxHeight: 150, alignment: .center)
+                            .frame(maxWidth: .infinity, minHeight: 160, maxHeight: 160, alignment: .center)
                             .overlay {
                                 Rectangle()
                                     .inset(by: 0.5)
@@ -89,7 +89,7 @@ struct MonthCalendarView: View {
                     // 나머지 빈칸을 채웁니다. 종료일이 3(수요일) 이면 나머지 4일을 채워야 하기 때문에 7 - lastDayOfWeek
                     ForEach(0 ..< 7 - lastDayOfWeek, id: \.self) { index in
                         Rectangle()
-                            .frame(maxHeight: 150)
+                            .frame(maxHeight: 160)
                             .foregroundColor(index == 0 || index == 1 ? .planIOFilledYellow : .white)
                             .overlay {
                                 Rectangle()
