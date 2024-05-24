@@ -15,6 +15,9 @@ enum ScreenSelection: String, CaseIterable, Identifiable {
 }
 
 struct PlanView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Environment(InputData.self) private var inputData
+    
     @State var draggingTarget: Task?
     @State var draggingTargetDate: Date = Date(year: 0, month: 0, day: 0)
     @State private var selectedScreen: ScreenSelection? = .month
@@ -46,11 +49,34 @@ struct PlanView: View {
                     .padding(.top, 0)
                     
                     HStack {
-                        Text("hello")
+                        HStack {
+                            Text("3학년 1학기")
+                                .foregroundStyle(Color.planIODarkGray)
+                            
+                            Text("기말고사")
+                                .foregroundStyle(Color.planIODarkYellow)
+                        }
+                        .font(.title2).fontWeight(.heavy)
+                        
                         Spacer()
-                        Text("hello")
-                            .fontWeight(.black)
+                        
+                        Button {
+                            TaskManager.makeTask(modelContext: modelContext, scopes: inputData.scopes)
+                            NavigationUtil.popToRootView()
+                        } label: {
+                            HStack {
+                                Text("계획 완료")
+                                    .fontWeight(.black)
+                                
+                                Image(systemName: "chevron.right")
+                                    .resizable()
+                                    .frame(width: 10, height: 18)
+                                    .foregroundStyle(Color.planIOSemiLightGray)
+                            }
+                            .foregroundStyle(Color.planIOSemiLightGray)
+                        }
                     }
+                    .padding(.horizontal, 20)
                     
                     selectedView
                 }

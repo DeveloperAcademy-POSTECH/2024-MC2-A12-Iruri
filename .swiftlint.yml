@@ -15,6 +15,8 @@ disabled_rules: # Default Rules에서 비활성화할 규칙
     - large_tuple
     
     - force_try
+    
+    - identifier_name
 
 opt_in_rules:
 
