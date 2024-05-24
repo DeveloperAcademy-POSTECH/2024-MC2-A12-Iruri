@@ -31,7 +31,9 @@ struct TodayTaskListView: View {
                 Spacer()
             }
             
-            let filteredTasks: [Task] = tasks.filter { $0.type == type }
+            // FIXME: 오늘 할 일과 타입에 맞춰 쿼리에 Predicate 넣기
+            let todayTasks: [Task] = tasks.filter { $0.date.isToday() }
+            let filteredTasks: [Task] = todayTasks.filter { $0.type == type }
             
             if filteredTasks.isEmpty == false {
                 ForEach(filteredTasks) { task in
