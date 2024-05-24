@@ -23,6 +23,7 @@
 		4C6FC50F2BF34FED0035FFC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6FC50E2BF34FED0035FFC0 /* Preview Assets.xcassets */; };
 		4CC1E8022BF638AA00038958 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4CC1E8012BF638AA00038958 /* .swiftlint.yml */; };
 		4CC1E8062BF7B2DD00038958 /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC1E8052BF7B2DD00038958 /* MonthCalendarView.swift */; };
+		4CC306C22C00E166007F7CDC /* TaskAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC306C12C00E166007F7CDC /* TaskAddView.swift */; };
 		510BE7302BF5AB8400524EA9 /* TextBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE72F2BF5AB8400524EA9 /* TextBook.swift */; };
 		510BE7392BF715BC00524EA9 /* AchieveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7382BF715BC00524EA9 /* AchieveView.swift */; };
 		510BE73C2BF71D7200524EA9 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE73B2BF71D7200524EA9 /* InputView.swift */; };
@@ -68,6 +69,7 @@
 		4C6FC50E2BF34FED0035FFC0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4CC1E8012BF638AA00038958 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4CC1E8052BF7B2DD00038958 /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
+		4CC306C12C00E166007F7CDC /* TaskAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAddView.swift; sourceTree = "<group>"; };
 		510BE72F2BF5AB8400524EA9 /* TextBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBook.swift; sourceTree = "<group>"; };
 		510BE7382BF715BC00524EA9 /* AchieveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveView.swift; sourceTree = "<group>"; };
 		510BE73B2BF71D7200524EA9 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				7CD1B9182BFF488000FC3677 /* PlanNavigationSplitView.swift */,
 				7CD1B91A2BFF489000FC3677 /* PlanNavigationTaskListView.swift */,
 				7CD1B91C2BFF48A400FC3677 /* PlanNavigationTaskRow.swift */,
+				4CC306C12C00E166007F7CDC /* TaskAddView.swift */,
 			);
 			path = PlanNavigation;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				510BE7302BF5AB8400524EA9 /* TextBook.swift in Sources */,
 				4C26789C2BFFA7DC0032D85E /* WeekCalendarView.swift in Sources */,
 				510BE7602BFB5B8B00524EA9 /* TodayAchieveView.swift in Sources */,
+				4CC306C22C00E166007F7CDC /* TaskAddView.swift in Sources */,
 				510BE7692BFF0EB000524EA9 /* TaskManager.swift in Sources */,
 				4CC1E8062BF7B2DD00038958 /* MonthCalendarView.swift in Sources */,
 				510BE74B2BFA51E400524EA9 /* TodayTaskListView.swift in Sources */,

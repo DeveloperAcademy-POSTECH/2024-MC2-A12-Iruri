@@ -15,6 +15,8 @@ struct PlanNavigationSplitView: View {
     @Binding var draggingTarget: Task?
     @Binding var draggingTargetDate: Date
     
+    @State var showPopover: Bool = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -22,11 +24,17 @@ struct PlanNavigationSplitView: View {
                     .font(.title).bold()
                 Spacer()
                 Text("+")
+                    .font(.title)
+                    .foregroundStyle(.planIODarkYellow)
                     .onTapGesture {
                         // Task 추가 기능 구현
+                        showPopover.toggle()
                     }
             }
             .padding(.horizontal, 10)
+            .popover(isPresented: $showPopover) {
+                TaskAddView(showPopover: $showPopover, addDataFunc: addData)
+            }
             
             PlanNavigationTaskListView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
             
@@ -71,8 +79,11 @@ struct PlanNavigationSplitView: View {
                     
                     modelContext.insert(task)
                 }
-                
             }
         }
+    }
+    
+    func addData(data: Task) {
+        modelContext.insert(data)
     }
 }

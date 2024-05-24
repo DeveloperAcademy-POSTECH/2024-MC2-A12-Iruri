@@ -38,7 +38,7 @@ struct PlanNavigationTaskListView: View {
                     Button {
                         isConceptSectionExpanded.toggle()
                     }label: {
-                        isConceptSectionExpanded ? toggleup : toggledown
+                        isConceptSectionExpanded ? toggleup.foregroundStyle(.planIODarkYellow).bold() : toggledown.foregroundStyle(.planIODarkYellow).bold()
                     }
                 }
                 .listRowInsets(EdgeInsets(top: valueListRowInsets[0], leading: valueListRowInsets[1], bottom: valueListRowInsets[2], trailing: valueListRowInsets[3]))
@@ -61,7 +61,7 @@ struct PlanNavigationTaskListView: View {
                     Button {
                         isPracticeSectionExpanded.toggle()
                     }label: {
-                        isPracticeSectionExpanded ? toggleup : toggledown
+                        isPracticeSectionExpanded ? toggleup.foregroundStyle(.planIODarkYellow).bold() : toggledown.foregroundStyle(.planIODarkYellow).bold()
                     }
                 }
                 .listRowInsets(EdgeInsets(top: valueListRowInsets[0], leading: valueListRowInsets[1], bottom: valueListRowInsets[2], trailing: valueListRowInsets[3]))
@@ -84,7 +84,7 @@ struct PlanNavigationTaskListView: View {
                     Button {
                         isOtherSectionExpanded.toggle()
                     }label: {
-                        isOtherSectionExpanded ? toggleup : toggledown
+                        isOtherSectionExpanded ? toggleup.foregroundStyle(.planIODarkYellow).bold() : toggledown.foregroundStyle(.planIODarkYellow).bold()
                     }
                 }
                 .listRowInsets(EdgeInsets(top: valueListRowInsets[0], leading: valueListRowInsets[1], bottom: valueListRowInsets[2], trailing: valueListRowInsets[3]))
