@@ -98,7 +98,9 @@ struct TestDateView: View {
             
             // 날짜 추가
             Button {
-                inputData.testDates.append(Date())
+                let calendar = Calendar.current
+                let nextDay = calendar.date(byAdding: .day, value: 1, to: inputData.testDates.last ?? Date())
+                inputData.testDates.append(nextDay ?? Date())
                 isDatePickerShowing.append(false)
             } label: {
                 HStack {
