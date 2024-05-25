@@ -44,6 +44,7 @@
 		510BE7662BFCE73800524EA9 /* SelectBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7652BFCE73800524EA9 /* SelectBookView.swift */; };
 		510BE7692BFF0EB000524EA9 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7682BFF0EB000524EA9 /* TaskManager.swift */; };
 		510BE76C2BFF712000524EA9 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE76B2BFF712000524EA9 /* NavigationUtil.swift */; };
+		510BE76F2C022DF900524EA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 510BE76E2C022DF900524EA9 /* LaunchScreen.storyboard */; };
 		7CD1B9192BFF488000FC3677 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B9182BFF488000FC3677 /* SidebarView.swift */; };
 		7CD1B91B2BFF489100FC3677 /* SidebarTaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B91A2BFF489000FC3677 /* SidebarTaskListView.swift */; };
 		7CD1B91D2BFF48A400FC3677 /* SidebarTaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1B91C2BFF48A400FC3677 /* SidebarTaskRow.swift */; };
@@ -89,6 +90,7 @@
 		510BE7682BFF0EB000524EA9 /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		510BE76B2BFF712000524EA9 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		510BE76D2C022CE700524EA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		510BE76E2C022DF900524EA9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CD1B9182BFF488000FC3677 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		7CD1B91A2BFF489000FC3677 /* SidebarTaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTaskListView.swift; sourceTree = "<group>"; };
 		7CD1B91C2BFF48A400FC3677 /* SidebarTaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTaskRow.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				510BE72C2BF389C200524EA9 /* Main */,
 				4C2678982BFF55C70032D85E /* Extension */,
 				4C6FC5072BF34FEC0035FFC0 /* PlanIOApp.swift */,
+				510BE76E2C022DF900524EA9 /* LaunchScreen.storyboard */,
 				4C6FC50B2BF34FED0035FFC0 /* Assets.xcassets */,
 				4C6FC50D2BF34FED0035FFC0 /* Preview Content */,
 			);
@@ -341,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CC1E8022BF638AA00038958 /* .swiftlint.yml in Resources */,
+				510BE76F2C022DF900524EA9 /* LaunchScreen.storyboard in Resources */,
 				4C6FC50F2BF34FED0035FFC0 /* Preview Assets.xcassets in Resources */,
 				4C6FC50C2BF34FED0035FFC0 /* Assets.xcassets in Resources */,
 			);
@@ -551,6 +555,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -582,6 +587,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
