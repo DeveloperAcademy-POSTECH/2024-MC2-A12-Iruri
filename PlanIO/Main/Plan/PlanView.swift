@@ -30,7 +30,8 @@ struct PlanView: View {
     
     var fromAchieveView: Bool = false
   
-    init(draggingTarget: Task? = nil) {
+    init(fromAchieveView: Bool = false, draggingTarget: Task? = nil) {
+        self.fromAchieveView = fromAchieveView
         self.draggingTarget = draggingTarget
         
         let dateDefault = Date(year: 0, month: 0, day: 0)
