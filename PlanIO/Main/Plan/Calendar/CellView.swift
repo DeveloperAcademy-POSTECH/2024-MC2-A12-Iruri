@@ -112,7 +112,7 @@ struct CellView: View {
         HStack {
             Text("[\(task.type.rawValue)] \(task.title)")
                 .font(.system(size: 10)).bold(task.status != .none)
-                .lineLimit(isMonthCalendar ? 1 : 0)
+                .lineLimit(isMonthCalendar ? 1 : 10000)
                 .foregroundStyle(task.status == .none ? .black : .planIOSemiLightGray)
             
             Spacer(minLength: 0)

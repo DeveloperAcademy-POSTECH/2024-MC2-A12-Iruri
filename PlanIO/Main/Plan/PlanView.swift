@@ -5,6 +5,7 @@
 //  Created by Anjin on 5/17/24.
 //
 
+import SwiftData
 import SwiftUI
 
 enum ScreenSelection: String, CaseIterable, Identifiable {
@@ -18,6 +19,8 @@ struct PlanView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(InputData.self) private var inputData
     
+    @Query var tasks: [Task]
+    
     @State var draggingTarget: Task?
     @State var draggingTargetDate: Date = Date(year: 0, month: 0, day: 0)
     @State private var selectedScreen: ScreenSelection? = .month
@@ -26,14 +29,25 @@ struct PlanView: View {
     @State var savedWeekIdx: Int = 0
     
     var fromAchieveView: Bool = false
+  
+    init(draggingTarget: Task? = nil) {
+        self.draggingTarget = draggingTarget
+        
+        let dateDefault = Date(year: 0, month: 0, day: 0)
+        
+        let predicate = #Predicate<Task> {
+            $0.date == dateDefault
+        }
+        
+        _tasks = Query(filter: predicate, sort: \.title)
+    }
     
     var body: some View {
         NavigationSplitView {
             VStack {
-                 PlanNavigationSplitView().background(.planIOLightGray)
-//                SideBarView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                 SidebarView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                    .background(.planIOLightGray)
             }
-            .navigationTitle("Title")
             .navigationSplitViewColumnWidth(min: 200, ideal: 250)
 
         } detail: {
@@ -78,6 +92,7 @@ struct PlanView: View {
                                 }
                                 .foregroundStyle(Color.planIOSemiLightGray)
                             }
+                            .disabled(!tasks.isEmpty)
                         }
                     }
                     .padding(.horizontal, 20)
