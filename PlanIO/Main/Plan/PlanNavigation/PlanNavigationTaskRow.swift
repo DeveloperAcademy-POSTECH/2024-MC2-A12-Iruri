@@ -12,33 +12,33 @@ struct PlanNavigationTaskRow: View {
     let task: Task
     @State private var isEnteringText: Bool = false
     @State var textValue: String = ""
-    private let valueListRowInsets: [CGFloat] = [3,-5,3,-5]
+    private let valueListRowInsets: [CGFloat] = [3, -5, 3, -5]
     
     var body: some View {
         HStack {
-            if isEnteringText{
+            if isEnteringText {
                 TextField(task.title, text: $textValue)
                 
                 Button {
-                    //TODO: task id에 접근해서 수정하기. 지금은 임시로 땜빵
+                    // task id에 접근해서 수정하기. 지금은 임시로 땜빵
                     task.title = textValue
                     isEnteringText.toggle()
                 } label: {
-                    //TODO: 수정완료 버튼 디자인 변경
+                    // 수정완료 버튼 디자인 변경
                     Image(systemName: "checkmark")
                 }
                 
-            }else{
+            } else {
                 Text(task.title)
                     .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                         Button(role: .destructive) {
-                            // TODO: 삭제
+                            // 삭제
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
                         Button {
                             isEnteringText.toggle()
-                            // TODO: 수정
+                            // 수정
                         } label: {
                             Label("Edit", systemImage: "applepencil")
                         }
@@ -65,8 +65,8 @@ struct PlanNavigationTaskRow: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Task.self, configurations: config)
     
-    for i in TaskManager.dummy3 {
-        container.mainContext.insert(i)
+    for item in TaskManager.dummy3 {
+        container.mainContext.insert(item)
     }
     
     return PlanView().modelContainer(container)

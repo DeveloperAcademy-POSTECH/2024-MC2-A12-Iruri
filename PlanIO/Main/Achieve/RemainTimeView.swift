@@ -16,7 +16,7 @@ struct RemainTimeView: View {
             Text("남은 기간")
                 .font(.callout).bold()
             
-            // FIXME: 좀 더 잘 묶을 수 있지 않을까..?
+            // 좀 더 잘 묶을 수 있지 않을까..?
             HStack(alignment: .top, spacing: 6) {
                 let difference = getDifference()
                 
