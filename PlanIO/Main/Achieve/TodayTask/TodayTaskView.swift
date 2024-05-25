@@ -18,17 +18,10 @@ struct TodayTaskView: View {
                     .font(.title).bold()
                     .padding(.leading, 6)
                 
-                Button {
-                    TaskManager.makeTask(modelContext: modelContext, scopes: TextBook.contents)
-                    try? modelContext.save()
-                } label: {
-                    Text("task 추가")
-                }
-                
                 Spacer()
                 
                 NavigationLink {
-                    
+                    PlanView(fromAchieveView: true)
                 } label: {
                     HStack {
                         Text("전체보기")

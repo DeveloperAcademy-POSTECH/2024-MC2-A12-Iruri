@@ -16,15 +16,8 @@ struct AchieveView: View {
                     .foregroundStyle(Color.planIODarkYellow)
                 
                 Spacer()
-                
-                NavigationLink {
-                    
-                } label: {
-                    Image(systemName: "person")
-                        .foregroundStyle(Color.planIOGray)
-                        .frame(width: 28, height: 28)
-                }
             }
+            .padding(.top, 12)
             .padding(.horizontal, 40)
             
             Divider()

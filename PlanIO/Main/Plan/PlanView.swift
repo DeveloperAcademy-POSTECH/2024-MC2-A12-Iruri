@@ -17,6 +17,7 @@ enum ScreenSelection: String, CaseIterable, Identifiable {
 
 struct PlanView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(InputData.self) private var inputData
     
     @Query var tasks: [Task]
     
@@ -27,6 +28,8 @@ struct PlanView: View {
     // 주간 캘린더의 현재 페이지 위치
     @State var savedWeekIdx: Int = 0
     
+    var fromAchieveView: Bool = false
+  
     init(draggingTarget: Task? = nil) {
         self.draggingTarget = draggingTarget
         
@@ -61,22 +64,38 @@ struct PlanView: View {
                     }
                     .padding(.top, 0)
                     
-                    NavigationLink {
-                        EmptyView()
-                    } label: {
+                    HStack {
                         HStack {
-                            Spacer()
-                            Text("다음 단계")
-                                .font(.title3)
-                                .fontWeight(.black)
-                            Image(systemName: "chevron.right")
-                                .font(.title2)
-                                .fontWeight(.heavy)
+                            Text("3학년 1학기")
+                                .foregroundStyle(Color.planIODarkGray)
+                            
+                            Text("기말고사")
+                                .foregroundStyle(Color.planIODarkYellow)
                         }
-                        .padding(.horizontal, 20)
-                        .padding(.bottom, 10)
+                        .font(.title2).fontWeight(.heavy)
+                        
+                        Spacer()
+                        
+                        if fromAchieveView == false {
+                            Button {
+                                TaskManager.makeTask(modelContext: modelContext, scopes: inputData.scopes)
+                                NavigationUtil.popToRootView()
+                            } label: {
+                                HStack {
+                                    Text("계획 완료")
+                                        .fontWeight(.black)
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .resizable()
+                                        .frame(width: 10, height: 18)
+                                        .foregroundStyle(Color.planIOSemiLightGray)
+                                }
+                                .foregroundStyle(Color.planIOSemiLightGray)
+                            }
+                            .disabled(!tasks.isEmpty)
+                        }
                     }
-                    .disabled(!tasks.isEmpty)
+                    .padding(.horizontal, 20)
                     
                     selectedView
                 }

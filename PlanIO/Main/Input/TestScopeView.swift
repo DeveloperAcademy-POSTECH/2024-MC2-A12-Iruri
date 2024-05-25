@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TestScopeView: View {
-    @Bindable var inputData: InputData
+    @Environment(InputData.self) private var inputData
     @State private var contents = TextBook.contents
     
     var body: some View {
@@ -83,5 +83,5 @@ struct TestScopeView: View {
 }
 
 #Preview {
-    TestScopeView(inputData: InputData())
+    TestScopeView()
 }

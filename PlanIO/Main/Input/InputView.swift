@@ -9,10 +9,10 @@ import SwiftUI
 
 struct InputView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(InputData.self) private var inputData
     
     @State private var isAnyCellFilled: Bool = false
     @State private var isNextButtonEnabled = false
-    @State var inputData: InputData
     
     var isExamScheduleChecked: Bool { inputData.scienceTestDate != nil }
     
@@ -20,7 +20,7 @@ struct InputView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            InputStepView(inputData: inputData)
+            InputStepView()
             
             // 펭귄이오
             HStack(spacing: 20) {
@@ -55,9 +55,9 @@ struct InputView: View {
                 
                 switch inputData.selectedStep {
                 case .schedule:
-                    TestDateView(isNextButtonEnabled: $isNextButtonEnabled, inputData: inputData)
+                    TestDateView(isNextButtonEnabled: $isNextButtonEnabled)
                 case .scope:
-                    TestScopeView(inputData: inputData)
+                    TestScopeView()
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 case .book:
                     SelectBookView()
@@ -138,5 +138,5 @@ struct InputTriangle: Shape {
 }
 
 #Preview {
-    InputView(inputData: InputData())
+    InputView()
 }

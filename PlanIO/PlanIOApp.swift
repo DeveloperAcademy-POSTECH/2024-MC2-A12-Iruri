@@ -22,30 +22,32 @@ struct PlanIOApp: App {
         }
     }
     
-    @Query var tasks: [Task]
-    @State private var showAchieve: Bool = false
+    @State private var inputData: InputData = InputData()
     
     var body: some Scene {
         WindowGroup {
-//            NavigationStack {
-//                VStack {
-////                    if tasks.isEmpty {
-//                    if showAchieve == false {
-//                        EmptyAchieveView()
-//                    } else {
-//                        AchieveView()
-//                    }
-//                    
-//                    Button {
-//                        showAchieve.toggle()
-//                    } label: {
-//                        Text(showAchieve ? "계획 세우기 화면으로" : "실천화면으로")
-//                    }
-//                }
-//            }
-            
-            PlanView()
+            MainView()
+                .environment(inputData)
         }
         .modelContainer(modelContainer)
+    }
+}
+
+struct MainView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query var tasks: [Task]
+    
+    var body: some View {
+        NavigationStack {
+            VStack {
+                if tasks.isEmpty {
+                    // Task가 없다면 계획 세우러 가는 화면으로
+                    EmptyAchieveView()
+                } else {
+                    // Task가 있다면 실천화면으로
+                    AchieveView()
+                }
+            }
+        }
     }
 }
