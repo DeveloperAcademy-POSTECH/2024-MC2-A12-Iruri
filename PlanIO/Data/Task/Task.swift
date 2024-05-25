@@ -44,7 +44,7 @@ enum TaskType: String, Codable, CaseIterable {
 enum TaskStatus: String, Codable, CaseIterable {
     case complete = "완료"
     case inProgress = "진행중"
-    case incomplete = "미실천"
+    case incomplete = "나중에"
     case none = "아직"
     
     var title: String {

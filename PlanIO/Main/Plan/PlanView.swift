@@ -89,9 +89,9 @@ struct PlanView: View {
                                     Image(systemName: "chevron.right")
                                         .resizable()
                                         .frame(width: 10, height: 18)
-                                        .foregroundStyle(tasks.isEmpty ? Color.planIOSemiLightGray : Color.planIODarkYellow)
+                                        .foregroundStyle(tasks.isEmpty ? Color.planIODarkYellow : Color.planIOSemiLightGray)
                                 }
-                                .foregroundStyle(tasks.isEmpty ? Color.planIOSemiLightGray : Color.planIODarkYellow)
+                                .foregroundStyle(tasks.isEmpty ? Color.planIODarkYellow : Color.planIOSemiLightGray)
                             }
                             .disabled(tasks.isEmpty == false)
                         }
