@@ -27,22 +27,24 @@ struct PlanIOApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                VStack {
-//                    if tasks.isEmpty {
-                    if showAchieve == false {
-                        EmptyAchieveView()
-                    } else {
-                        AchieveView()
-                    }
-                    
-                    Button {
-                        showAchieve.toggle()
-                    } label: {
-                        Text(showAchieve ? "계획 세우기 화면으로" : "실천화면으로")
-                    }
-                }
-            }
+//            NavigationStack {
+//                VStack {
+////                    if tasks.isEmpty {
+//                    if showAchieve == false {
+//                        EmptyAchieveView()
+//                    } else {
+//                        AchieveView()
+//                    }
+//                    
+//                    Button {
+//                        showAchieve.toggle()
+//                    } label: {
+//                        Text(showAchieve ? "계획 세우기 화면으로" : "실천화면으로")
+//                    }
+//                }
+//            }
+            
+            PlanView()
         }
         .modelContainer(modelContainer)
     }
