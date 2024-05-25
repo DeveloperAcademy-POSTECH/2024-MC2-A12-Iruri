@@ -117,7 +117,7 @@ struct InputView: View {
         case .schedule:
             return isExamScheduleChecked == false
         case .scope:
-            return inputData.scopes.isEmpty == false
+            return inputData.scopes.isEmpty
         case .book:
             return false
         case .time:
