@@ -108,13 +108,13 @@ struct PlanView: View {
     var selectedView: some View {
         switch selectedScreen {
         case .month:
-            MonthCalendarView(startDate: Date(year: 2024, month: 5, day: 12), endDate: Date(year: 2024, month: 5, day: 19), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+            MonthCalendarView(startDate: Date(), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                 .padding(.horizontal, 20)
         case .week:
-            WeekCalendarView(startDate: Date(year: 2024, month: 5, day: 12), endDate: Date(year: 2024, month: 5, day: 19), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, savedWeekIdx: $savedWeekIdx)
+            WeekCalendarView(startDate: Date(), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, savedWeekIdx: $savedWeekIdx)
                 .padding(.horizontal, 20)
         case .none:
-            MonthCalendarView(startDate: Date(year: 2024, month: 5, day: 12), endDate: Date(year: 2024, month: 5, day: 19), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+            MonthCalendarView(startDate: Date(), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                 .padding(.horizontal, 20)
         }
     }
