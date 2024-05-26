@@ -123,7 +123,7 @@ struct WeekCalendarView: View {
             ForEach(currentDateList.indices, id: \.self) { idx in
                 if currentDateList[idx] == Date(year: 0, month: 0, day: 0) {
                     Rectangle()
-                        .foregroundStyle(.white)
+                        .foregroundStyle(isWeekDay(index: idx) ? .planIOFilledYellow : .white)
                         .border(.gray, width: 0.5)
                 } else {
                     CellView(date: currentDateList[idx], draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, isMonthCalendar: false)
@@ -184,6 +184,11 @@ struct WeekCalendarView: View {
             savedWeekIdx = currentWeekIdx
             currentDateList = Array(calendarDateList[currentWeekIdx * 7 ..< currentWeekIdx * 7 + 7])
         }
+    }
+    
+    private func isWeekDay(index: Int) -> Bool {
+        let weekday = index + 1
+        return (weekday + 1).isMultiple(of: 7) || weekday.isMultiple(of: 7)
     }
 }
 
