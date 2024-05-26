@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TodayTaskView: View {
     @Environment(\.modelContext) private var modelContext
+    @State private var selectedTask: Task?
     
     var body: some View {
         VStack(spacing: 16) {
@@ -35,7 +36,7 @@ struct TodayTaskView: View {
             ScrollView {
                 VStack(spacing: 40) {
                     ForEach(TaskType.allCases, id: \.self) { type in
-                        TodayTaskListView(type: type)
+                        TodayTaskListView(type: type, selectedTask: $selectedTask)
                     }
                 }
                 .padding(.vertical, 30)
@@ -44,6 +45,11 @@ struct TodayTaskView: View {
             .background(.white)
             .cornerRadius(10)
             .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
+        }
+        .onTapGesture {
+            if let selectedTask = selectedTask {
+                self.selectedTask = nil
+            }
         }
     }
 }

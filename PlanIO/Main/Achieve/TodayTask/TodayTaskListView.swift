@@ -18,7 +18,7 @@ struct TodayTaskListView: View {
     let type: TaskType
     
     @Query(sort: \Task.title) var tasks: [Task]
-    @State private var selectedTask: Task?
+    @Binding var selectedTask: Task?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -52,7 +52,11 @@ struct TodayTaskListView: View {
                         
                         if let selectedTask = selectedTask, task == selectedTask {
                             StatusSelectPopUp { status in
-                                task.status = status
+                                withAnimation {
+                                    task.status = status
+                                }
+                                
+                                self.selectedTask = nil
                             }
                             .shadow(color: .black.opacity(0.35), radius: 2.5, x: 0, y: 2)
                         }
