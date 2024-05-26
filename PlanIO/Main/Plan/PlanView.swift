@@ -79,7 +79,6 @@ struct PlanView: View {
                         
                         if fromAchieveView == false {
                             Button {
-                                TaskManager.makeTask(modelContext: modelContext, scopes: inputData.scopes)
                                 NavigationUtil.popToRootView()
                             } label: {
                                 HStack {
