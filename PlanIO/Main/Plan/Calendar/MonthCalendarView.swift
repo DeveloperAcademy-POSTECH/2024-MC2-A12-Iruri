@@ -90,7 +90,7 @@ struct MonthCalendarView: View {
                     ForEach(0 ..< 7 - lastDayOfWeek, id: \.self) { index in
                         Rectangle()
                             .frame(maxHeight: 160)
-                            .foregroundColor(index == 0 || index == 1 ? .planIOFilledYellow : .white)
+                            .foregroundColor(isWeekDay(index: lastDayOfWeek + index) ? .planIOFilledYellow : .white)
                             .overlay {
                                 Rectangle()
                                     .inset(by: 0.5)
