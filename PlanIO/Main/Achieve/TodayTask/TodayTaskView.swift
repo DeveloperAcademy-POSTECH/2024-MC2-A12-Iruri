@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TodayTaskView: View {
     @Environment(\.modelContext) private var modelContext
-    @State private var selectedTask: Task?
+    @Binding var selectedTask: Task?
     
     var body: some View {
         VStack(spacing: 16) {
@@ -45,11 +45,6 @@ struct TodayTaskView: View {
             .background(.white)
             .cornerRadius(10)
             .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 2)
-        }
-        .onTapGesture {
-            if let selectedTask = selectedTask {
-                self.selectedTask = nil
-            }
         }
     }
 }

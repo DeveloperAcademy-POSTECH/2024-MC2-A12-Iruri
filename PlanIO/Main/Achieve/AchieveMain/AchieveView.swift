@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AchieveView: View {
+    @State private var selectedTask: Task?
+    
     var body: some View {
         VStack(spacing: 12) {
             HStack {
@@ -24,7 +26,7 @@ struct AchieveView: View {
             
             HStack(spacing: 24) {
                 // 오늘의 할 일
-                TodayTaskView()
+                TodayTaskView(selectedTask: $selectedTask)
                     .frame(width: 340)
                 
                 VStack(spacing: 24) {
@@ -57,6 +59,11 @@ struct AchieveView: View {
             .padding(.bottom, 40)
         }
         .background(Color.planIOLightGray)
+        .onTapGesture {
+            if let selectedTask = selectedTask {
+                self.selectedTask = nil
+            }
+        }
     }
 }
 
