@@ -106,16 +106,22 @@ struct PlanView: View {
     
     @ViewBuilder
     var selectedView: some View {
-        switch selectedScreen {
-        case .month:
-            MonthCalendarView(startDate: Date(), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
-                .padding(.horizontal, 20)
-        case .week:
-            WeekCalendarView(startDate: Date(), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, savedWeekIdx: $savedWeekIdx)
-                .padding(.horizontal, 20)
-        case .none:
-            MonthCalendarView(startDate: Date(), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
-                .padding(.horizontal, 20)
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        
+        var startDate = Date()
+        
+        if let year = components.year, let month = components.month, let day = components.day {
+            switch selectedScreen {
+            case .month:
+                MonthCalendarView(startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                    .padding(.horizontal, 20)
+            case .week:
+                WeekCalendarView(startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, savedWeekIdx: $savedWeekIdx)
+                    .padding(.horizontal, 20)
+            case .none:
+                MonthCalendarView(startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                    .padding(.horizontal, 20)
+            }
         }
     }
 }
