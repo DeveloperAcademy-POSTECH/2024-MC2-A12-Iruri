@@ -26,9 +26,10 @@ struct InputView: View {
             // 펭귄이오
             HStack(spacing: 20) {
                 Spacer()
-                Image("PlanIOCharacter")
+                Image("PlanIOHalf")
                     .resizable()
                     .frame(width: 125, height: 125)
+                    .shadow(color: .black.opacity(0.3), radius: 7.5, x: 0, y: 10)
                 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 0) {
