@@ -35,11 +35,14 @@ struct TaskManager {
     }
     
     static func distributeTasks(tasks: [Task], endDate: Date) {
-        let tasksCount = tasks.count
-        let studyDates: [Date] = TaskManager().generateDates(startDate: Date(), endDate: endDate)
+        let taskManager = TaskManager()
         
-        let tasksPerDay = tasksCount / studyDates.count
-        var extraTasks = tasksCount % studyDates.count
+        // 공부할 수 있는 날짜
+        let studyDates: [Date] = taskManager.generateDates(startDate: Date(), endDate: endDate)
+        
+        let tasksCount = tasks.count
+        let tasksPerDay = tasksCount / studyDates.count /// 전체 task 수 / 공부할 수 있는 날짜 = 하루에 공부할 양
+        var extraTasks = tasksCount % studyDates.count /// 동등하게 배치하고 남는 task 개수
         
         print("hh \(tasksPerDay), \(extraTasks)")
         
@@ -74,20 +77,6 @@ struct TaskManager {
         
         print(dates)
         return dates
-    }
-}
-
-extension Date {
-    var year: Int {
-        return Calendar.current.component(.year, from: self)
-    }
-    
-    var month: Int {
-        return Calendar.current.component(.month, from: self)
-    }
-    
-    var day: Int {
-        return Calendar.current.component(.day, from: self)
     }
 }
 
