@@ -43,7 +43,7 @@ struct SidebarView: View {
             
             Button {
                 // 자동배치 기능
-                TaskManager.distributeTasks(tasks: tasks, endDate: inputData.scienceTestDate ?? Date())
+                TaskManager.distributeTasks(tasks: tasks, endDate: inputData.scienceTestDate ?? Date(), availableTimes: inputData.availableTimePerDay)
             } label: {
                 HStack {
                     Spacer()

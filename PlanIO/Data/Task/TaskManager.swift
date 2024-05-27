@@ -34,17 +34,22 @@ struct TaskManager {
         }
     }
     
-    static func distributeTasks(tasks: [Task], endDate: Date) {
+    static func distributeTasks(tasks: [Task], endDate: Date, availableTimes times: [Int]) {
         let taskManager = TaskManager()
         
         // 공부할 수 있는 날짜
-        let studyDates: [Date] = taskManager.generateDates(startDate: Date(), endDate: endDate)
+        var studyDates: [Date] = taskManager.generateDates(startDate: Date(), endDate: endDate)
+        
+        var availableTimes: [Int] = times
+        availableTimes.insert(availableTimes.popLast() ?? 99, at: 0)
+        
+        studyDates.removeAll { date in
+            availableTimes[date.weekday - 1] == 0
+        }
         
         let tasksCount = tasks.count
         let tasksPerDay = tasksCount / studyDates.count /// 전체 task 수 / 공부할 수 있는 날짜 = 하루에 공부할 양
         var extraTasks = tasksCount % studyDates.count /// 동등하게 배치하고 남는 task 개수
-        
-        print("hh \(tasksPerDay), \(extraTasks)")
         
         var taskIndex: Int = 0
         
@@ -117,7 +122,9 @@ extension TaskManager {
 #Preview {
     VStack {
         Button {
-            TaskManager.distributeTasks(tasks: [], endDate: Date(year: 2024, month: 6, day: 3))
+            var dates = [0, 1, 2, 3, 4, 5, 6]
+            dates.insert(dates.popLast() ?? 99, at: 0)
+            print(dates)
         } label: {
             Text("d")
                 .font(.system(size: 200))
