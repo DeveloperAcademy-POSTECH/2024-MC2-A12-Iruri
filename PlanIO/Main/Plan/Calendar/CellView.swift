@@ -10,6 +10,11 @@ import SwiftUI
 
 // MARK: - 일자 셀 뷰
 struct CellView: View {
+    let fromAchieveView: Bool
+    
+    // 현실의 날짜보다 이전인가? && 어디 뷰에서 넘어왔는가?
+    var isEditable: Bool
+    
     @Environment(\.modelContext) private var modelContext
     var date: Date
     @Query var tasks: [Task]
@@ -20,90 +25,192 @@ struct CellView: View {
     
     var isMonthCalendar: Bool = true
     
-    init(date: Date, draggingTarget: Binding<Task?>, draggingTargetDate: Binding<Date>, isMonthCalendar: Bool = true) {
+    init(fromAchieveView: Bool, date: Date, draggingTarget: Binding<Task?>, draggingTargetDate: Binding<Date>, isMonthCalendar: Bool = true) {
         self.date = date
         self._draggingTarget = draggingTarget
         self._draggingTargetDate = draggingTargetDate
         self.isMonthCalendar = isMonthCalendar
+        
+        self.fromAchieveView = fromAchieveView
 
         let predicate = #Predicate<Task> {
             $0.date == date
         }
         
         _tasks = Query(filter: predicate, sort: \.title)
+        
+        // isEditable 정해주는 과정
+        
+        // 들어온 날짜의 컴포넌트
+        let inputDateComponent = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        
+        let currentDateComponent =
+            Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        
+        var inputDate = Date()
+        var currentDate = Date()
+        
+        if let inputYear = inputDateComponent.year, let inputMonth = inputDateComponent.month, let inputDay = inputDateComponent.day, let curYear = currentDateComponent.year, let curMonth = currentDateComponent.month, let curDay = currentDateComponent.day {
+            
+            currentDate = Date(year: curYear, month: curMonth, day: curDay)
+            
+            inputDate = Date(year: inputYear, month: inputMonth, day: inputDay)
+        }
+        
+        if fromAchieveView == true && currentDate > inputDate {
+            isEditable = false
+        } else {
+            self.isEditable = true
+        }
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Spacer()
+        if isEditable == true {
+            VStack {
+                HStack {
+                    Spacer()
+                    
+                    // 날짜
+                    ZStack {
+                        if date.isToday() {
+                            Circle()
+                                .foregroundStyle(Color.planIODarkYellow)
+                        }
+                        
+                        Text(cleanDate(date: date))
+                            .font(.footnote).bold()
+                            .foregroundStyle(dateColor())
+                    }
+                    .frame(width: 25, height: 25)
+                    .padding(.top, 10)
+                    .padding(.trailing, 14)
+                }
                 
-                // 날짜
-                ZStack {
-                    if date.isToday() {
-                        Circle()
-                            .foregroundStyle(Color.planIODarkYellow)
+                // Task
+                VStack(alignment: .leading, spacing: 4) {
+                    ForEach(isMonthCalendar ? Array(tasks.prefix(4)) : tasks) { task in
+                        taskRow(task)
+                            .draggable(task.title) {
+                                taskRow(task)
+                                    .onAppear {
+                                        draggingTarget = task
+                                        draggingTargetDate = date
+                                    }
+                            }
+                    }
+                }
+                .padding(.horizontal, 6)
+                
+                if isMonthCalendar && tasks.count > 4 {
+                    Text("+ \(tasks.count - 4)")
+                        .font(.system(size: 10)).bold()
+                        .foregroundStyle(Color.planIODarkGray)
+                        .padding(.horizontal, 6)
+                }
+                
+                Spacer(minLength: 0)
+            }
+            .background(isWeekend(date: date) ? .planIOFilledYellow : .white)
+            .dropDestination(for: String.self) { _, _ in
+                if draggingTargetDate == Date(year: 0, month: 0, day: 0) {
+                    // task -> calendar 로의 정보 이동
+                    if let target = draggingTarget {
+                        let newTask = Task(title: target.title, type: target.type, status: target.status, date: date)
+                        modelContext.insert(newTask)
                     }
                     
-                    Text(cleanDate(date: date))
-                        .font(.footnote).bold()
-                        .foregroundStyle(dateColor())
+                    // 끌려온 녀석은 삭제됩니다.
+                    if let target = draggingTarget {
+                        modelContext.delete(target)
+                    }
+                } else {
+                    // calendar -> calendar 로의 정보 이동
+                    if let target = draggingTarget {
+                        let newTask = Task(title: target.title, type: target.type, status: target.status, date: date)
+                        modelContext.insert(newTask)
+                    }
+                    
+                    if let target = draggingTarget {
+                        modelContext.delete(target)
+                    }
                 }
-                .frame(width: 25, height: 25)
-                .padding(.top, 10)
-                .padding(.trailing, 14)
+                
+                return false
             }
-            
-            // Task
-            VStack(alignment: .leading, spacing: 4) {
-                ForEach(isMonthCalendar ? Array(tasks.prefix(4)) : tasks) { task in
-                    taskRow(task)
-                        .draggable(task.title) {
-                            taskRow(task)
-                                .onAppear {
-                                    draggingTarget = task
-                                    draggingTargetDate = date
-                                }
+        } else {
+            VStack {
+                HStack {
+                    Spacer()
+                    
+                    // 날짜
+                    ZStack {
+                        if date.isToday() {
+                            Circle()
+                                .foregroundStyle(Color.planIODarkYellow)
                         }
+                        
+                        Text(cleanDate(date: date))
+                            .font(.footnote).bold()
+                            .foregroundStyle(dateColor())
+                    }
+                    .frame(width: 25, height: 25)
+                    .padding(.top, 10)
+                    .padding(.trailing, 14)
                 }
+                
+                // Task
+                VStack(alignment: .leading, spacing: 4) {
+                    ForEach(isMonthCalendar ? Array(tasks.prefix(4)) : tasks) { task in
+                        if isEditable == true {
+                            taskRow(task)
+                                .draggable(task.title) {
+                                    taskRow(task)
+                                        .onAppear {
+                                            draggingTarget = task
+                                            draggingTargetDate = date
+                                        }
+                                }
+                        } else {
+                            taskRow(task)
+                        }
+                    }
+                }
+                .padding(.horizontal, 6)
+                
+                if isMonthCalendar && tasks.count > 4 {
+                    Text("+ \(tasks.count - 4)")
+                        .font(.system(size: 10)).bold()
+                        .foregroundStyle(Color.planIODarkGray)
+                        .padding(.horizontal, 6)
+                }
+                
+                Spacer(minLength: 0)
             }
-            .padding(.horizontal, 6)
-            
-            if isMonthCalendar && tasks.count > 4 {
-                Text("+ \(tasks.count - 4)")
-                    .font(.system(size: 10)).bold()
-                    .foregroundStyle(Color.planIODarkGray)
-                    .padding(.horizontal, 6)
-            }
-            
-            Spacer(minLength: 0)
+            .background(isWeekend(date: date) ? .planIOFilledYellow : .white)
         }
-        .background(isWeekend(date: date) ? .planIOFilledYellow : .white)
-        .dropDestination(for: String.self) { _, _ in
-            if draggingTargetDate == Date(year: 0, month: 0, day: 0) {
-                // task -> calendar 로의 정보 이동
-                if let target = draggingTarget {
-                    let newTask = Task(title: target.title, type: target.type, status: target.status, date: date)
-                    modelContext.insert(newTask)
-                }
+    }
+    
+    struct DroppableContainer<Content: View>: View {
+        let content: () -> Content
+        
+        init(@ViewBuilder content: @escaping () -> Content) {
+            self.content = content
+        }
+        
+        var body: some View {
+            VStack {
+                Text("Header")
+                    .font(.largeTitle)
+                    .padding()
                 
-                // 끌려온 녀석은 삭제됩니다.
-                if let target = draggingTarget {
-                    modelContext.delete(target)
-                }
-            } else {
-                // calendar -> calendar 로의 정보 이동
-                if let target = draggingTarget {
-                    let newTask = Task(title: target.title, type: target.type, status: target.status, date: date)
-                    modelContext.insert(newTask)
-                }
+                content()
                 
-                if let target = draggingTarget {
-                    modelContext.delete(target)
-                }
+                Text("Footer")
+                    .font(.footnote)
+                    .padding()
             }
-            
-            return false
+            .border(Color.gray, width: 1)
+            .padding()
         }
     }
     

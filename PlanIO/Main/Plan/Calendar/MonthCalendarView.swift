@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MonthCalendarView: View {
-//    @Environment(\.modelContext) var modelContext
+    let fromAchieveView: Bool
     
     @State var startDate: Date
     @State var endDate: Date
@@ -18,11 +18,6 @@ struct MonthCalendarView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-//            Button {
-//                TaskManager.makeTask(modelContext: modelContext, scopes: TextBook.contents)
-//            } label: {
-//                Text("task 추가")
-//            }
             headerView
             calendarGridView
         }
@@ -75,7 +70,7 @@ struct MonthCalendarView: View {
                             VStack(spacing: 0) {
                                 // firstDayOfWeek가 3일때 (수요일) 월, 화를 채우고 온 index는 2입니다.
                                 // 해당일부터 종료일까지 날짜를 채워야 하기 때문에 +1 하여 날짜를 맞추었습니다.
-                                CellView(date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                                CellView(fromAchieveView: fromAchieveView, date: startDate + TimeInterval((index - firstDayOfWeek + 1) * 86400), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                             }
                             .background(isWeekDay(index: index) ? .planIOFilledYellow : .white)
                             .frame(maxWidth: .infinity, minHeight: 160, maxHeight: 160, alignment: .center)

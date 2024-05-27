@@ -46,7 +46,7 @@ struct PlanView: View {
     var body: some View {
         NavigationSplitView {
             VStack {
-                 SidebarView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                SidebarView(fromAchieveView: fromAchieveView, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     .background(.planIOLightGray)
             }
             .navigationSplitViewColumnWidth(min: 200, ideal: 250)
@@ -112,13 +112,13 @@ struct PlanView: View {
         if let year = components.year, let month = components.month, let day = components.day {
             switch selectedScreen {
             case .month:
-                MonthCalendarView(startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                MonthCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     .padding(.horizontal, 20)
             case .week:
-                WeekCalendarView(startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, savedWeekIdx: $savedWeekIdx)
+                WeekCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, savedWeekIdx: $savedWeekIdx)
                     .padding(.horizontal, 20)
             case .none:
-                MonthCalendarView(startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                MonthCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     .padding(.horizontal, 20)
             }
         }

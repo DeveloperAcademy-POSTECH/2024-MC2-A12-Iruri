@@ -9,6 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct SidebarTaskListView: View {
+    
     @Query var tasks: [Task]
     
     @State private var isConceptSectionExpanded: Bool = true

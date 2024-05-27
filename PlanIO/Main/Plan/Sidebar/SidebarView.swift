@@ -9,6 +9,8 @@ import SwiftData
 import SwiftUI
 
 struct SidebarView: View {
+    let fromAchieveView: Bool
+    
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Task.title) var tasks: [Task]
     
@@ -40,23 +42,25 @@ struct SidebarView: View {
             
             Spacer()
             
-            Button {
-                // 자동배치 기능
-            } label: {
-                HStack {
-                    Spacer()
-                    Text("자동배치")
-                        .font(.footnote).bold()
-                        .foregroundStyle(Color.black)
-                        .multilineTextAlignment(.leading)
-                    Spacer()
+            if fromAchieveView == false {
+                Button {
+                    // 자동배치 기능
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("자동배치")
+                            .font(.footnote).bold()
+                            .foregroundStyle(Color.black)
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                    }
+                    .padding(10)
+                    .background(Color.planIOYellow)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                    .shadow(color: .black.opacity(0.3), radius: 1.5, x: 0, y: 1)
+                    .padding(.horizontal, 10)
+                    .padding(.bottom, 12)
                 }
-                .padding(10)
-                .background(Color.planIOYellow)
-                .clipShape(RoundedRectangle(cornerRadius: 6))
-                .shadow(color: .black.opacity(0.3), radius: 1.5, x: 0, y: 1)
-                .padding(.horizontal, 10)
-                .padding(.bottom, 12)
             }
         }
         .onAppear {

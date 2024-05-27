@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WeekCalendarView: View {
+    let fromAchieveView: Bool
+    
     @State var startDate: Date
     @State var endDate: Date
     
@@ -126,7 +128,7 @@ struct WeekCalendarView: View {
                         .foregroundStyle(isWeekDay(index: idx) ? .planIOFilledYellow : .white)
                         .border(.gray, width: 0.5)
                 } else {
-                    CellView(date: currentDateList[idx], draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, isMonthCalendar: false)
+                    CellView(fromAchieveView: fromAchieveView, date: currentDateList[idx], draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, isMonthCalendar: false)
                         .border(.gray, width: 0.5)
                 }
             }
