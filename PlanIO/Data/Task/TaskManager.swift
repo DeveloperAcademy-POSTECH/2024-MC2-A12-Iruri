@@ -33,6 +33,56 @@ struct TaskManager {
             modelContext.insert(finalTest)
         }
     }
+    
+    static func distributeTasks(tasks: [Task], endDate: Date, availableTimes times: [Int]) {
+        let taskManager = TaskManager()
+        
+        // 공부할 수 있는 날짜
+        var studyDates: [Date] = taskManager.generateDates(startDate: Date(), endDate: endDate)
+        
+        var availableTimes: [Int] = times
+        availableTimes.insert(availableTimes.popLast() ?? 99, at: 0)
+        
+        studyDates.removeAll { date in
+            availableTimes[date.weekday - 1] == 0
+        }
+        
+        let tasksCount = tasks.count
+        let tasksPerDay = tasksCount / studyDates.count /// 전체 task 수 / 공부할 수 있는 날짜 = 하루에 공부할 양
+        var extraTasks = tasksCount % studyDates.count /// 동등하게 배치하고 남는 task 개수
+        
+        var taskIndex: Int = 0
+        
+        studyDates.forEach { date in
+            for i in 0 ..< tasksPerDay + (extraTasks > 0 ? 1 : 0) {
+                tasks[taskIndex].date = date
+                taskIndex += 1
+                print("aa \(taskIndex) \(i) \(date)")
+            }
+            
+            if extraTasks > 0 {
+                extraTasks -= 1
+            }
+        }
+    }
+    
+    private func generateDates(startDate: Date, endDate: Date) -> [Date] {
+        var dates: [Date] = []
+        let calendar = Calendar.current
+        var currentDate = Date(year: startDate.year, month: startDate.month, day: startDate.day)
+        
+        while currentDate <= endDate {
+            dates.append(currentDate)
+            if let nextDate = calendar.date(byAdding: .day, value: 1, to: currentDate) {
+                currentDate = nextDate
+            } else {
+                break
+            }
+        }
+        
+        print(dates)
+        return dates
+    }
 }
 
 extension TaskManager {
@@ -67,4 +117,17 @@ extension TaskManager {
     
     static let dummy1 = Task(title: "1-1-1. 자극을 전달하는 신경계", type: .concept, status: .complete)
     static let dummy2 = Task(title: "1-1-2. 신경계를 통해 일어나는 반응", type: .concept, status: .inProgress)
+}
+
+#Preview {
+    VStack {
+        Button {
+            var dates = [0, 1, 2, 3, 4, 5, 6]
+            dates.insert(dates.popLast() ?? 99, at: 0)
+            print(dates)
+        } label: {
+            Text("d")
+                .font(.system(size: 200))
+        }
+    }
 }

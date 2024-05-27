@@ -17,6 +17,7 @@ import SwiftUI
 struct TodayTaskListView: View {
     let type: TaskType
     
+    @Environment(\.modelContext) private var modelContext
     @Query(sort: \Task.title) var tasks: [Task]
     @Binding var selectedTask: Task?
     
@@ -54,6 +55,21 @@ struct TodayTaskListView: View {
                             StatusSelectPopUp { status in
                                 withAnimation {
                                     task.status = status
+                                }
+                                
+                                let today = Date()
+                                let sameTasks = tasks.filter { $0.title == task.title }
+                                let afterTodayTasks = sameTasks.filter { $0.date > Date(year: today.year, month: today.month, day: today.day)}
+                                
+                                if status != .complete {
+                                    if afterTodayTasks.count == 0 {
+                                        let delayedTask = Task(title: task.title, type: task.type, status: .none, date: Date(year: task.date.year, month: task.date.month, day: (task.date.day + 1)))
+                                        modelContext.insert(delayedTask)
+                                    }
+                                } else {
+                                    afterTodayTasks.forEach { task in
+                                        modelContext.delete(task)
+                                    }
                                 }
                                 
                                 self.selectedTask = nil

@@ -22,4 +22,5 @@ class InputData {
     // 교재 선택
     
     // 가능 시간
+    var availableTimePerDay: [Int] = [] /// [월 ~ 일] ex: [0, 3, 4, 0, 0, 7, 5]
 }

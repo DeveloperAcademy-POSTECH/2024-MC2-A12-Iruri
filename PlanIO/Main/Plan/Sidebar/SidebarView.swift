@@ -10,7 +10,8 @@ import SwiftUI
 
 struct SidebarView: View {
     let fromAchieveView: Bool
-    
+
+    @Environment(InputData.self) private var inputData
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Task.title) var tasks: [Task]
     
@@ -45,6 +46,7 @@ struct SidebarView: View {
             if fromAchieveView == false {
                 Button {
                     // 자동배치 기능
+                    TaskManager.distributeTasks(tasks: tasks, endDate: inputData.scienceTestDate ?? Date(), availableTimes: inputData.availableTimePerDay)
                 } label: {
                     HStack {
                         Spacer()

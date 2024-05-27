@@ -11,6 +11,7 @@ struct InputView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(InputData.self) private var inputData
     
+    @State private var cellColors: [[Color]] = Array(repeating: Array(repeating: Color.white, count: 7), count: 12)
     @State private var isAnyCellFilled: Bool = false
     @State private var isNextButtonEnabled = false
     
@@ -25,9 +26,10 @@ struct InputView: View {
             // 펭귄이오
             HStack(spacing: 20) {
                 Spacer()
-                Image("PlanIOCharacter")
+                Image("PlanIOHalf")
                     .resizable()
                     .frame(width: 125, height: 125)
+                    .shadow(color: .black.opacity(0.3), radius: 7.5, x: 0, y: 10)
                 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 0) {
@@ -62,7 +64,7 @@ struct InputView: View {
                 case .book:
                     SelectBookView()
                 case .time:
-                    CheckTimeView(isAnyCellFilled: $isAnyCellFilled)
+                    CheckTimeView(cellColors: $cellColors, isAnyCellFilled: $isAnyCellFilled)
                 }
                 Spacer()
                 
@@ -89,6 +91,7 @@ struct InputView: View {
                     if inputData.selectedStep != .time {
                         inputData.selectedStep = inputData.selectedStep.nextStep() ?? .schedule
                     } else {
+                        saveAvailableTime()
                         TaskManager.makeTask(modelContext: modelContext, scopes: inputData.scopes)
                         showCalendarView = true
                     }
@@ -123,6 +126,18 @@ struct InputView: View {
         case .time:
             return isAnyCellFilled == false
         }
+    }
+    
+    private func saveAvailableTime() {
+        inputData.availableTimePerDay = Array(repeating: 0, count: 7)
+        
+        cellColors.forEach { weeks in
+            for day in 0 ..< 7 where weeks[day] == Color.planIOYellow {
+                inputData.availableTimePerDay[day] += 1
+            }
+        }
+        
+        print("available \(inputData.availableTimePerDay)")
     }
 }
 

@@ -98,6 +98,7 @@ struct PlanView: View {
                     .padding(.horizontal, 20)
                     
                     selectedView
+                        .padding(.horizontal, 20)
                 }
             }
         }
@@ -106,19 +107,19 @@ struct PlanView: View {
     @ViewBuilder
     var selectedView: some View {
         let components = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        let endDateComponents = Calendar.current.dateComponents([.year, .month, .day],
+                                                                from: inputData.scienceTestDate ?? Date())
         
-        var startDate = Date()
-        
-        if let year = components.year, let month = components.month, let day = components.day {
+        if let year = components.year, let month = components.month, let day = components.day, let endYear = endDateComponents.year, let endMonth = endDateComponents.month, let endDay = endDateComponents.day {
             switch selectedScreen {
             case .month:
-                MonthCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                MonthCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: Date(year: endYear, month: endMonth, day: endDay), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     .padding(.horizontal, 20)
             case .week:
-                WeekCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, savedWeekIdx: $savedWeekIdx)
+                WeekCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: Date(year: endYear, month: endMonth, day: endDay), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, savedWeekIdx: $savedWeekIdx)
                     .padding(.horizontal, 20)
             case .none:
-                MonthCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: inputData.scienceTestDate ?? Date(year: 2024, month: 6, day: 20), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                MonthCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: Date(year: endYear, month: endMonth, day: endDay), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     .padding(.horizontal, 20)
             }
         }
