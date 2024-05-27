@@ -46,7 +46,7 @@ struct PlanView: View {
     var body: some View {
         NavigationSplitView {
             VStack {
-                 SidebarView(draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                SidebarView(fromAchieveView: fromAchieveView, draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
                     .background(.planIOLightGray)
             }
             .navigationSplitViewColumnWidth(min: 200, ideal: 250)
@@ -110,23 +110,17 @@ struct PlanView: View {
         let endDateComponents = Calendar.current.dateComponents([.year, .month, .day],
                                                                 from: inputData.scienceTestDate ?? Date())
         
-        if let year = components.year, let month = components.month, let day = components.day {
-            if let endYear = endDateComponents.year, let endMonth = endDateComponents.month, let endDay = endDateComponents.day {
-                switch selectedScreen {
-                case .month:
-                    MonthCalendarView(startDate: Date(year: year, month: month, day: day),
-                                      endDate: Date(year: endYear, month: endMonth, day: endDay),
-                                      draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
-                case .week:
-                    WeekCalendarView(startDate: Date(year: year, month: month, day: day),
-                                     endDate: Date(year: endYear, month: endMonth, day: endDay),
-                                     draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate,
-                                     savedWeekIdx: $savedWeekIdx)
-                case .none:
-                    MonthCalendarView(startDate: Date(year: year, month: month, day: day),
-                                      endDate: Date(year: endYear, month: endMonth, day: endDay),
-                                      draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
-                }
+        if let year = components.year, let month = components.month, let day = components.day, let endYear = endDateComponents.year, let endMonth = endDateComponents.month, let endDay = endDateComponents.day {
+            switch selectedScreen {
+            case .month:
+                MonthCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: Date(year: endYear, month: endMonth, day: endDay), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                    .padding(.horizontal, 20)
+            case .week:
+                WeekCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: Date(year: endYear, month: endMonth, day: endDay), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate, savedWeekIdx: $savedWeekIdx)
+                    .padding(.horizontal, 20)
+            case .none:
+                MonthCalendarView(fromAchieveView: fromAchieveView, startDate: Date(year: year, month: month, day: day), endDate: Date(year: endYear, month: endMonth, day: endDay), draggingTarget: $draggingTarget, draggingTargetDate: $draggingTargetDate)
+                    .padding(.horizontal, 20)
             }
         }
     }
