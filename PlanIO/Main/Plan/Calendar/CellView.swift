@@ -89,14 +89,18 @@ struct CellView: View {
                 // Task
                 VStack(alignment: .leading, spacing: 4) {
                     ForEach(isMonthCalendar ? Array(tasks.prefix(4)) : tasks) { task in
-                        taskRow(task)
-                            .draggable(task.title) {
-                                taskRow(task)
-                                    .onAppear {
-                                        draggingTarget = task
-                                        draggingTargetDate = date
-                                    }
-                            }
+                        if isEditable == true && task.status == .none {
+                            taskRow(task)
+                                .draggable(task.title) {
+                                    taskRow(task)
+                                        .onAppear {
+                                            draggingTarget = task
+                                            draggingTargetDate = date
+                                        }
+                                }
+                        } else {
+                            taskRow(task)
+                        }
                     }
                 }
                 .padding(.horizontal, 6)
@@ -161,7 +165,7 @@ struct CellView: View {
                 // Task
                 VStack(alignment: .leading, spacing: 4) {
                     ForEach(isMonthCalendar ? Array(tasks.prefix(4)) : tasks) { task in
-                        if isEditable == true {
+                        if isEditable == true && task.status == .none {
                             taskRow(task)
                                 .draggable(task.title) {
                                     taskRow(task)
