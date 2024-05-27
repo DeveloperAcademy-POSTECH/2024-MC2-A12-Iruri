@@ -12,21 +12,19 @@ struct StatusSelectPopUp: View {
     
     var body: some View {
         HStack {
-            Spacer()
+            Spacer(minLength: 0)
             
             HStack {
                 ForEach(TaskStatus.allCases, id: \.self) { status in
-                    if status != .none {
-                        Button {
-                            selectAction(status)
-                        } label: {
-                            Text(status.title)
-                                .foregroundStyle(status.color)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 12)
-                        }
-                        if status != .incomplete { Divider() }
+                    Button {
+                        selectAction(status)
+                    } label: {
+                        Text(status.title)
+                            .foregroundStyle(status.color)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 8)
                     }
+                    if status != .none { Divider() }
                 }
             }
             .padding(.horizontal, 12)
