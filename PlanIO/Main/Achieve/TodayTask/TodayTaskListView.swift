@@ -61,7 +61,7 @@ struct TodayTaskListView: View {
                                 let sameTasks = tasks.filter { $0.title == task.title }
                                 let afterTodayTasks = sameTasks.filter { $0.date > Date(year: today.year, month: today.month, day: today.day)}
                                 
-                                if status != .complete {
+                                if status == .inProgress || status == .incomplete {
                                     if afterTodayTasks.count == 0 {
                                         let delayedTask = Task(title: task.title, type: task.type, status: .none, date: Date(year: task.date.year, month: task.date.month, day: (task.date.day + 1)))
                                         modelContext.insert(delayedTask)
