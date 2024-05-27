@@ -94,6 +94,8 @@ struct InputView: View {
                         saveAvailableTime()
                         TaskManager.makeTask(modelContext: modelContext, scopes: inputData.scopes)
                         showCalendarView = true
+                        
+                        UserDefaults.standard.setValue(inputData.scienceTestDate, forKey: "scienceTestDate")
                     }
                 }, label: {
                     ZStack {

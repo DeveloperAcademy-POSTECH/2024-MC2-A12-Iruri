@@ -12,7 +12,7 @@ import SwiftUI
 struct PlanIOApp: App {
     var modelContainer: ModelContainer {
         let schema = Schema([Task.self, Plan.self])
-        let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+        let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         
         do {
             let container = try ModelContainer(for: schema, configurations: [configuration])
@@ -35,6 +35,7 @@ struct PlanIOApp: App {
 
 struct MainView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(InputData.self) private var inputData
     @Query var tasks: [Task]
     
     var body: some View {
@@ -47,6 +48,11 @@ struct MainView: View {
                     // Task가 있다면 실천화면으로
                     AchieveView()
                 }
+            }
+        }
+        .onAppear {
+            if let testDate = UserDefaults.standard.value(forKey: "scienceTestDate") as? Date {
+                inputData.scienceTestDate = testDate
             }
         }
     }
