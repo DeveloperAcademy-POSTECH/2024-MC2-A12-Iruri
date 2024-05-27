@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CheckTimeView: View {
-    @State private var cellColors: [[Color]] = Array(repeating: Array(repeating: Color.white, count: 7), count: 12)
+    @Binding var cellColors: [[Color]]
     @State private var week: [String] = ["월", "화", "수", "목", "금", "토", "일"]
     @State private var times: [String] = ["15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00", "01:00", "02:00"]
     
