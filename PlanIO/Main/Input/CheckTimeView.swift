@@ -97,6 +97,18 @@ struct CheckTimeView: View {
                                         // Press가 끝났을 때, 다시 false로 변경
                                             .onEnded { _ in isPressed = false }
                                     )
+                                    .simultaneousGesture(
+                                        TapGesture()
+                                            .onEnded {
+                                                if cellColors[row][column] == .white {
+                                                    cellColors[row][column] = .planIOYellow
+                                                } else {
+                                                    cellColors[row][column] = .white
+                                                }
+                                                
+                                                updateIsAnyCellFilled()
+                                            }
+                                    )
                             }
                         }
                     }
@@ -108,6 +120,7 @@ struct CheckTimeView: View {
             isAnyCellFilled = false
         }
     }
+    
     private func updateIsAnyCellFilled() {
         isAnyCellFilled = cellColors.contains { $0.contains(.planIOYellow) }
     }
