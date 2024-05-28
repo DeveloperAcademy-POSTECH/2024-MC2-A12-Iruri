@@ -11,12 +11,17 @@ import SwiftUI
 struct EntireStatusView: View {
     @Query private var tasks: [Task]
     var totalRate: Int {
-        // 실천 / {Task 전체 - (진행중 + 미실천)} * 100
-        let completeTasks = tasks.filter { $0.status == .complete }
-        let allTasks = tasks.filter { $0.status == .none || $0.status == .complete }
+        // 앱 초기화 시 task가 비게 되면 오류가 생깁니다.
+        if tasks.isEmpty == false {
+            // 실천 / {Task 전체 - (진행중 + 미실천)} * 100
+            let completeTasks = tasks.filter { $0.status == .complete }
+            let allTasks = tasks.filter { $0.status == .none || $0.status == .complete }
+            
+            let ratio = (Double(completeTasks.count) / Double(allTasks.count)) * 100
+            return Int(ratio)
+        }
         
-        let ratio = (Double(completeTasks.count) / Double(allTasks.count)) * 100
-        return Int(ratio)
+        return 0
     }
     
     var body: some View {
