@@ -5,19 +5,36 @@
 //  Created by Anjin on 5/17/24.
 //
 
+import SwiftData
 import SwiftUI
 
 struct AchieveView: View {
+    @Environment(InputData.self) private var inputData
+    @Environment(\.modelContext) var modelContext
     @State private var selectedTask: Task?
+    @Query var tasks: [Task]
     
     var body: some View {
+        
         VStack(spacing: 12) {
             HStack {
                 Text("실천해보자")
                     .font(.title).bold()
                     .foregroundStyle(Color.planIODarkYellow)
-                
+                    
                 Spacer()
+                
+                Button {
+                    for item in tasks {
+                        modelContext.delete(item)
+                        inputData.resetData()
+                    }
+                } label: {
+                    Text("앱 초기화")
+                        .font(.caption2)
+                        .foregroundStyle(.white)
+                }
+                
             }
             .padding(.top, 12)
             .padding(.horizontal, 40)
