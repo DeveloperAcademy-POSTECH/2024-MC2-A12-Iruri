@@ -9,6 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct AchieveView: View {
+    @Environment(InputData.self) private var inputData
     @Environment(\.modelContext) var modelContext
     @State private var selectedTask: Task?
     @Query var tasks: [Task]
@@ -26,6 +27,7 @@ struct AchieveView: View {
                 Button {
                     for item in tasks {
                         modelContext.delete(item)
+                        inputData.resetData()
                     }
                 } label: {
                     Text("앱 초기화")

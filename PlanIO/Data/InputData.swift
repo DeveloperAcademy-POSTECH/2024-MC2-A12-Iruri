@@ -23,4 +23,12 @@ class InputData {
     
     // 가능 시간
     var availableTimePerDay: [Int] = [] /// [월 ~ 일] ex: [0, 3, 4, 0, 0, 7, 5]
+    
+    func resetData() {
+        self.selectedStep = .schedule
+        self.testDates = [Date()]
+        self.scienceTestDate = nil
+        self.scopes = []
+        self.availableTimePerDay = []
+    }
 }
