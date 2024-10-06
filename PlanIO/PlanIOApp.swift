@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct PlanIOApp: App {
     var modelContainer: ModelContainer {
-        let schema = Schema([Task.self, Plan.self])
+        let schema = Schema([Task.self])
         let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         
         do {

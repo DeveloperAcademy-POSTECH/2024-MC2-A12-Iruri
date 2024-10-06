@@ -34,7 +34,6 @@
 		510BE7512BFA5CA200524EA9 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7502BFA5CA200524EA9 /* TaskRow.swift */; };
 		510BE7532BFA606400524EA9 /* StatusSelectPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7522BFA606400524EA9 /* StatusSelectPopUp.swift */; };
 		510BE7552BFB24C200524EA9 /* WorkBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7542BFB24C200524EA9 /* WorkBook.swift */; };
-		510BE7572BFB28C500524EA9 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7562BFB28C500524EA9 /* Plan.swift */; };
 		510BE75A2BFB587D00524EA9 /* AchieveComponentTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE7592BFB587D00524EA9 /* AchieveComponentTitle.swift */; };
 		510BE75C2BFB589200524EA9 /* AchieveComponentBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE75B2BFB589200524EA9 /* AchieveComponentBackground.swift */; };
 		510BE75E2BFB5A5800524EA9 /* EntireStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BE75D2BFB5A5800524EA9 /* EntireStatusView.swift */; };
@@ -79,7 +78,6 @@
 		510BE7502BFA5CA200524EA9 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		510BE7522BFA606400524EA9 /* StatusSelectPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSelectPopUp.swift; sourceTree = "<group>"; };
 		510BE7542BFB24C200524EA9 /* WorkBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBook.swift; sourceTree = "<group>"; };
-		510BE7562BFB28C500524EA9 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		510BE7592BFB587D00524EA9 /* AchieveComponentTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveComponentTitle.swift; sourceTree = "<group>"; };
 		510BE75B2BFB589200524EA9 /* AchieveComponentBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveComponentBackground.swift; sourceTree = "<group>"; };
 		510BE75D2BFB5A5800524EA9 /* EntireStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntireStatusView.swift; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 				510BE7672BFF0E9600524EA9 /* Task */,
 				510BE72F2BF5AB8400524EA9 /* TextBook.swift */,
 				510BE7542BFB24C200524EA9 /* WorkBook.swift */,
-				510BE7562BFB28C500524EA9 /* Plan.swift */,
 				246A2F7E2BFC8A6500DD7830 /* InputData.swift */,
 			);
 			path = Data;
@@ -379,7 +376,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C6C78AC2BFD07AD00E2BD09 /* CellView.swift in Sources */,
-				510BE7572BFB28C500524EA9 /* Plan.swift in Sources */,
 				510BE7622BFB5BE600524EA9 /* RemainTimeView.swift in Sources */,
 				24522C312BFE36D000C02472 /* CheckTimeView.swift in Sources */,
 				246A2F7A2BFB688700DD7830 /* InputStep.swift in Sources */,
